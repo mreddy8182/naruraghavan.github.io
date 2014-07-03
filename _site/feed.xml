@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+<title type="text">Technology Blog</title>
+<generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
+<link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
+<link rel="alternate" type="text/html" href="http://localhost:4000" />
+<updated>2014-07-02T22:41:13-04:00</updated>
+<id>http://localhost:4000/</id>
+<author>
+  <name>Narayanan Raghavan</name>
+  <uri>http://localhost:4000/</uri>
+  <email>naruraghavan@icloud.com</email>
+</author>
+
+
+<entry>
+  <title type="html"><![CDATA[itHUB - Part 6]]></title>
+ <link rel="alternate" type="text/html" href="http://localhost:4000/ithub-part-6/" />
+  <id>http://localhost:4000/ithub-part-6</id>
+  <updated>2014-02-15 21:39:03 -0500T00:00:00-00:00</updated>
+  <published>2014-02-15T00:00:00-05:00</published>
+  
+  <author>
+    <name>Narayanan Raghavan</name>
+    <uri>http://localhost:4000</uri>
+    <email>naruraghavan@icloud.com</email>
+  </author>
+  <content type="html">&lt;h3 id=&quot;c---anticipatory-service-models&quot;&gt;C.   Anticipatory Service Models&lt;/h3&gt;
+&lt;p&gt;By understanding the customer more and more, itHUB can evolve from being an interactive model for providing products and services to anticipatory model for offering products and services. &lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/anticipatory-service-models.png&quot; alt=&quot;Anticipatory Service Models&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The Anticipatory Service Manager (ASM) component could be built using a combination of the event-driven architecture model and the prediction API described in the previous section. In the event-driven model, ASM will look for a predetermined set of events such as the New Hire event from PeopleSoft. Upon receiving the event, ASM will create the appropriate requests for the new hire. Some of the requests that can be submitted for a new hire include desktop/laptop, smart phone, any business unit specific applications etc. &lt;/p&gt;
+
+&lt;h2 id=&quot;v----conclusion&quot;&gt;V.    CONCLUSION&lt;/h2&gt;
+
+&lt;p&gt;This article, distributed across 6 posts, discussed several techniques with which IT departments could transform from being a reactive informational IT shop to a more dynamic anticipatory service model where the IT department proactively caters to the IT needs of an organization. The first transformation from the more traditional informational model is to setup an online storefront – the itHUB.  itHUB is an implementation of the interactive model where customers interact with the system to submit, track, and approve/reject requests and service providers offer products and services through the system by administering request types.   To create and sustain the network effect, this article suggested the inclusion of wiki/blog, reviews &amp;amp; ratings, and Q&amp;amp;A features. The article also suggested some ways for implementing recommendation of products and services and sentiment analysis to improve the understanding of the IT customer. Finally, the ASM model was introduced to facilitate the need for making IT departments more agile and proactive.&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/ithub-part-6/&quot;&gt;itHUB - Part 6&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://localhost:4000&quot;&gt;Technology Blog&lt;/a&gt; on February 15, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[itHUB - Part 5]]></title>
+ <link rel="alternate" type="text/html" href="http://localhost:4000/ithub-part-5/" />
+  <id>http://localhost:4000/ithub-part-5</id>
+  <updated>2014-01-10 21:27:28 -0500T00:00:00-00:00</updated>
+  <published>2014-01-10T00:00:00-05:00</published>
+  
+  <author>
+    <name>Narayanan Raghavan</name>
+    <uri>http://localhost:4000</uri>
+    <email>naruraghavan@icloud.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;http://localhost:4000/ithub-part-4&quot;&gt;&lt;strong&gt;Part 4&lt;/strong&gt;&lt;/a&gt;, lets start exploring the configuration and administration aspects of itHUB a little more in this post.&lt;/p&gt;
+
+&lt;h3 id=&quot;g---request-management&quot;&gt;G.   Request Management&lt;/h3&gt;
+&lt;p&gt;This component is about the configuration of request types and the processing of requests that are internal as well as destined for external service providers. &lt;/p&gt;
+
+&lt;h4 id=&quot;configuration-of-request-types&quot;&gt;1)  Configuration of Request Types&lt;/h4&gt;
+&lt;p&gt;Oftentimes, the cookie cutter request processing systems contain many unnecessary data fields (in the data collection forms) that are not pertinent to a request being made. Since those systems evolved over a period of time or COTS (Commercial Off-the-shelf) application with generic set of fields for all requests, they tend to offer poor user experience when it comes to request management. A Request Type in itHUB, on the other hand, represents a set of questions to be answered or data to be collected about a request prior to processing it. For example, before processing a request for a desktop, the IT support team must understand the requirement about the desktop request such as amount of RAM needed or number of CPUs needed etc. Therefore, a request type for desktops could be configured to just ask those questions that are pertinent for desktop requests.&lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/request-type-mgmt.jpg&quot; alt=&quot;E-R Diagram for Request Type Management&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As shown in the above diagram, the request types can be categorized to support hardware requests, software requests, and application requests etc. A desktop request would be part of the hardware requests. By the same token, an external service provider’s offerings can also captured using this model. One of the ideas for presenting the various categories of request types are shown below:&lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/categories-of-request-types.png&quot; alt=&quot;Categories of Request Types&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The request configuration enables the idea of grouping multiple request fields as shown below:&lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/desktop-request-with-two-field-groups.png&quot; alt=&quot;Desktop Request with two Field Groups&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;submission-of-requests&quot;&gt;2)  Submission of Requests&lt;/h4&gt;
+&lt;p&gt;Once the request types are defined, a customer could select a particular request for submission. The following E-R diagram shows one of way of implementing the decoupling of request configuration from the actual request itself.&lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/request-mgmt.jpg&quot; alt=&quot;Request Management&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;h---approval-workflow&quot;&gt;H.   Approval Workflow&lt;/h3&gt;
+&lt;p&gt;Each request type (e.g. Desktop Request) is configured with a set of approvers. One of the major constructs in the approval workflow component is the Approver Chain and is described in the following section.&lt;/p&gt;
+
+&lt;h4 id=&quot;approver-chain&quot;&gt;1)  Approver Chain&lt;/h4&gt;
+&lt;p&gt;Each Request Configuration (aka. Request Type) has a set of roles configured as an approver chain. For example, the desktop request has to be approved by the following roles: department manager and general manager.&lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/approval-workflow.jpg&quot; alt=&quot;Approval Workflow&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;request-approval-status&quot;&gt;2)  Request Approval Status&lt;/h4&gt;
+&lt;p class=&quot;pull-right&quot;&gt;The approval decision by each approver in the approver chain, approved or rejected, is captured in the Request Approval Status. The approver chain is configured as follows:
+&lt;img src=&quot;http://localhost:4000/images/approver-chain-configuration.png&quot; alt=&quot;Approver Chain Configuration&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the above scenario, the request will be sent to the department manager and then the general manager for approval. Depending upon the requestor of the request, the actual approvers are mapped to the roles and the workflow is initiated as follows:&lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/approval-routing.png&quot; alt=&quot;Approval Routing&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;business-process-management-bpm&quot;&gt;3)  Business Process Management (BPM)&lt;/h4&gt;
+&lt;p&gt;As we introduce more products and services with varying degrees of workflow steps, it makes sense to start thinking about using a robust business process management engines such as JBoss Drools. By externalizing the business rules away from code, we can give a separate life cycle for rules to evolve more independently of the code. Another advantage to using a rules engine is to provide an opportunity for non-technical users to maintain the business rules without needing to contact a developer or the development team.&lt;/p&gt;
+
+&lt;h3 id=&quot;i---web-layer&quot;&gt;I.   Web Layer&lt;/h3&gt;
+&lt;p&gt;This is an important layer for creating a memorable experience for our customers. In addition to the traditional web application to submit, track, approve, and administer the requests, this layer must also provide support for managing wiki/blogs, ratings and reviews, and questions and answers (Q&amp;amp;A). &lt;/p&gt;
+
+&lt;h5 id=&quot;a-submit-track-approve-and-administer-requests&quot;&gt;a) Submit, Track, Approve, and Administer Requests&lt;/h5&gt;
+&lt;p&gt;This is the crux of itHUB. This is one of the main reasons as to why customers come to itHUB in the fist place - an easy to use web interface where customers and service providers (aka. service administrators) come together to make the request management possible. &lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/itHUB-request-management-usecases.png&quot; alt=&quot;Request management Use-cases&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;submit-use-case&quot;&gt;(1)   Submit Use-Case&lt;/h6&gt;
+&lt;p&gt;itHUB customers choose from a set of request types, provide details for the request, and submit the request as shown below:&lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/customer-chooses-a-request-for-submission.png&quot; alt=&quot;Request Submission&quot; /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/customer-submits-the-request-after-providing-details.png&quot; alt=&quot;Request with Customized Details&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;track-use-case&quot;&gt;(2)   Track Use-Case&lt;/h6&gt;
+&lt;p&gt;itHUB customer wishes to know the status of his/her request. The status of the request can be submitted, in-review, approved, or rejected as shown below:&lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/track-view.png&quot; alt=&quot;Track View&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;manage-use-case&quot;&gt;(3)   Manage Use-Case&lt;/h6&gt;
+&lt;p&gt;itHUB approvers wish to perform approvals for a list of requests. Approval is a process by which the approver either approves or rejects a request based on the need – requester’s need in terms of the department’s overall need. The following screen capture shows the Manage view of one of the department managers.&lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/manage-view.png&quot; alt=&quot;Manage View&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;administer-use-case&quot;&gt;(4)   Administer Use-Case&lt;/h6&gt;
+&lt;p&gt;Service providers and service administrators create a portfolio products and services for the itHUB customers to choose and request from. As described in the previous sections, each request type has the following data structure: request hub, request category, request, request field group, and request field configurations. A request hub holds on to multiple categories such as ITHUB to hold onto IT products and services. A request category holds onto multiple request configurations. Each request configuration holds onto multiple field groups and a field group holds to multiple request fields. As shown in the following screen capture, a service provider/administrator has appropriate rights to create hid/her portfolio of products and services.&lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/request-type-administration.png&quot; alt=&quot;Request Type Administration&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;An example view of the request configurations is shown below:&lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/request-configuration-administration-view.png&quot; alt=&quot;Request Configuration Administration View&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;By the same token, other request type components could be administered using the appropriate administration views.&lt;/p&gt;
+
+&lt;h5 id=&quot;b-q--a&quot;&gt;b) Q &amp;amp; A&lt;/h5&gt;
+&lt;p&gt;One of the major components of the web layer is the question and answers (Q&amp;amp;A) web component. By integrating the Q&amp;amp;A web component, itHUB will be able to create the network effect as described in the previous sections. Instead of building a homegrown solution for the Q&amp;amp;A web component, IT departments could consider COTS applications such as Open Source Q&amp;amp;A (OSQA) or its commercial equivalent AnswerHub. AnswerHub is a cloud-based knowledge management system built on a Q&amp;amp;A foundation [12].  &lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/question-and-answer.png&quot; alt=&quot;Q&amp;amp;A&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;c-wikiblogs&quot;&gt;c) Wiki/Blogs&lt;/h5&gt;
+&lt;p&gt;Adding wiki/blog support to itHUB is relatively easy. It makes sense to pursue a COTS application for wikis/blogs as opposed to building a homegrown solution. There are several wiki/blog software are available either standalone or on the cloud – Atlassian Confluence, WordPress are only a few. Picking one and integrating it into itHUB shouldn’t be difficult. The idea behind wiki/blog is to promote product/service awareness from both service-provider’s and customer’s POVs. An example blog is shown below from the Atlassian Blog website [13].&lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/idea-for-blog-implementation.png&quot; alt=&quot;Idea for Blog Implementation&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;iv---understanding-the-customer&quot;&gt;IV.   UNDERSTANDING THE CUSTOMER&lt;/h2&gt;
+&lt;p&gt;As IT departments add more products and services, there must be a way to show products and services that are absolutely required by the business unit and its people. The other need for IT departments is to understand how the customers feel about the products and services. The following sections will attempt to illustrate some ideas for providing relevant product and service recommendations and understanding customers using sentiment analysis.&lt;/p&gt;
+
+&lt;h3 id=&quot;a---productsservices-recommendation&quot;&gt;A.   Products/Services Recommendation&lt;/h3&gt;
+&lt;p&gt;itHUB can improve customer experience by recommending products and services that are absolutely essential for customers based on their roles within the business unit, projects that they are part of, and their involvement at the organizational activities.  There are several prediction API frameworks available in the market. itHUB could incorporate predictions to recommend the most relevant products and services to its customers.&lt;/p&gt;
+
+&lt;h3 id=&quot;b---sentiment-analysis&quot;&gt;B.   Sentiment Analysis&lt;/h3&gt;
+&lt;p&gt;Sentiment Analysis models could help IT departments to analyze text data in user generated content such as product/service reviews, blogs, comments, and Q&amp;amp;A and classify the sentiments as positive or negative to further improve the services offered. One of the predictions API is Google’s Prediction API (GPA). GPA could be setup to analyze and classify the text data in seven steps as follows [14]:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Collect data&lt;/li&gt;
+  &lt;li&gt;Label your data&lt;/li&gt;
+  &lt;li&gt;Prepare your data&lt;/li&gt;
+  &lt;li&gt;Upload the data to Google cloud storage&lt;/li&gt;
+  &lt;li&gt;Train your model with GPA&lt;/li&gt;
+  &lt;li&gt;Make predictions with GPA in itHUB&lt;/li&gt;
+  &lt;li&gt;Update your model with new data&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I’ll continue by discussion in the next post.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;[12]    AnswerHub. (2013). Customize, Control and Integrate Your Q&amp;amp;A Platform | AnswerHub Enterprise Q&amp;amp;A. Available: http://answerhub.com/features&lt;/p&gt;
+
+&lt;p&gt;[13]    Atlassian. (2013). Confluence - Atlassian Blogs. Available: http://blogs.atlassian.com/tag/confluence&lt;/p&gt;
+
+&lt;p&gt;[14]    Google. (2012). Creating a Sentiment Analysis Model - Google Prediction API — Google Developers. Available: https://developers.google.com/prediction/docs/sentiment_analysis&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/ithub-part-5/&quot;&gt;itHUB - Part 5&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://localhost:4000&quot;&gt;Technology Blog&lt;/a&gt; on January 10, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[itHUB - Part 4]]></title>
+ <link rel="alternate" type="text/html" href="http://localhost:4000/ithub-part-4/" />
+  <id>http://localhost:4000/ithub-part-4</id>
+  <updated>2014-01-01 14:12:20 -0500T00:00:00-00:00</updated>
+  <published>2014-01-01T00:00:00-05:00</published>
+  
+  <author>
+    <name>Narayanan Raghavan</name>
+    <uri>http://localhost:4000</uri>
+    <email>naruraghavan@icloud.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;http://localhost:4000/ithub-part-3&quot;&gt;&lt;strong&gt;Part 3&lt;/strong&gt;&lt;/a&gt;, lets start exploring the application integration aspects of itHUB a little more in this post.&lt;/p&gt;
+
+&lt;h3 id=&quot;e---external-service-providers-products-and-services-integration&quot;&gt;E.   External Service Provider’s Products and Services Integration&lt;/h3&gt;
+&lt;p&gt;This section will discuss the integration of Walmart’s products and services to itHUB using the Walmart Data Feed API [10].  &lt;/p&gt;
+
+&lt;h4 id=&quot;data-integration&quot;&gt;1)  Data Integration&lt;/h4&gt;
+&lt;p&gt;To get a list of items by category, we have to register with the Walmart Open API and acquire an apiKey. Once the apiKey is acquired, there are several methods available to retrieve items as follows:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Lookup API&lt;/strong&gt; - Get Items - /v1/items/id&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Taxonomy API&lt;/strong&gt; - Get Taxonomy - /v1/taxonomy&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Search API&lt;/strong&gt; - Get Search - /v1/search&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5 id=&quot;a-data-semantics&quot;&gt;a) Data Semantics&lt;/h5&gt;
+&lt;p&gt;Walmart’s product data semantics is shown below:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;items&amp;gt;
+    &amp;lt;item&amp;gt;
+        &amp;lt;itemId&amp;gt;&amp;lt;/itemId&amp;gt;
+        &amp;lt;parentItemId&amp;gt;&amp;lt;/parentItemId&amp;gt;
+        &amp;lt;name&amp;gt;&amp;lt;/name&amp;gt;
+        &amp;lt;salePrice&amp;gt;&amp;lt;/salePrice&amp;gt;
+        &amp;lt;upc&amp;gt;&amp;lt;/upc&amp;gt;
+        &amp;lt;categoryPath&amp;gt;&amp;lt;/categoryPath&amp;gt;
+        &amp;lt;shortDescription&amp;gt;&amp;lt;/shortDescription&amp;gt;
+        &amp;lt;longDescription&amp;gt;&amp;lt;/longDescription&amp;gt;
+        &amp;lt;thumbnailImage&amp;gt;&amp;lt;/thumbnailImage&amp;gt;
+        &amp;lt;productTrackingUrl&amp;gt;&amp;lt;/productTrackingUrl&amp;gt;
+        &amp;lt;standardShipRate&amp;gt;&amp;lt;/standardShipRate&amp;gt;
+        &amp;lt;marketplace&amp;gt;&amp;lt;/marketplace&amp;gt;
+        &amp;lt;modelNumber&amp;gt;&amp;lt;/modelNumber&amp;gt;
+        &amp;lt;productUrl&amp;gt;&amp;lt;/productUrl&amp;gt;
+        &amp;lt;customerRating&amp;gt;&amp;lt;/customerRating&amp;gt;
+        &amp;lt;numReviews&amp;gt;&amp;lt;/numReviews&amp;gt;
+        &amp;lt;customerRatingImage&amp;gt;&amp;lt;/customerRatingImage&amp;gt;
+        &amp;lt;categoryNode&amp;gt;&amp;lt;/categoryNode&amp;gt;
+        &amp;lt;bundle&amp;gt;&amp;lt;/bundle&amp;gt;
+        &amp;lt;availableOnline&amp;gt;&amp;lt;/availableOnline&amp;gt;
+    &amp;lt;/item&amp;gt;
+&amp;lt;/items&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;b-data-format&quot;&gt;b) Data Format&lt;/h5&gt;
+&lt;p&gt;Data Feed API can either return data in the XML or JSON format. An example product is shown in the JSON format below:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;{&amp;quot;items&amp;quot;: [
+    {
+        &amp;quot;itemId&amp;quot;: 24699992,
+        &amp;quot;parentItemId&amp;quot;: 24699992,
+        &amp;quot;name&amp;quot;: &amp;quot;HP Black 110-023 Desktop PC Bundle with Intel Pentium G2020T Processor, 8GB Memory, 20\&amp;quot; Monitor, 1TB Hard Drive and Window 8 Operating System&amp;quot;,
+        &amp;quot;salePrice&amp;quot;: 498.0,
+        &amp;quot;upc&amp;quot;: &amp;quot;887758272657&amp;quot;,
+        &amp;quot;categoryPath&amp;quot;: &amp;quot;Electronics/Computers/Desktop Computers&amp;quot;,
+        &amp;quot;shortDescription&amp;quot;: &amp;quot;The HP 110 sticks to the basics, providing the competitive performance and familiar, essential features you need for routine tasks like email and social networking, homework and personal finances or casual Web browsing and online shopping. The clean modern styling makes it reliable, easy-to-use and extremely affordable.&amp;quot;,
+        &amp;quot;longDescription&amp;quot;: &amp;quot;&amp;amp;lt;br&amp;amp;gt;&amp;amp;lt;b&amp;amp;gt;HP 110-023 Desktop PC Bundle:&amp;amp;lt;/b&amp;amp;gt;&amp;amp;lt;br&amp;amp;gt;&amp;amp;lt;br&amp;amp;gt;&amp;amp;lt;b&amp;amp;gt;Key Features and Benefits:&amp;amp;lt;/b&amp;amp;gt;&amp;amp;lt;ul&amp;amp;gt;&amp;amp;lt;li&amp;amp;gt;Intel Pentium G2020T processor&amp;amp;lt;br&amp;amp;gt;2.50GHz, 3MB Cache&amp;amp;lt;br&amp;amp;gt;&amp;amp;lt;br&amp;amp;gt;&amp;amp;lt;/li&amp;amp;gt;&amp;amp;lt;li&amp;amp;gt;8GB DDR3 SDRAM system memory (expandable to 16GB)&amp;amp;lt;br&amp;amp;gt;Gives you the power to handle most power-hungry applications and tons of multimedia work&amp;amp;lt;br&amp;amp;gt;&amp;amp;lt;br&amp;amp;gt;&amp;amp;lt;/li&amp;amp;gt;&amp;amp;lt;li&amp;amp;gt;1TB SATA hard drive&amp;amp;lt;br&amp;amp;gt;Store 666,000 photos, 285,000 songs or 526 hours of HD video and more&amp;amp;lt;br&amp;amp;gt;&amp;amp;lt;br&amp;amp;gt;&amp;amp;lt;/li&amp;amp;gt;&amp;amp;lt;li&amp;amp;gt;SuperMulti DVD Burner&amp;amp;lt;br&amp;amp;gt;Watch movies, and read and write CDs and DVDs in multiple formats&amp;amp;lt;br&amp;amp;gt;&amp;amp;lt;br&amp;amp;gt;&amp;amp;lt;/li&amp;amp;gt;&amp;amp;lt;li&amp;amp;gt;10/100Base-T Ethernet&amp;amp;lt;br&amp;amp;gt;Connect to a broadband modem or wired broadband router with wired Ethernet&amp;amp;lt;br&amp;amp;gt;&amp;amp;lt;br&amp;amp;gt;&amp;amp;lt;/li&amp;amp;gt;&amp;amp;lt;li&amp;amp;gt;20&amp;amp;quot; LED-backlit LCD monitor&amp;amp;lt;br&amp;amp;gt;Intel HD Graphics with up to 1664MB total available graphics memory&amp;amp;lt;/li&amp;amp;gt;&amp;amp;lt;/ul&amp;amp;gt;&amp;amp;lt;br&amp;amp;gt;&amp;amp;lt;b&amp;amp;gt;Additional Features:&amp;amp;lt;/b&amp;amp;gt;&amp;amp;lt;ul&amp;amp;gt;&amp;amp;lt;li&amp;amp;gt;6-in-1 memory card reader&amp;amp;lt;/li&amp;amp;gt;&amp;amp;lt;li&amp;amp;gt;6 x USB 2.0 ports, 1 x headphone jack, 1 x microphone jack, 1 x RJ-45 Ethernet port, 1 x VGA+DVI-D port&amp;amp;lt;/li&amp;amp;gt;&amp;amp;lt;li&amp;amp;gt;1 x PCI Express x 0.5 slot, 1 x external 5.25&amp;amp;quot; bays, 1 x internal 3.5&amp;amp;quot; bay&amp;amp;lt;/li&amp;amp;gt;&amp;amp;lt;/ul&amp;amp;gt;&amp;amp;lt;br&amp;amp;gt;&amp;amp;lt;b&amp;amp;gt;Software:&amp;amp;lt;/b&amp;amp;gt;&amp;amp;lt;ul&amp;amp;gt;&amp;amp;lt;li&amp;amp;gt;Genuine Microsoft Windows 8 Operating System&amp;amp;lt;/li&amp;amp;gt;&amp;amp;lt;li&amp;amp;gt;Norton Internet Security (60-day subscription)&amp;amp;lt;/li&amp;amp;gt;&amp;amp;lt;li&amp;amp;gt;HP Recovery Manager&amp;amp;lt;/li&amp;amp;gt;&amp;amp;lt;/ul&amp;amp;gt;&amp;amp;lt;br&amp;amp;gt;&amp;amp;lt;b&amp;amp;gt;Support and Warranty:&amp;amp;lt;/b&amp;amp;gt;&amp;amp;lt;ul&amp;amp;gt;&amp;amp;lt;li&amp;amp;gt;1-year limited hardware warranty; 1-year limited monitor warranty; 24/7 technical assistance available online or toll-free by phone&amp;amp;lt;/li&amp;amp;gt;&amp;amp;lt;li&amp;amp;gt;Restore discs are not included (unless specified by supplier). We recommend you use the installed software to create your own restore and backup DVD the first week you use the computer.&amp;amp;lt;/li&amp;amp;gt;&amp;amp;lt;/ul&amp;amp;gt;&amp;amp;lt;br&amp;amp;gt;&amp;amp;lt;b&amp;amp;gt;What&amp;#39;s In The Box:&amp;amp;lt;/b&amp;amp;gt;&amp;amp;lt;ul&amp;amp;gt;&amp;amp;lt;li&amp;amp;gt;Power cord&amp;amp;lt;/li&amp;amp;gt;&amp;amp;lt;li&amp;amp;gt;HP USB keyboard&amp;amp;lt;/li&amp;amp;gt;&amp;amp;lt;li&amp;amp;gt;HP optical mouse&amp;amp;lt;/li&amp;amp;gt;&amp;amp;lt;li&amp;amp;gt;Quick Start Guide&amp;amp;lt;/li&amp;amp;gt;&amp;amp;lt;/ul&amp;amp;gt;&amp;amp;lt;br&amp;amp;gt;&amp;amp;lt;b&amp;amp;gt;&amp;amp;lt;i&amp;amp;gt;To see the manufacturer&amp;#39;s specifications for this product, click &amp;amp;lt;a href=&amp;amp;quot;http://i.walmart.com/i/rb/0088775827265.pdf&amp;amp;quot; target=&amp;amp;quot;_blank&amp;amp;quot;&amp;amp;gt;here&amp;amp;lt;/a&amp;amp;gt;.&amp;amp;lt;br&amp;amp;gt;&amp;amp;lt;br&amp;amp;gt;To see a list of our PC Accessories, click &amp;amp;lt;a href=&amp;amp;quot;http://www.walmart.com/cp/accessories-peripherals/132959&amp;amp;quot; target=&amp;amp;quot;_blank&amp;amp;quot;&amp;amp;gt;here&amp;amp;lt;/a&amp;amp;gt;.&amp;amp;lt;br&amp;amp;gt;&amp;amp;lt;br&amp;amp;gt;Trade in your used computer and electronics for more cash to spend at Walmart. Good for your wallet and the environment - click &amp;amp;lt;a href=&amp;amp;quot;http://gazelle.com/register_click?campaign=electronics_trade_in&amp;amp;amp;media_type=text&amp;amp;amp;network=walmart&amp;amp;amp;destination_url=http%3A%2F%2Fwalmart.gazelle.com&amp;amp;amp;placement=product_computers&amp;amp;amp;creative=learn_more&amp;amp;quot; target=&amp;amp;quot;_blank&amp;amp;quot;&amp;amp;gt;here&amp;amp;lt;/a&amp;amp;gt;.&amp;amp;lt;/i&amp;amp;gt;&amp;amp;lt;/b&amp;amp;gt;&amp;quot;,
+        &amp;quot;thumbnailImage&amp;quot;: &amp;quot;http://i.walmartimages.com/i/p/00/88/77/58/27/0088775827265_100X100.jpg&amp;quot;,
+        &amp;quot;productTrackingUrl&amp;quot;: &amp;quot;http://linksynergy.walmart.com/fs-bin/click?id=|LSNID|&amp;amp;offerid=223073.7200&amp;amp;type=14&amp;amp;catid=8&amp;amp;subid=0&amp;amp;hid=7200&amp;amp;tmpid=1081&amp;amp;RD_PARM1=http%253A%252F%252Fwww.walmart.com%252Fip%252FHP-Black-110-023-Desktop-PC-Bundle-with-Intel-Pentium-G2020T-Processor-8GB-Memory-20-Monitor-1TB-Hard-Drive-and-Window-8-Operating-System%252F24699992%253Faffilsrc%253Dapi&amp;quot;,
+        &amp;quot;standardShipRate&amp;quot;: 0.0,
+        &amp;quot;marketplace&amp;quot;: false,
+        &amp;quot;modelNumber&amp;quot;: &amp;quot;110-023wb&amp;quot;,
+        &amp;quot;productUrl&amp;quot;: &amp;quot;http://www.walmart.com/ip/HP-Black-110-023-Desktop-PC-Bundle-with-Intel-Pentium-G2020T-Processor-8GB-Memory-20-Monitor-1TB-Hard-Drive-and-Window-8-Operating-System/24699992&amp;quot;,
+        &amp;quot;customerRating&amp;quot;: &amp;quot;4.432&amp;quot;,
+        &amp;quot;numReviews&amp;quot;: 37,
+        &amp;quot;customerRatingImage&amp;quot;: &amp;quot;http://i2.walmartimages.com/i/CustRating/4_4.gif&amp;quot;,
+        &amp;quot;categoryNode&amp;quot;: &amp;quot;3944_3951_132982&amp;quot;,
+        &amp;quot;bundle&amp;quot;: false,
+        &amp;quot;availableOnline&amp;quot;: true
+    }
+]}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;process-integration&quot;&gt;2)  Process Integration&lt;/h4&gt;
+
+&lt;h5 id=&quot;a-interface-process&quot;&gt;a) Interface Process&lt;/h5&gt;
+&lt;p&gt;The requestor of the data feed will make a call as follows:&lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/walmart-interface-process.png&quot; alt=&quot;Walmart Interface Process&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Request Management component needs a translator service to enable the processing of product data to and from Walmart API services. &lt;/p&gt;
+
+&lt;h5 id=&quot;b-workflow&quot;&gt;b) Workflow&lt;/h5&gt;
+&lt;p&gt;One of the attributes, productUrl, shown in the JSON code block, represents the deep linked URL that directly links to the product page of the item on walmart.com, and uniquely identifies the affiliate (itHUB in this case) sending this request via a linkshare tracking id |LSNID| [11]. In this case, the ordering process with the external service provider can be as simple as a link-out to the deep linked web page on the Walmart.com website.&lt;/p&gt;
+
+&lt;h4 id=&quot;application-integration&quot;&gt;3)  Application Integration&lt;/h4&gt;
+&lt;p&gt;To seamlessly integrate with the request management component as described in the previous section, the products and services data from the external service providers such as Walmart and Staples have to be translated to and from the itHUB product and service vocabulary. One of the methods of implementation design is shown below:&lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/ithub-application-integration-with-external-service-providers.png&quot; alt=&quot;itHUB Application Integration with External Service Providers&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;a-walmart-product-mapper&quot;&gt;a) Walmart Product Mapper&lt;/h5&gt;
+&lt;p&gt;The responsibility of the Product Mapper is to extract all the necessary attributes from the “item” response XML/JSON string and create an itHUB-compatible external product item that can be represented using a common web interface. By the same token, for item inquiry or item order details, the mapper will convert the “Request” to Walmart API specific item specification.&lt;/p&gt;
+
+&lt;h5 id=&quot;b-ithub-walmart-gateway&quot;&gt;b) itHUB Walmart Gateway&lt;/h5&gt;
+&lt;p&gt;The responsibility of the Walmart Gateway is to receive and submit the product data from and to the Walmart Open API. &lt;/p&gt;
+
+&lt;h3 id=&quot;f---user-management&quot;&gt;F.   User Management&lt;/h3&gt;
+&lt;p&gt;As discussed in the previous section, to create a singular view about the customer, itHUB user management component might have to assemble the information from a wide variety of data sources – user directory, ERP systems such as SAP, employee management software systems such as PeopleSoft to name a few. The following entity relationship diagram (ERD) shows a simplistic implementation of some of the attributes needed to properly service customers:&lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/user-management.jpg&quot; alt=&quot;User Management&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To pull customer-related information from multiple data sources, the following design could be implemented.&lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/user-management-integration.png&quot; alt=&quot;E-R Diagram for User Management Integration&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;repository&quot;&gt;1)  Repository&lt;/h4&gt;
+&lt;p&gt;The responsibility of the repository is to encapsulate storage, retrieval, and search behavior and to emulate a collection of objects (Evans, 2003).  &lt;/p&gt;
+
+&lt;h5 id=&quot;a-erp-repository&quot;&gt;a) ERP Repository&lt;/h5&gt;
+&lt;p&gt;This is a specialized implementation of the Repository to deal with ERP systems and can be further specialized to deal with a specific ERP system – e.g. SAP Repository.&lt;/p&gt;
+
+&lt;h5 id=&quot;b-user-repository&quot;&gt;b) User Repository&lt;/h5&gt;
+&lt;p&gt;This is a specialized implementation of the Repository to extract user details of customers from a user store such as an Active Directory. This can also be further specialized to deal with specific user stores.&lt;/p&gt;
+
+&lt;h4 id=&quot;user-service&quot;&gt;2)  User Service&lt;/h4&gt;
+&lt;p&gt;The responsibility of the User Service is to retrieve and assemble user details, billing details etc. from a wide variety of repositories described above.&lt;/p&gt;
+
+&lt;p&gt;I’ll contiunue my discussion in the next post.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;[10]    Walmart. (2011). Walmart Open API - Data Feed API. Available: https://developer.walmartlabs.com/docs&lt;/p&gt;
+
+&lt;p&gt;[10]    Walmart. (2011). Walmart Open API - Data Feed API. Available: https://developer.walmartlabs.com/docs&lt;/p&gt;
+
+&lt;p&gt;[11]    Walmart. (2012). Walmart Open API - Item Response Groups. Available: https://developer.walmartlabs.com/docs/read/Item_Field_Description&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/ithub-part-4/&quot;&gt;itHUB - Part 4&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://localhost:4000&quot;&gt;Technology Blog&lt;/a&gt; on January 01, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[itHUB - Part 3]]></title>
+ <link rel="alternate" type="text/html" href="http://localhost:4000/ithub-part-3/" />
+  <id>http://localhost:4000/ithub-part-3</id>
+  <updated>2013-12-17 04:45:36 -0500T00:00:00-00:00</updated>
+  <published>2013-12-17T00:00:00-05:00</published>
+  
+  <author>
+    <name>Narayanan Raghavan</name>
+    <uri>http://localhost:4000</uri>
+    <email>naruraghavan@icloud.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;http://localhost:4000/ithub-part-2&quot;&gt;&lt;strong&gt;Part 2&lt;/strong&gt;&lt;/a&gt;, lets start exploring the software architecture of itHUB a little more in this post.&lt;/p&gt;
+
+&lt;h3 id=&quot;c---technology-web-20-and-beyond&quot;&gt;C.   Technology: Web 2.0 and Beyond&lt;/h3&gt;
+&lt;p class=&quot;pull-right&quot;&gt;The use of Web 2.0 and beyond [9] is a must for the itHUB platform. The following diagram illustrates the architectural layers and partitions of itHUB platform software components:
+&lt;img src=&quot;http://localhost:4000/images/layers-and-Partitions-of-itHUB.png&quot; alt=&quot;Layers and Partitions of itHUB&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;internal-products-and-services&quot;&gt;1)  Internal Products and Services&lt;/h4&gt;
+&lt;p&gt;These products and services are the core competencies of the IT departments. These products and services could range from homegrown applications to hardware and software bundles that the IT departments have direct control over. &lt;/p&gt;
+
+&lt;h4 id=&quot;ithub-data-store&quot;&gt;2)  itHUB Data Store&lt;/h4&gt;
+&lt;p&gt;This is a dedicated data store to itHUB platform for the purposes of storing and retrieving its constructs such as “requests”.&lt;/p&gt;
+
+&lt;h4 id=&quot;external-products-and-services&quot;&gt;3)  External Products and Services&lt;/h4&gt;
+&lt;p&gt;These are from the external service providers such as Walmart, Staples and PC Connection – a select set of products and services that conform to the standards and compliance needs of the IT organization.
+The products and services from the external service providers will be accessed using their application interfaces (API) and added to the internal products and services to create the consolidated portfolio of products and services.&lt;/p&gt;
+
+&lt;h4 id=&quot;request-management&quot;&gt;4)  Request Management&lt;/h4&gt;
+&lt;p&gt;Request Management is the crux of the itHUB platform as shown in Figure 7. Requests are managed in two steps as follows:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Configure/Provide Request Types – Either the service providers or the service administrator carries out this step. This is the first step in making a set of requests available to the IT customers to choose from and ultimately requested for. These are configurations or specifications of the requests and not the requests themselves. For example, to process a desktop request, the IT department might need a set of data points such as “Is this a new or replacement desktop?” or “How much RAM is required?” etc. Without these values, processing of the desktop request may not be possible. 
+Plus, the list of approvers is specified for each of the request type. For example, for a desktop request, there may be a need for approvals from the department manager and the general manager (or some suitable roles).&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/request-management.png&quot; alt=&quot;Request Management&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Create/Track Requests – After choosing one of the request types, for example, the desktop request, the customer goes on to fill out the necessary data points and submits the request. Once the request is submitted, it is routed for approvals based on the specification of the request type. As described in the previous section, a desktop request will be routed to the department manager and the general manager of the customer who submitted the request. After submitting the request, the customer could check on the status of the request including the approvals.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;approval-workflow&quot;&gt;5)  Approval Workflow&lt;/h4&gt;
+&lt;p&gt;As shown in the above picture, the approval workflow enables the management team to ensure that the requested products or services are really a need for the requestor’s job role. One of the primary steps of this component is described below:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Approve/Reject Requests – In this step, requests are either approved or rejected by the approvers. Email/SMS channels will be utilized to send and receive approval notices.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;user-management&quot;&gt;6)  User Management&lt;/h4&gt;
+&lt;p&gt;This is where the customer data is managed. As described in the previous sections, customer data includes location information such as address, building, and floor details, billing information in terms of cost center, project number or internal order number etc., and the department information including manager details. &lt;/p&gt;
+
+&lt;h4 id=&quot;user-management-store&quot;&gt;7)  User Management Store&lt;/h4&gt;
+&lt;p&gt;The data points about the customer needed to process requests successfully might spread across multiple data stores and ERP systems. There may be a need to assemble the customer data from a wide variety of data sources such as PeopleSoft, Asset management database, LDAP directories to create a unified view of the customer.&lt;/p&gt;
+
+&lt;h4 id=&quot;erp&quot;&gt;8)  ERP&lt;/h4&gt;
+&lt;p&gt;Enterprise Resource Planning (ERP) might house the relevant billing information for itHUB to associate with customers and their requests. As described in the previous section, the billable information could include cost center, project number or internal order number for cross charging purposes.&lt;/p&gt;
+
+&lt;h4 id=&quot;web-layer&quot;&gt;9)  Web Layer&lt;/h4&gt;
+&lt;p&gt;The web layer would include components such as wiki/blog creation framework, web application frameworks such as J2EE-based Spring framework for web site navigation development, data persistence, web service development, and for messaging. &lt;/p&gt;
+
+&lt;h3 id=&quot;d---ithub--the-system-boundary&quot;&gt;D.   itHUB – The System Boundary&lt;/h3&gt;
+&lt;p&gt;The following diagram illustrates the system boundary and the dependencies of itHUB with external systems both managed by the IT department and external service providers.&lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/ithub-system-boundary.png&quot; alt=&quot;itHUB System Boundary&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As shown in the diagram, the user infrastructure could be a combination of systems such as PeopleSoft, corporate LDAP directory etc. The billing information such as cost center details could be housed in ERP systems such as SAP. Therefore, the user management component has to deal with assembling a unified view of the customer. The request management component has to deal with receiving and processing the external service provider’s product data. 
+The following section will go over the data semantics and formats for enabling the integration of customer data with internal to IT, but external to itHUB and exchanging products and services from external suppliers.&lt;/p&gt;
+
+&lt;p&gt;I’ll contiunue my discussion in the next post.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;[9] T. O’Reilly and J. Battlelle. (2010). Web Squared: Web 2.0 Five Years On - by Tim O’Reilly and John Battelle. Available: http://www.web2summit.com/web2009/public/schedule/detail/10194&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/ithub-part-3/&quot;&gt;itHUB - Part 3&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://localhost:4000&quot;&gt;Technology Blog&lt;/a&gt; on December 17, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[itHUB - Part 2]]></title>
+ <link rel="alternate" type="text/html" href="http://localhost:4000/ithub-part-2/" />
+  <id>http://localhost:4000/ithub-part-2</id>
+  <updated>2013-11-18 17:24:05 -0500T00:00:00-00:00</updated>
+  <published>2013-11-18T00:00:00-05:00</published>
+  
+  <author>
+    <name>Narayanan Raghavan</name>
+    <uri>http://localhost:4000</uri>
+    <email>naruraghavan@icloud.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;http://localhost:4000/ithub-part-1&quot;&gt;&lt;strong&gt;Part 1&lt;/strong&gt;&lt;/a&gt;, lets start exploring the interactive model and the need for itHUB a little more in this post.&lt;/p&gt;
+
+&lt;h2 id=&quot;iii--interactive-model&quot;&gt;III.  INTERACTIVE MODEL&lt;/h2&gt;
+&lt;p&gt;In the interactive model, the IT departments provide an e-business platform with a unified web interface to search, submit, track IT requests for their customers. The platform will also provide facilities for service providers to deliver on the requests in terms of ordering items and updating the details of the requests across multiple systems. In addition to the above requirements, the platform should also provide ways in which an IT customer can pose questions and get answers either from the other IT customers or from an IT service provider. The remainder of the article will refer to such an e-business platform as itHUB. &lt;/p&gt;
+
+&lt;h3 id=&quot;a---ithub--the-platform&quot;&gt;A.   itHUB – The Platform&lt;/h3&gt;
+&lt;p class=&quot;pull-right&quot;&gt;A two-sided platform [3] is a good starting point for itHUB. There are consumers that will request for services, check for statuses, post questions and/or answers, write blog articles, and rate the quality of services offered. There are service providers – IT departments – that fulfill requests. There are approvers – typically, managers of requestors – to approve requests made by their department users, so that the service providers can fulfill them.&lt;br /&gt;
+&lt;img src=&quot;http://localhost:4000/images/two-sided-ithub-platform.png&quot; alt=&quot;2-sided itHUB Platform&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In addition to IT departments, service providers can also be external vendors such as Walmart, Staples etc. Both platform provider and the sponsor could be the IT organization in question. &lt;/p&gt;
+
+&lt;h4 id=&quot;platform-sponsor-vs-platform-provider&quot;&gt;1)  Platform Sponsor vs. Platform Provider&lt;/h4&gt;
+&lt;p&gt;If the itHUB platform is built with enough abstraction, there is a possibility for IT organizations to repurpose itHUB so that it could be used as a service delivery platform for other departments. For example, a car manufacturer’s employee sales department could make use of the itHUB platform to fulfill car requests. In this particular case, the IT department will become the platform sponsor and the employee sales department will become the platform provider. The following section describes the network effects in itHUB.&lt;/p&gt;
+
+&lt;h4 id=&quot;the-network-effects&quot;&gt;2)  The Network Effects&lt;/h4&gt;
+&lt;p&gt;Network effect is the effect that one customer of the IT products or services has on the value of those products or services to other consumers [4].  The itHUB platform will benefit from having such network effects as shown in the next picture. &lt;/p&gt;
+
+&lt;h5 id=&quot;a-same-side-network-effect&quot;&gt;a) Same-side Network Effect&lt;/h5&gt;
+&lt;p&gt;&lt;em&gt;Customer-to-Customer Network effect&lt;/em&gt; is positive since more customers make IT products and services better. This is possible because of the interactions among the customers through social questions and answers and wikis/blogs. The more customers pose questions/answers and write blog articles about the IT products and services for clarification and usage scenarios. &lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/network-effect.png&quot; alt=&quot;The Network Effect&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Service Provider-to-Service Provider Network&lt;/em&gt; Effect is negative as increased competition makes itHUB less attractive to external service providers such as Walmart, Staples, and PC Connection etc. The same-side network effect among internal IT service providers is positive as the internal IT departments work with each other to deliver on the IT requests.&lt;/p&gt;
+
+&lt;h5 id=&quot;b-cross-side-network-effect&quot;&gt;b) Cross-side Network Effect&lt;/h5&gt;
+&lt;p&gt;&lt;em&gt;Customer-to-Service Provider Network Effect&lt;/em&gt; is positive as more customers attract more external service providers. 
+&lt;em&gt;Service Provider-to-Customer Network Effect&lt;/em&gt; is positive as more service providers attract more customers as the perceived speed of delivery of IT products and services by the customers.&lt;/p&gt;
+
+&lt;h5 id=&quot;c-ideas-for-creating-and-sustaining-the-network-effect&quot;&gt;c) Ideas for creating and sustaining the Network Effect&lt;/h5&gt;
+&lt;p&gt;IT service management is often considered a one-time deal where customers are thought to come to IT for services and go away until another need arises. Though this is true, there is an opportunity for IT departments to create a loyal customer base where not only the IT support team but also the application teams can hear about the voices of the customers in terms of application user interface design, development, and deployment. This feedback loop is valuable in terms of designing applications for the better in the future. 
+By creating an integrated e-business platform where not only IT requests are easier to create, submit, and track, but also providing a way for the customers to receive a fast, accurate, and friendly answers [5]. In this case, it is not just the IT support team that is responsible, but the entire community of IT customers and the service providers bears the responsibility of helping each other. As long as the platform is easy to use, reaching the critical mass, unlike in a public social platform, should not be a problem for IT departments since IT customers are the employees of the organization where IT departments are a part.  &lt;/p&gt;
+
+&lt;p&gt;When it comes to external IT service providers such as Walmart, Staples, PC Connection etc., the platform has to ensure that the “winner-takes-all” scenario does not exist [6]. This can be easily mitigated with a procurement policy. &lt;/p&gt;
+
+&lt;p&gt;The next section discusses a couple of digital business models that the IT departments could adapt to further sustaining the network effect. &lt;/p&gt;
+
+&lt;h3 id=&quot;b---the-digital-business-model&quot;&gt;B.   The Digital Business Model&lt;/h3&gt;
+&lt;p&gt;IT could employ the Click-and-Mortar (C&amp;amp;M) business model [7] where it maintains a web storefront in addition to its physical office space. IT must exercise the Infomediary model [7] to facilitate transactions between the consumers and the external service providers such as Walmart, Staples, PC Connection etc. To facilitate the social interactions among its customers and the service providers, IT could employ the Community model [7]. 
+Each business model – C&amp;amp;M, Infomediary, and Community – can be implemented in terms of content, customer experience, and the platform [8] and built into itHUB as follows:&lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://localhost:4000/images/components-of-the-digital-business-model.png&quot; alt=&quot;The Components of the Digital Business Model&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;content&quot;&gt;1) Content&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Product/Service information.
+    &lt;ul&gt;
+      &lt;li&gt;IT related products and services information include description, images and videos, price, policies, and procedures for hardware, software, and applications offered by the IT department.&lt;/li&gt;
+      &lt;li&gt;External service provider catalog.
+        &lt;ul&gt;
+          &lt;li&gt;This requires an integration of itHUB with the external service provider’s e-catalog and order placement solutions.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Questions and Answers
+    &lt;ul&gt;
+      &lt;li&gt;Questions and answers could also be posted by IT personnel in addition to being posted by the customers (user-generated)&lt;/li&gt;
+      &lt;li&gt;Questions and answers are related to the products and services offered by the IT department and the external service providers&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;IT Product/Service related wikis and blog articles
+    &lt;ul&gt;
+      &lt;li&gt;HOW-TO articles describing the usage of a particular hardware, software, or applications with images and videos
+        &lt;ul&gt;
+          &lt;li&gt;For example, virus outbreaks and mitigation&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;customer-experience&quot;&gt;2)  Customer Experience&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Easy-to-use
+    &lt;ul&gt;
+      &lt;li&gt;To create and sustain the network effect as described in the previous section, itHUB has to employ good usability guidelines
+        &lt;ul&gt;
+          &lt;li&gt;For example, 1-click request submission when the customer profile is completely known&lt;/li&gt;
+          &lt;li&gt;If the customer is a new hire, allow ways in which multiple related items could be ordered in one request
+            &lt;ul&gt;
+              &lt;li&gt;This is an example of a composite request where several individual requests are added to one parent request&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Shopping cart
+    &lt;ul&gt;
+      &lt;li&gt;itHUB must provide a way to instruct the customers regarding the number of items and the prices that they are about to request&lt;/li&gt;
+      &lt;li&gt;There should be a way to save a set of items for later submission&lt;/li&gt;
+      &lt;li&gt;There should be a way to save and send a set of items for a different customer to submit the order&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Cost center / Project-based billing
+    &lt;ul&gt;
+      &lt;li&gt;itHUB must have access to the billing information of the customer to facilitate ordering price-based items&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Messaging 
+    &lt;ul&gt;
+      &lt;li&gt;Email/SMS acknowledgement
+        &lt;ul&gt;
+          &lt;li&gt;Whenever a request is placed and until the request is completely satisfied, itHUB must notify the requestor regularly through emails or text messages&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Alerts 
+        &lt;ul&gt;
+          &lt;li&gt;Notify the requestor whenever approval/rejection workflow is carried out&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Customer generated Content
+    &lt;ul&gt;
+      &lt;li&gt;Ratings and reviews
+        &lt;ul&gt;
+          &lt;li&gt;Provide a way for customers to rate/review the products and services they received
+            &lt;ul&gt;
+              &lt;li&gt;This is an important feedback mechanism by which IT departments can and will learn about the products and services they are offering&lt;/li&gt;
+              &lt;li&gt;Sentiment Analysis can be carried out on the reviews to figure out the satisfaction levels of customers&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;Questions and Answers (Q&amp;amp;A)
+            &lt;ul&gt;
+              &lt;li&gt;Q&amp;amp;A is a great way to create the network effect described in the previous section&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Detailed history of requests
+    &lt;ul&gt;
+      &lt;li&gt;This is a great way to promulgate the amount of work IT has done to its customers, business units, and the entire organization&lt;/li&gt;
+      &lt;li&gt;Keeping track of the detailed history of requests along with comments, ratings, reviews etc. will provide IT an opportunity to infer the seasonality, satisfaction levels of customers, improvement needs among others&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Tailored recommendations based on the customer profile or the business unit 
+    &lt;ul&gt;
+      &lt;li&gt;This feature is a differentiator in which the itHUB will be perceived as a platform that understands the needs of its customers&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;platform&quot;&gt;3)  Platform&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Internal components
+    &lt;ul&gt;
+      &lt;li&gt;Customer data
+        &lt;ul&gt;
+          &lt;li&gt;Address along with location, building, and floor&lt;/li&gt;
+          &lt;li&gt;Customer’s position or title and department
+            &lt;ul&gt;
+              &lt;li&gt;To facilitate the approval process, the customer’s title is important&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Customer Billing Information
+        &lt;ul&gt;
+          &lt;li&gt;Cost center, inter order number, project number are some of the attributes that are needed to be captured for the purposes of billing the customer&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;External components
+    &lt;ul&gt;
+      &lt;li&gt;Shipment of physical products to remote locations using UPS, FedEx etc.
+        &lt;ul&gt;
+          &lt;li&gt;In a geographically separated organizations, IT must take shipment of items to respective business units into account&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Product and Services data from external service providers such as Walmart, Staples, and PC Connection
+        &lt;ul&gt;
+          &lt;li&gt;This is the crux of enabling B2B commerce with the external service providers&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I’ll contiunue my discussion in the next post.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;[3] Wikipedia. (2013). Two-sided market. Available: http://en.wikipedia.org/w/index.php?title=Two-sided_market&amp;amp;oldid=565480518&lt;/p&gt;
+
+&lt;p&gt;[4] Wikipedia. (2013). Network effect. Available: http://en.wikipedia.org/w/index.php?title=Network_effect&amp;amp;oldid=571703046&lt;/p&gt;
+
+&lt;p&gt;[5] InsideIntercom. (2013). How The Support Team Improves The Product - Inside Intercom. Available: http://insideintercom.io/how-the-support-team-improves-the-product&lt;/p&gt;
+
+&lt;p&gt;[6] InsideIntercom. (2012). Surviving &amp;amp; Thriving in Two-Sided Markets. Available: http://insideintercom.io/surviving-thriving-in-two-sided-markets&lt;/p&gt;
+
+&lt;p&gt;[7] M. Rappa. (2006). Business Models on the Web - Professor Michael Rappa. Available: http://digitalenterprise.org/models/models.html&lt;/p&gt;
+
+&lt;p&gt;[8] P. Weill and S. Woerner. (2013). Optimizing Your Digital Business Model - MIT Sloan Management Review. Available: http://sloanreview.mit.edu/article/optimizing-your-digital-business-model&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/ithub-part-2/&quot;&gt;itHUB - Part 2&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://localhost:4000&quot;&gt;Technology Blog&lt;/a&gt; on November 18, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[itHUB - Part 1]]></title>
+ <link rel="alternate" type="text/html" href="http://localhost:4000/ithub-part-1/" />
+  <id>http://localhost:4000/ithub-part-1</id>
+  <updated>2013-11-15 20:09:05 -0500T00:00:00-00:00</updated>
+  <published>2013-11-15T00:00:00-05:00</published>
+  
+  <author>
+    <name>Narayanan Raghavan</name>
+    <uri>http://localhost:4000</uri>
+    <email>naruraghavan@icloud.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Information Technology (IT) departments spend so much time and effort in providing products and services to their organizations. Oftentimes, by being caught up in the support mode, IT departments do not spend the time to supplement their support services using a well-defined online storefront. &lt;/p&gt;
+
+&lt;p&gt;Typically, the online forms to gather information about the IT service requests are either cumbersome for business users or archaic to lend themselves to submit, track, and administer requests from a single point of entry on the web. The purpose of this article is to build an online storefront – itHUB – an easy-to-use online destination for IT consumers to submit and track their hardware, software, and application requests.&lt;/p&gt;
+
+&lt;h2 id=&quot;i---introduction&quot;&gt;I.   INTRODUCTION&lt;/h2&gt;
+&lt;p class=&quot;pull-right&quot;&gt;IT must evolve from providing an informational outlet for its services into providing interactive and anticipatory models of service management. 
+&lt;img src=&quot;http://localhost:4000/images/it-service-mgmt-evolution.png&quot; alt=&quot;IT Service Management Evolution&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;The following sections will illustrate the need for such an evolution by describing the problems/issues found in each of the models and some of the ways in which they can be improved/eradicated. &lt;/p&gt;
+
+&lt;h2 id=&quot;ii--informational-model&quot;&gt;II.  INFORMATIONAL MODEL&lt;/h2&gt;
+&lt;p&gt;In the informational model, IT departments maintain a set of web pages or a set of MS Word/PDF documents to collect information about the request. Oftentimes, the collected information is then processed either manually or by using disparate systems – a type of system for approval and another for fulfilling the request. The following section describes the ways in which the IT requests are processed and the weaknesses found in the model.&lt;/p&gt;
+
+&lt;h3 id=&quot;a---request-processing&quot;&gt;A.   Request Processing&lt;/h3&gt;
+&lt;p class=&quot;pull-right&quot;&gt;The following diagram illustrates the various steps involved in processing IT requests in the informational model-based IT departments:
+&lt;img src=&quot;http://localhost:4000/images/typical-IT-request-processing.png&quot; alt=&quot;Typical IT Request processing&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;submit-request&quot;&gt;1)  Submit Request&lt;/h4&gt;
+&lt;p&gt;The IT customer performs this step. It could be as easy as filling out a web form, printing and filling out a MS Word/PDF document or as difficult as making several phone calls or writing several emails to find out as to which web form to use or which MS Word/PDF document to fill out for the request. In some cases, a proper form of request submission might not even exist.&lt;/p&gt;
+
+&lt;h4 id=&quot;analyze-request&quot;&gt;2)  Analyze Request&lt;/h4&gt;
+&lt;p&gt;Typically, the IT support center or Help Desk performs this step. IT help desk personnel will carefully review the submitted request and send it back to the IT customer if more information is needed to process the request further. &lt;/p&gt;
+
+&lt;h4 id=&quot;route-request&quot;&gt;3)  Route Request&lt;/h4&gt;
+&lt;p&gt;Typically, the IT support center or Help Desk performs this step. Depending upon the request, there may be a need to get multiple approvals from department manager, general manager among other management team members. Routing request could also be done to get some type of verification from the subject matter expert (SME) who will end up satisfying the request upon approval. &lt;/p&gt;
+
+&lt;h4 id=&quot;process-approvals&quot;&gt;4)  Process Approvals&lt;/h4&gt;
+&lt;p&gt;Typically, the IT support center or Help Desk performs this step. It is also possible for IT service providers to perform this step as well. There may be a need to include additional approvers before satisfying the request. For example, a request for a network share might require an additional approval from the owner of the share in addition to the approvals from the management team. This step is performed to ensure that the request is a legitimate need from the IT customer to perform his/her job.&lt;/p&gt;
+
+&lt;h4 id=&quot;deliver-on-request&quot;&gt;5)  Deliver on Request&lt;/h4&gt;
+&lt;p&gt;Either the IT service provider or the IT help desk performs this step. For example, the IT help desk (or a similar department within IT) would most probably satisfy requests for hardware items whereas the IT service provider might need to involve its SMEs to get the application properly installed and configured on the IT customer’s computer. &lt;/p&gt;
+
+&lt;h4 id=&quot;order-item&quot;&gt;6)  Order Item&lt;/h4&gt;
+&lt;p&gt;Either the IT service provider or the IT help desk performs this step. If the request involves items that are not readily available, the item has to be ordered from external vendors/service providers. There may be a need to involve the purchasing/procurement division of the organization that the IT department is a part of. This step might take from a few days to several weeks or months depending upon the price tag of the item.&lt;/p&gt;
+
+&lt;h4 id=&quot;update-details&quot;&gt;7)  Update Details&lt;/h4&gt;
+&lt;p&gt;Typically, the IT support center or Help Desk performs this step. Depending upon the type of request, the help desk personnel might have to update several systems such as asset tracking system, request management system, procurement system etc. Oftentimes, these systems capture either the same or different details about the request and its outcome.  &lt;/p&gt;
+
+&lt;h3 id=&quot;b---weaknesses-of-the-informational-model&quot;&gt;B.   Weaknesses of the Informational Model&lt;/h3&gt;
+&lt;p&gt;As described in the above section, this model is only concerned with providing information to facilitate the submission of IT requests. &lt;/p&gt;
+
+&lt;h4 id=&quot;higher-search-and-information-costs&quot;&gt;1)  Higher Search and Information Costs&lt;/h4&gt;
+&lt;p&gt;In most cases, the search and information costs [1][2] associated with locating the correct IT request type for submission are high. For example, a new hire might require a wide variety of hardware, software, and organization-specific applications to be productive in his/her role in supporting the business goals of the organization. 
+Finding and submitting requests with relevant details mandated by those request types could take days or weeks for the new hire. &lt;/p&gt;
+
+&lt;p&gt;In some cases, the bare minimum requirements such as user id creation within the corporate directory for the new hire might have to be submitted by another team member who is already in the system. &lt;/p&gt;
+
+&lt;h5 id=&quot;a-lack-of-user-community&quot;&gt;a) Lack of user community&lt;/h5&gt;
+&lt;p&gt;The other reason for the higher search and information costs associated with this model is because of the centralized dispersal of information regarding the IT requests. All requests are directed to IT irrespective of their criticality. Oftentimes, the IT personnel are exhausted answering the same questions repeatedly. Without a streamlined process for facilitating questions and answers, the IT department wastes time answering common questions instead of catering to real requests.&lt;/p&gt;
+
+&lt;h4 id=&quot;higher-policing-and-enforcement-costs&quot;&gt;2)  Higher Policing and Enforcement Costs&lt;/h4&gt;
+&lt;p&gt;As described in the request processing section, steps 2, 3, and 4 are highly time consuming in terms of coordination of the approval efforts between IT and the business units.&lt;/p&gt;
+
+&lt;h4 id=&quot;higher-integration-costs&quot;&gt;3)  Higher Integration Costs&lt;/h4&gt;
+&lt;p&gt;As described in steps 6 and 7, there could be 2 or more data repositories where the details of the requests are kept. As the number of systems, where the details of the requests are kept, increase, the integration costs go up significantly in terms of data, application, and process integration efforts. For example, the IT customer profile information, for the purposes of satisfying IT requests, must include location of the customer in terms of building and floor information. Otherwise, tracking the location of the customer during the delivery of a hardware item must be sought out manually. This is especially difficult if the organization is spread across multiple geographical locations. Oftentimes, the IT customer information is kept in the employee management systems such as PeopleSoft and it is not kept up to date in terms of the IT customer’s location information. As described in step 6, when there is a need to order items, there is also a need for billing information in terms of the cost center, internal order number or project number that the cost of the item has to be cross-charged with. Once an item has been purchased, it becomes an asset of the organization and therefore needs to be tracked for depreciation etc. &lt;/p&gt;
+
+&lt;h3 id=&quot;c---moving-up-the-evolution-chain&quot;&gt;C.   Moving up the Evolution Chain&lt;/h3&gt;
+&lt;p&gt;As can be seen, the amount of information needed to deliver on an IT request quickly adds up. In this informational model, the majority of the integration work is done manually and therefore, the model is neither cost effective nor efficient in managing information across multiple systems. It is absolutely essential for the IT department to move up the service management evolution chain and adopt the interactive model as described in the next section.&lt;/p&gt;
+
+&lt;p&gt;I’ll contiunue my discussion in the next post.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;[1] Investopedia. (2010). Search Cost Definition. Available: http://www.investopedia.com/terms/s/search-cost.asp&lt;/p&gt;
+
+&lt;p&gt;[2] Wikipedia. (2013). Transaction cost. Available: http://en.wikipedia.org/w/index.php?title=Transaction_cost&amp;amp;oldid=572207418&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://localhost:4000/ithub-part-1/&quot;&gt;itHUB - Part 1&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://localhost:4000&quot;&gt;Technology Blog&lt;/a&gt; on November 15, 2013.&lt;/p&gt;</content>
+</entry>
+
+</feed>
