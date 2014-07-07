@@ -1,66 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://localhost:4000</loc>
+        <loc>http://naruraghavan.github.io</loc>
     </url>
     
     
     <url>
-        <loc>http://localhost:4000/404.html</loc>
+        <loc>http://naruraghavan.github.io/404.html</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/about/</loc>
+        <loc>http://naruraghavan.github.io/about/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/feed.xml</loc>
+        <loc>http://naruraghavan.github.io/feed.xml</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/index.html</loc>
+        <loc>http://naruraghavan.github.io/index.html</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/posts/</loc>
+        <loc>http://naruraghavan.github.io/posts/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/sitemap.xml</loc>
+        <loc>http://naruraghavan.github.io/sitemap.xml</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/tags/</loc>
+        <loc>http://naruraghavan.github.io/tags/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/page2/index.html</loc>
+        <loc>http://naruraghavan.github.io/page2/index.html</loc>
     </url>
     
 
     
     <url>
-        <loc>http://localhost:4000/ithub-part-6/</loc>
+        <loc>http://naruraghavan.github.io/ithub-part-6/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/ithub-part-5/</loc>
+        <loc>http://naruraghavan.github.io/ithub-part-5/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/ithub-part-4/</loc>
+        <loc>http://naruraghavan.github.io/ithub-part-4/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/ithub-part-3/</loc>
+        <loc>http://naruraghavan.github.io/ithub-part-3/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/ithub-part-2/</loc>
+        <loc>http://naruraghavan.github.io/ithub-part-2/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/ithub-part-1/</loc>
+        <loc>http://naruraghavan.github.io/ithub-part-1/</loc>
     </url>
     
 </urlset>
