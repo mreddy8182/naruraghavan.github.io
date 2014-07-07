@@ -2,7 +2,7 @@
 layout: post
 title: "Public Cloud for Corporate Web Applications - Part 1"
 modified: 2013-07-07 12:35:57 -0400
-tags: [Information Technology & Management, Security Management, Defensive Hacking]
+tags: [Information Technology & Management, Security Management, Defensive Hacking, Cloud Computing]
 image:
   feature: abstract-5.jpg
   credit: dargadgetz
