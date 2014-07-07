@@ -2,7 +2,7 @@
 layout: page
 permalink: /about/
 title: About Me
-tags: [about, me, bio]
+tags: [about, me, bio, naru, naruraghavan]
 image:
   feature: abstract-5.jpg
   credit: dargadgetz
@@ -10,4 +10,7 @@ image:
 share: true
 ---
 
-IT Professional with a advanced degree from Carnegie Mellon University and 15+ years of experience in leading large cross-functional teams to design, develop, and deploy a wide variety of large scale software systems with proven tactical and strategic success. Tenacious and savvy technical manager with a strong track record in the planning, implementation, and deployment of Enterprise Digital Asset Management (eDAM), Content Management, Email/SMS marketing with CRM integration, Search Platform, Document Management based solutions for a wide variety of business initiatives in Mercedes-Benz USA (MBUSA). 
+IT Professional with an advanced degree from Carnegie Mellon University and 15+ years of experience in leading large cross-functional teams to design, develop, and deploy a wide variety of large scale software systems with proven tactical and strategic success. 
+
+Tenacious and savvy technical manager with a strong track record in the planning, implementation, and deployment of Enterprise Digital Asset Management (eDAM), Content Management, Email/SMS marketing with CRM integration, Search Platform, Document Management based web development solutions for a wide variety of business initiatives in Mercedes-Benz USA (MBUSA). 
+
