@@ -1,66 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://naruraghavan.github.io</loc>
+        <loc></loc>
     </url>
     
     
     <url>
-        <loc>http://naruraghavan.github.io/404.html</loc>
+        <loc>/404.html</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/about/</loc>
+        <loc>/about/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/feed.xml</loc>
+        <loc>/feed.xml</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/index.html</loc>
+        <loc>/index.html</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/posts/</loc>
+        <loc>/posts/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/sitemap.xml</loc>
+        <loc>/sitemap.xml</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/tags/</loc>
+        <loc>/tags/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/page2/index.html</loc>
+        <loc>/page2/index.html</loc>
     </url>
     
 
     
     <url>
-        <loc>http://naruraghavan.github.io/ithub-part-6/</loc>
+        <loc>/ithub-part-6/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/ithub-part-5/</loc>
+        <loc>/ithub-part-5/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/ithub-part-4/</loc>
+        <loc>/ithub-part-4/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/ithub-part-3/</loc>
+        <loc>/ithub-part-3/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/ithub-part-2/</loc>
+        <loc>/ithub-part-2/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/ithub-part-1/</loc>
+        <loc>/ithub-part-1/</loc>
+    </url>
+    
+    <url>
+        <loc>/public-cloud-for-corporate-web-applications-part-1/</loc>
     </url>
     
 </urlset>

@@ -2,33 +2,33 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Technology Blog</title>
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http://naruraghavan.github.io/feed.xml" />
-<link rel="alternate" type="text/html" href="http://naruraghavan.github.io" />
-<updated>2014-07-07T12:19:55-04:00</updated>
-<id>http://naruraghavan.github.io/</id>
+<link rel="self" type="application/atom+xml" href="/feed.xml" />
+<link rel="alternate" type="text/html" href="" />
+<updated>2014-07-07T13:14:37-04:00</updated>
+<id>/</id>
 <author>
   <name>Narayanan Raghavan</name>
-  <uri>http://naruraghavan.github.io/</uri>
+  <uri>/</uri>
   <email>naruraghavan@icloud.com</email>
 </author>
 
 
 <entry>
   <title type="html"><![CDATA[itHUB - Part 6]]></title>
- <link rel="alternate" type="text/html" href="http://naruraghavan.github.io/ithub-part-6/" />
-  <id>http://naruraghavan.github.io/ithub-part-6</id>
+ <link rel="alternate" type="text/html" href="/ithub-part-6/" />
+  <id>/ithub-part-6</id>
   <updated>2014-02-15 21:39:03 -0500T00:00:00-00:00</updated>
   <published>2014-02-15T00:00:00-05:00</published>
   
   <author>
     <name>Narayanan Raghavan</name>
-    <uri>http://naruraghavan.github.io</uri>
+    <uri></uri>
     <email>naruraghavan@icloud.com</email>
   </author>
   <content type="html">&lt;h3 id=&quot;c---anticipatory-service-models&quot;&gt;C.   Anticipatory Service Models&lt;/h3&gt;
 &lt;p&gt;By understanding the customer more and more, itHUB can evolve from being an interactive model for providing products and services to anticipatory model for offering products and services. &lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/anticipatory-service-models.png&quot; alt=&quot;Anticipatory Service Models&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/anticipatory-service-models.png&quot; alt=&quot;Anticipatory Service Models&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The Anticipatory Service Manager (ASM) component could be built using a combination of the event-driven architecture model and the prediction API described in the previous section. In the event-driven model, ASM will look for a predetermined set of events such as the New Hire event from PeopleSoft. Upon receiving the event, ASM will create the appropriate requests for the new hire. Some of the requests that can be submitted for a new hire include desktop/laptop, smart phone, any business unit specific applications etc. &lt;/p&gt;
 
@@ -37,23 +37,23 @@
 &lt;p&gt;This article, distributed across 6 posts, discussed several techniques with which IT departments could transform from being a reactive informational IT shop to a more dynamic anticipatory service model where the IT department proactively caters to the IT needs of an organization. The first transformation from the more traditional informational model is to setup an online storefront – the itHUB.  itHUB is an implementation of the interactive model where customers interact with the system to submit, track, and approve/reject requests and service providers offer products and services through the system by administering request types.   To create and sustain the network effect, this article suggested the inclusion of wiki/blog, reviews &amp;amp; ratings, and Q&amp;amp;A features. The article also suggested some ways for implementing recommendation of products and services and sentiment analysis to improve the understanding of the IT customer. Finally, the ASM model was introduced to facilitate the need for making IT departments more agile and proactive.&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/ithub-part-6/&quot;&gt;itHUB - Part 6&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://naruraghavan.github.io&quot;&gt;Technology Blog&lt;/a&gt; on February 15, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/ithub-part-6/&quot;&gt;itHUB - Part 6&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on February 15, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[itHUB - Part 5]]></title>
- <link rel="alternate" type="text/html" href="http://naruraghavan.github.io/ithub-part-5/" />
-  <id>http://naruraghavan.github.io/ithub-part-5</id>
+ <link rel="alternate" type="text/html" href="/ithub-part-5/" />
+  <id>/ithub-part-5</id>
   <updated>2014-01-10 21:27:28 -0500T00:00:00-00:00</updated>
   <published>2014-01-10T00:00:00-05:00</published>
   
   <author>
     <name>Narayanan Raghavan</name>
-    <uri>http://naruraghavan.github.io</uri>
+    <uri></uri>
     <email>naruraghavan@icloud.com</email>
   </author>
-  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;http://naruraghavan.github.io/ithub-part-4&quot;&gt;&lt;strong&gt;Part 4&lt;/strong&gt;&lt;/a&gt;, lets start exploring the configuration and administration aspects of itHUB a little more in this post.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;/ithub-part-4&quot;&gt;&lt;strong&gt;Part 4&lt;/strong&gt;&lt;/a&gt;, lets start exploring the configuration and administration aspects of itHUB a little more in this post.&lt;/p&gt;
 
 &lt;h3 id=&quot;g---request-management&quot;&gt;G.   Request Management&lt;/h3&gt;
 &lt;p&gt;This component is about the configuration of request types and the processing of requests that are internal as well as destined for external service providers. &lt;/p&gt;
@@ -61,20 +61,20 @@
 &lt;h4 id=&quot;configuration-of-request-types&quot;&gt;1)  Configuration of Request Types&lt;/h4&gt;
 &lt;p&gt;Oftentimes, the cookie cutter request processing systems contain many unnecessary data fields (in the data collection forms) that are not pertinent to a request being made. Since those systems evolved over a period of time or COTS (Commercial Off-the-shelf) application with generic set of fields for all requests, they tend to offer poor user experience when it comes to request management. A Request Type in itHUB, on the other hand, represents a set of questions to be answered or data to be collected about a request prior to processing it. For example, before processing a request for a desktop, the IT support team must understand the requirement about the desktop request such as amount of RAM needed or number of CPUs needed etc. Therefore, a request type for desktops could be configured to just ask those questions that are pertinent for desktop requests.&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/request-type-mgmt.jpg&quot; alt=&quot;E-R Diagram for Request Type Management&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/request-type-mgmt.jpg&quot; alt=&quot;E-R Diagram for Request Type Management&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;As shown in the above diagram, the request types can be categorized to support hardware requests, software requests, and application requests etc. A desktop request would be part of the hardware requests. By the same token, an external service provider’s offerings can also captured using this model. One of the ideas for presenting the various categories of request types are shown below:&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/categories-of-request-types.png&quot; alt=&quot;Categories of Request Types&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/categories-of-request-types.png&quot; alt=&quot;Categories of Request Types&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The request configuration enables the idea of grouping multiple request fields as shown below:&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/desktop-request-with-two-field-groups.png&quot; alt=&quot;Desktop Request with two Field Groups&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/desktop-request-with-two-field-groups.png&quot; alt=&quot;Desktop Request with two Field Groups&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;submission-of-requests&quot;&gt;2)  Submission of Requests&lt;/h4&gt;
 &lt;p&gt;Once the request types are defined, a customer could select a particular request for submission. The following E-R diagram shows one of way of implementing the decoupling of request configuration from the actual request itself.&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/request-mgmt.jpg&quot; alt=&quot;Request Management&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/request-mgmt.jpg&quot; alt=&quot;Request Management&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;h---approval-workflow&quot;&gt;H.   Approval Workflow&lt;/h3&gt;
 &lt;p&gt;Each request type (e.g. Desktop Request) is configured with a set of approvers. One of the major constructs in the approval workflow component is the Approver Chain and is described in the following section.&lt;/p&gt;
@@ -82,15 +82,15 @@
 &lt;h4 id=&quot;approver-chain&quot;&gt;1)  Approver Chain&lt;/h4&gt;
 &lt;p&gt;Each Request Configuration (aka. Request Type) has a set of roles configured as an approver chain. For example, the desktop request has to be approved by the following roles: department manager and general manager.&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/approval-workflow.jpg&quot; alt=&quot;Approval Workflow&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/approval-workflow.jpg&quot; alt=&quot;Approval Workflow&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;request-approval-status&quot;&gt;2)  Request Approval Status&lt;/h4&gt;
 &lt;p class=&quot;pull-right&quot;&gt;The approval decision by each approver in the approver chain, approved or rejected, is captured in the Request Approval Status. The approver chain is configured as follows:
-&lt;img src=&quot;http://naruraghavan.github.io/images/approver-chain-configuration.png&quot; alt=&quot;Approver Chain Configuration&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;/images/approver-chain-configuration.png&quot; alt=&quot;Approver Chain Configuration&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;In the above scenario, the request will be sent to the department manager and then the general manager for approval. Depending upon the requestor of the request, the actual approvers are mapped to the roles and the workflow is initiated as follows:&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/approval-routing.png&quot; alt=&quot;Approval Routing&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/approval-routing.png&quot; alt=&quot;Approval Routing&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;business-process-management-bpm&quot;&gt;3)  Business Process Management (BPM)&lt;/h4&gt;
 &lt;p&gt;As we introduce more products and services with varying degrees of workflow steps, it makes sense to start thinking about using a robust business process management engines such as JBoss Drools. By externalizing the business rules away from code, we can give a separate life cycle for rules to evolve more independently of the code. Another advantage to using a rules engine is to provide an opportunity for non-technical users to maintain the business rules without needing to contact a developer or the development team.&lt;/p&gt;
@@ -101,45 +101,45 @@
 &lt;h5 id=&quot;a-submit-track-approve-and-administer-requests&quot;&gt;a) Submit, Track, Approve, and Administer Requests&lt;/h5&gt;
 &lt;p&gt;This is the crux of itHUB. This is one of the main reasons as to why customers come to itHUB in the fist place - an easy to use web interface where customers and service providers (aka. service administrators) come together to make the request management possible. &lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/itHUB-request-management-usecases.png&quot; alt=&quot;Request management Use-cases&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/itHUB-request-management-usecases.png&quot; alt=&quot;Request management Use-cases&quot; /&gt;&lt;/p&gt;
 
 &lt;h6 id=&quot;submit-use-case&quot;&gt;(1)   Submit Use-Case&lt;/h6&gt;
 &lt;p&gt;itHUB customers choose from a set of request types, provide details for the request, and submit the request as shown below:&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/customer-chooses-a-request-for-submission.png&quot; alt=&quot;Request Submission&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/customer-chooses-a-request-for-submission.png&quot; alt=&quot;Request Submission&quot; /&gt;&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/customer-submits-the-request-after-providing-details.png&quot; alt=&quot;Request with Customized Details&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/customer-submits-the-request-after-providing-details.png&quot; alt=&quot;Request with Customized Details&quot; /&gt;&lt;/p&gt;
 
 &lt;h6 id=&quot;track-use-case&quot;&gt;(2)   Track Use-Case&lt;/h6&gt;
 &lt;p&gt;itHUB customer wishes to know the status of his/her request. The status of the request can be submitted, in-review, approved, or rejected as shown below:&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/track-view.png&quot; alt=&quot;Track View&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/track-view.png&quot; alt=&quot;Track View&quot; /&gt;&lt;/p&gt;
 
 &lt;h6 id=&quot;manage-use-case&quot;&gt;(3)   Manage Use-Case&lt;/h6&gt;
 &lt;p&gt;itHUB approvers wish to perform approvals for a list of requests. Approval is a process by which the approver either approves or rejects a request based on the need – requester’s need in terms of the department’s overall need. The following screen capture shows the Manage view of one of the department managers.&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/manage-view.png&quot; alt=&quot;Manage View&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/manage-view.png&quot; alt=&quot;Manage View&quot; /&gt;&lt;/p&gt;
 
 &lt;h6 id=&quot;administer-use-case&quot;&gt;(4)   Administer Use-Case&lt;/h6&gt;
 &lt;p&gt;Service providers and service administrators create a portfolio products and services for the itHUB customers to choose and request from. As described in the previous sections, each request type has the following data structure: request hub, request category, request, request field group, and request field configurations. A request hub holds on to multiple categories such as ITHUB to hold onto IT products and services. A request category holds onto multiple request configurations. Each request configuration holds onto multiple field groups and a field group holds to multiple request fields. As shown in the following screen capture, a service provider/administrator has appropriate rights to create hid/her portfolio of products and services.&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/request-type-administration.png&quot; alt=&quot;Request Type Administration&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/request-type-administration.png&quot; alt=&quot;Request Type Administration&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;An example view of the request configurations is shown below:&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/request-configuration-administration-view.png&quot; alt=&quot;Request Configuration Administration View&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/request-configuration-administration-view.png&quot; alt=&quot;Request Configuration Administration View&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;By the same token, other request type components could be administered using the appropriate administration views.&lt;/p&gt;
 
 &lt;h5 id=&quot;b-q--a&quot;&gt;b) Q &amp;amp; A&lt;/h5&gt;
 &lt;p&gt;One of the major components of the web layer is the question and answers (Q&amp;amp;A) web component. By integrating the Q&amp;amp;A web component, itHUB will be able to create the network effect as described in the previous sections. Instead of building a homegrown solution for the Q&amp;amp;A web component, IT departments could consider COTS applications such as Open Source Q&amp;amp;A (OSQA) or its commercial equivalent AnswerHub. AnswerHub is a cloud-based knowledge management system built on a Q&amp;amp;A foundation [12].  &lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/question-and-answer.png&quot; alt=&quot;Q&amp;amp;A&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/question-and-answer.png&quot; alt=&quot;Q&amp;amp;A&quot; /&gt;&lt;/p&gt;
 
 &lt;h5 id=&quot;c-wikiblogs&quot;&gt;c) Wiki/Blogs&lt;/h5&gt;
 &lt;p&gt;Adding wiki/blog support to itHUB is relatively easy. It makes sense to pursue a COTS application for wikis/blogs as opposed to building a homegrown solution. There are several wiki/blog software are available either standalone or on the cloud – Atlassian Confluence, WordPress are only a few. Picking one and integrating it into itHUB shouldn’t be difficult. The idea behind wiki/blog is to promote product/service awareness from both service-provider’s and customer’s POVs. An example blog is shown below from the Atlassian Blog website [13].&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/idea-for-blog-implementation.png&quot; alt=&quot;Idea for Blog Implementation&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/idea-for-blog-implementation.png&quot; alt=&quot;Idea for Blog Implementation&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;iv---understanding-the-customer&quot;&gt;IV.   UNDERSTANDING THE CUSTOMER&lt;/h2&gt;
 &lt;p&gt;As IT departments add more products and services, there must be a way to show products and services that are absolutely required by the business unit and its people. The other need for IT departments is to understand how the customers feel about the products and services. The following sections will attempt to illustrate some ideas for providing relevant product and service recommendations and understanding customers using sentiment analysis.&lt;/p&gt;
@@ -170,23 +170,23 @@
 &lt;p&gt;[14]    Google. (2012). Creating a Sentiment Analysis Model - Google Prediction API — Google Developers. Available: https://developers.google.com/prediction/docs/sentiment_analysis&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/ithub-part-5/&quot;&gt;itHUB - Part 5&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://naruraghavan.github.io&quot;&gt;Technology Blog&lt;/a&gt; on January 10, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/ithub-part-5/&quot;&gt;itHUB - Part 5&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on January 10, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[itHUB - Part 4]]></title>
- <link rel="alternate" type="text/html" href="http://naruraghavan.github.io/ithub-part-4/" />
-  <id>http://naruraghavan.github.io/ithub-part-4</id>
+ <link rel="alternate" type="text/html" href="/ithub-part-4/" />
+  <id>/ithub-part-4</id>
   <updated>2014-01-01 14:12:20 -0500T00:00:00-00:00</updated>
   <published>2014-01-01T00:00:00-05:00</published>
   
   <author>
     <name>Narayanan Raghavan</name>
-    <uri>http://naruraghavan.github.io</uri>
+    <uri></uri>
     <email>naruraghavan@icloud.com</email>
   </author>
-  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;http://naruraghavan.github.io/ithub-part-3&quot;&gt;&lt;strong&gt;Part 3&lt;/strong&gt;&lt;/a&gt;, lets start exploring the application integration aspects of itHUB a little more in this post.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;/ithub-part-3&quot;&gt;&lt;strong&gt;Part 3&lt;/strong&gt;&lt;/a&gt;, lets start exploring the application integration aspects of itHUB a little more in this post.&lt;/p&gt;
 
 &lt;h3 id=&quot;e---external-service-providers-products-and-services-integration&quot;&gt;E.   External Service Provider’s Products and Services Integration&lt;/h3&gt;
 &lt;p&gt;This section will discuss the integration of Walmart’s products and services to itHUB using the Walmart Data Feed API [10].  &lt;/p&gt;
@@ -261,7 +261,7 @@
 &lt;h5 id=&quot;a-interface-process&quot;&gt;a) Interface Process&lt;/h5&gt;
 &lt;p&gt;The requestor of the data feed will make a call as follows:&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/walmart-interface-process.png&quot; alt=&quot;Walmart Interface Process&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/walmart-interface-process.png&quot; alt=&quot;Walmart Interface Process&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Request Management component needs a translator service to enable the processing of product data to and from Walmart API services. &lt;/p&gt;
 
@@ -271,7 +271,7 @@
 &lt;h4 id=&quot;application-integration&quot;&gt;3)  Application Integration&lt;/h4&gt;
 &lt;p&gt;To seamlessly integrate with the request management component as described in the previous section, the products and services data from the external service providers such as Walmart and Staples have to be translated to and from the itHUB product and service vocabulary. One of the methods of implementation design is shown below:&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/ithub-application-integration-with-external-service-providers.png&quot; alt=&quot;itHUB Application Integration with External Service Providers&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/ithub-application-integration-with-external-service-providers.png&quot; alt=&quot;itHUB Application Integration with External Service Providers&quot; /&gt;&lt;/p&gt;
 
 &lt;h5 id=&quot;a-walmart-product-mapper&quot;&gt;a) Walmart Product Mapper&lt;/h5&gt;
 &lt;p&gt;The responsibility of the Product Mapper is to extract all the necessary attributes from the “item” response XML/JSON string and create an itHUB-compatible external product item that can be represented using a common web interface. By the same token, for item inquiry or item order details, the mapper will convert the “Request” to Walmart API specific item specification.&lt;/p&gt;
@@ -282,11 +282,11 @@
 &lt;h3 id=&quot;f---user-management&quot;&gt;F.   User Management&lt;/h3&gt;
 &lt;p&gt;As discussed in the previous section, to create a singular view about the customer, itHUB user management component might have to assemble the information from a wide variety of data sources – user directory, ERP systems such as SAP, employee management software systems such as PeopleSoft to name a few. The following entity relationship diagram (ERD) shows a simplistic implementation of some of the attributes needed to properly service customers:&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/user-management.jpg&quot; alt=&quot;User Management&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/user-management.jpg&quot; alt=&quot;User Management&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;To pull customer-related information from multiple data sources, the following design could be implemented.&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/user-management-integration.png&quot; alt=&quot;E-R Diagram for User Management Integration&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/user-management-integration.png&quot; alt=&quot;E-R Diagram for User Management Integration&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;repository&quot;&gt;1)  Repository&lt;/h4&gt;
 &lt;p&gt;The responsibility of the repository is to encapsulate storage, retrieval, and search behavior and to emulate a collection of objects (Evans, 2003).  &lt;/p&gt;
@@ -310,27 +310,27 @@
 &lt;p&gt;[11]    Walmart. (2012). Walmart Open API - Item Response Groups. Available: https://developer.walmartlabs.com/docs/read/Item_Field_Description&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/ithub-part-4/&quot;&gt;itHUB - Part 4&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://naruraghavan.github.io&quot;&gt;Technology Blog&lt;/a&gt; on January 01, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/ithub-part-4/&quot;&gt;itHUB - Part 4&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on January 01, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[itHUB - Part 3]]></title>
- <link rel="alternate" type="text/html" href="http://naruraghavan.github.io/ithub-part-3/" />
-  <id>http://naruraghavan.github.io/ithub-part-3</id>
+ <link rel="alternate" type="text/html" href="/ithub-part-3/" />
+  <id>/ithub-part-3</id>
   <updated>2013-12-17 04:45:36 -0500T00:00:00-00:00</updated>
   <published>2013-12-17T00:00:00-05:00</published>
   
   <author>
     <name>Narayanan Raghavan</name>
-    <uri>http://naruraghavan.github.io</uri>
+    <uri></uri>
     <email>naruraghavan@icloud.com</email>
   </author>
-  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;http://naruraghavan.github.io/ithub-part-2&quot;&gt;&lt;strong&gt;Part 2&lt;/strong&gt;&lt;/a&gt;, lets start exploring the software architecture of itHUB a little more in this post.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;/ithub-part-2&quot;&gt;&lt;strong&gt;Part 2&lt;/strong&gt;&lt;/a&gt;, lets start exploring the software architecture of itHUB a little more in this post.&lt;/p&gt;
 
 &lt;h3 id=&quot;c---technology-web-20-and-beyond&quot;&gt;C.   Technology: Web 2.0 and Beyond&lt;/h3&gt;
 &lt;p class=&quot;pull-right&quot;&gt;The use of Web 2.0 and beyond [9] is a must for the itHUB platform. The following diagram illustrates the architectural layers and partitions of itHUB platform software components:
-&lt;img src=&quot;http://naruraghavan.github.io/images/layers-and-Partitions-of-itHUB.png&quot; alt=&quot;Layers and Partitions of itHUB&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;/images/layers-and-Partitions-of-itHUB.png&quot; alt=&quot;Layers and Partitions of itHUB&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;internal-products-and-services&quot;&gt;1)  Internal Products and Services&lt;/h4&gt;
 &lt;p&gt;These products and services are the core competencies of the IT departments. These products and services could range from homegrown applications to hardware and software bundles that the IT departments have direct control over. &lt;/p&gt;
@@ -350,7 +350,7 @@ The products and services from the external service providers will be accessed u
 Plus, the list of approvers is specified for each of the request type. For example, for a desktop request, there may be a need for approvals from the department manager and the general manager (or some suitable roles).&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/request-management.png&quot; alt=&quot;Request Management&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/request-management.png&quot; alt=&quot;Request Management&quot; /&gt;&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Create/Track Requests – After choosing one of the request types, for example, the desktop request, the customer goes on to fill out the necessary data points and submits the request. Once the request is submitted, it is routed for approvals based on the specification of the request type. As described in the previous section, a desktop request will be routed to the department manager and the general manager of the customer who submitted the request. After submitting the request, the customer could check on the status of the request including the approvals.&lt;/li&gt;
@@ -378,7 +378,7 @@ Plus, the list of approvers is specified for each of the request type. For examp
 &lt;h3 id=&quot;d---ithub--the-system-boundary&quot;&gt;D.   itHUB – The System Boundary&lt;/h3&gt;
 &lt;p&gt;The following diagram illustrates the system boundary and the dependencies of itHUB with external systems both managed by the IT department and external service providers.&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/ithub-system-boundary.png&quot; alt=&quot;itHUB System Boundary&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/ithub-system-boundary.png&quot; alt=&quot;itHUB System Boundary&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;As shown in the diagram, the user infrastructure could be a combination of systems such as PeopleSoft, corporate LDAP directory etc. The billing information such as cost center details could be housed in ERP systems such as SAP. Therefore, the user management component has to deal with assembling a unified view of the customer. The request management component has to deal with receiving and processing the external service provider’s product data. 
 The following section will go over the data semantics and formats for enabling the integration of customer data with internal to IT, but external to itHUB and exchanging products and services from external suppliers.&lt;/p&gt;
@@ -389,30 +389,30 @@ The following section will go over the data semantics and formats for enabling t
 &lt;p&gt;[9] T. O’Reilly and J. Battlelle. (2010). Web Squared: Web 2.0 Five Years On - by Tim O’Reilly and John Battelle. Available: http://www.web2summit.com/web2009/public/schedule/detail/10194&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/ithub-part-3/&quot;&gt;itHUB - Part 3&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://naruraghavan.github.io&quot;&gt;Technology Blog&lt;/a&gt; on December 17, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/ithub-part-3/&quot;&gt;itHUB - Part 3&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on December 17, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[itHUB - Part 2]]></title>
- <link rel="alternate" type="text/html" href="http://naruraghavan.github.io/ithub-part-2/" />
-  <id>http://naruraghavan.github.io/ithub-part-2</id>
+ <link rel="alternate" type="text/html" href="/ithub-part-2/" />
+  <id>/ithub-part-2</id>
   <updated>2013-11-18 17:24:05 -0500T00:00:00-00:00</updated>
   <published>2013-11-18T00:00:00-05:00</published>
   
   <author>
     <name>Narayanan Raghavan</name>
-    <uri>http://naruraghavan.github.io</uri>
+    <uri></uri>
     <email>naruraghavan@icloud.com</email>
   </author>
-  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;http://naruraghavan.github.io/ithub-part-1&quot;&gt;&lt;strong&gt;Part 1&lt;/strong&gt;&lt;/a&gt;, lets start exploring the interactive model and the need for itHUB a little more in this post.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;/ithub-part-1&quot;&gt;&lt;strong&gt;Part 1&lt;/strong&gt;&lt;/a&gt;, lets start exploring the interactive model and the need for itHUB a little more in this post.&lt;/p&gt;
 
 &lt;h2 id=&quot;iii--interactive-model&quot;&gt;III.  INTERACTIVE MODEL&lt;/h2&gt;
 &lt;p&gt;In the interactive model, the IT departments provide an e-business platform with a unified web interface to search, submit, track IT requests for their customers. The platform will also provide facilities for service providers to deliver on the requests in terms of ordering items and updating the details of the requests across multiple systems. In addition to the above requirements, the platform should also provide ways in which an IT customer can pose questions and get answers either from the other IT customers or from an IT service provider. The remainder of the article will refer to such an e-business platform as itHUB. &lt;/p&gt;
 
 &lt;h3 id=&quot;a---ithub--the-platform&quot;&gt;A.   itHUB – The Platform&lt;/h3&gt;
 &lt;p class=&quot;pull-right&quot;&gt;A two-sided platform [3] is a good starting point for itHUB. There are consumers that will request for services, check for statuses, post questions and/or answers, write blog articles, and rate the quality of services offered. There are service providers – IT departments – that fulfill requests. There are approvers – typically, managers of requestors – to approve requests made by their department users, so that the service providers can fulfill them.&lt;br /&gt;
-&lt;img src=&quot;http://naruraghavan.github.io/images/two-sided-ithub-platform.png&quot; alt=&quot;2-sided itHUB Platform&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;/images/two-sided-ithub-platform.png&quot; alt=&quot;2-sided itHUB Platform&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;In addition to IT departments, service providers can also be external vendors such as Walmart, Staples etc. Both platform provider and the sponsor could be the IT organization in question. &lt;/p&gt;
 
@@ -425,7 +425,7 @@ The following section will go over the data semantics and formats for enabling t
 &lt;h5 id=&quot;a-same-side-network-effect&quot;&gt;a) Same-side Network Effect&lt;/h5&gt;
 &lt;p&gt;&lt;em&gt;Customer-to-Customer Network effect&lt;/em&gt; is positive since more customers make IT products and services better. This is possible because of the interactions among the customers through social questions and answers and wikis/blogs. The more customers pose questions/answers and write blog articles about the IT products and services for clarification and usage scenarios. &lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/network-effect.png&quot; alt=&quot;The Network Effect&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/network-effect.png&quot; alt=&quot;The Network Effect&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Service Provider-to-Service Provider Network&lt;/em&gt; Effect is negative as increased competition makes itHUB less attractive to external service providers such as Walmart, Staples, and PC Connection etc. The same-side network effect among internal IT service providers is positive as the internal IT departments work with each other to deliver on the IT requests.&lt;/p&gt;
 
@@ -445,7 +445,7 @@ By creating an integrated e-business platform where not only IT requests are eas
 &lt;p&gt;IT could employ the Click-and-Mortar (C&amp;amp;M) business model [7] where it maintains a web storefront in addition to its physical office space. IT must exercise the Infomediary model [7] to facilitate transactions between the consumers and the external service providers such as Walmart, Staples, PC Connection etc. To facilitate the social interactions among its customers and the service providers, IT could employ the Community model [7]. 
 Each business model – C&amp;amp;M, Infomediary, and Community – can be implemented in terms of content, customer experience, and the platform [8] and built into itHUB as follows:&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/components-of-the-digital-business-model.png&quot; alt=&quot;The Components of the Digital Business Model&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/components-of-the-digital-business-model.png&quot; alt=&quot;The Components of the Digital Business Model&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;content&quot;&gt;1) Content&lt;/h4&gt;
 
@@ -604,20 +604,20 @@ Each business model – C&amp;amp;M, Infomediary, and Community – can be imple
 &lt;p&gt;[8] P. Weill and S. Woerner. (2013). Optimizing Your Digital Business Model - MIT Sloan Management Review. Available: http://sloanreview.mit.edu/article/optimizing-your-digital-business-model&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/ithub-part-2/&quot;&gt;itHUB - Part 2&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://naruraghavan.github.io&quot;&gt;Technology Blog&lt;/a&gt; on November 18, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/ithub-part-2/&quot;&gt;itHUB - Part 2&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on November 18, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[itHUB - Part 1]]></title>
- <link rel="alternate" type="text/html" href="http://naruraghavan.github.io/ithub-part-1/" />
-  <id>http://naruraghavan.github.io/ithub-part-1</id>
+ <link rel="alternate" type="text/html" href="/ithub-part-1/" />
+  <id>/ithub-part-1</id>
   <updated>2013-11-15 20:09:05 -0500T00:00:00-00:00</updated>
   <published>2013-11-15T00:00:00-05:00</published>
   
   <author>
     <name>Narayanan Raghavan</name>
-    <uri>http://naruraghavan.github.io</uri>
+    <uri></uri>
     <email>naruraghavan@icloud.com</email>
   </author>
   <content type="html">&lt;p&gt;Information Technology (IT) departments spend so much time and effort in providing products and services to their organizations. Oftentimes, by being caught up in the support mode, IT departments do not spend the time to supplement their support services using a well-defined online storefront. &lt;/p&gt;
@@ -626,7 +626,7 @@ Each business model – C&amp;amp;M, Infomediary, and Community – can be imple
 
 &lt;h2 id=&quot;i---introduction&quot;&gt;I.   INTRODUCTION&lt;/h2&gt;
 &lt;p class=&quot;pull-right&quot;&gt;IT must evolve from providing an informational outlet for its services into providing interactive and anticipatory models of service management. 
-&lt;img src=&quot;http://naruraghavan.github.io/images/it-service-mgmt-evolution.png&quot; alt=&quot;IT Service Management Evolution&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;/images/it-service-mgmt-evolution.png&quot; alt=&quot;IT Service Management Evolution&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;The following sections will illustrate the need for such an evolution by describing the problems/issues found in each of the models and some of the ways in which they can be improved/eradicated. &lt;/p&gt;
 
 &lt;h2 id=&quot;ii--informational-model&quot;&gt;II.  INFORMATIONAL MODEL&lt;/h2&gt;
@@ -634,7 +634,7 @@ Each business model – C&amp;amp;M, Infomediary, and Community – can be imple
 
 &lt;h3 id=&quot;a---request-processing&quot;&gt;A.   Request Processing&lt;/h3&gt;
 &lt;p class=&quot;pull-right&quot;&gt;The following diagram illustrates the various steps involved in processing IT requests in the informational model-based IT departments:
-&lt;img src=&quot;http://naruraghavan.github.io/images/typical-IT-request-processing.png&quot; alt=&quot;Typical IT Request processing&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;/images/typical-IT-request-processing.png&quot; alt=&quot;Typical IT Request processing&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;submit-request&quot;&gt;1)  Submit Request&lt;/h4&gt;
 &lt;p&gt;The IT customer performs this step. It could be as easy as filling out a web form, printing and filling out a MS Word/PDF document or as difficult as making several phone calls or writing several emails to find out as to which web form to use or which MS Word/PDF document to fill out for the request. In some cases, a proper form of request submission might not even exist.&lt;/p&gt;
@@ -685,7 +685,118 @@ Finding and submitting requests with relevant details mandated by those request 
 
 &lt;p&gt;[2] Wikipedia. (2013). Transaction cost. Available: http://en.wikipedia.org/w/index.php?title=Transaction_cost&amp;amp;oldid=572207418&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/ithub-part-1/&quot;&gt;itHUB - Part 1&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://naruraghavan.github.io&quot;&gt;Technology Blog&lt;/a&gt; on November 15, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;/ithub-part-1/&quot;&gt;itHUB - Part 1&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on November 15, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Public Cloud for Corporate Web Applications - Part 1]]></title>
+ <link rel="alternate" type="text/html" href="/public-cloud-for-corporate-web-applications-part-1/" />
+  <id>/public-cloud-for-corporate-web-applications-part-1</id>
+  <updated>2013-07-07 12:35:57 -0400T00:00:00-00:00</updated>
+  <published>2013-07-07T00:00:00-04:00</published>
+  
+  <author>
+    <name>Narayanan Raghavan</name>
+    <uri></uri>
+    <email>naruraghavan@icloud.com</email>
+  </author>
+  <content type="html">&lt;p&gt;What does “going to the public cloud” mean to organizations?  Other than the benefits such as reduced time to market, less upfront cost, rapid elasticity in terms of hardware and software resources, there are several security implications associated with such a move. &lt;/p&gt;
+
+&lt;p&gt;Today’s corporations not only create and manage web applications to make their corporate presence known on the Internet, but also invite their employees, suppliers, and dealers/retailers to conduct business online. At this point, the question becomes “Where should an organization stop or draw the line when making decisions to go to the pubic cloud?” Because the case for public-facing web applications going to the public cloud has already been made. The purpose of the paper is to discuss the viability of engaging public clouds for all web applications irrespective of the user segment that they support. This paper will also outline a development process and an environment for successfully deploying secure web applications on the public cloud.&lt;/p&gt;
+
+&lt;h2 id=&quot;iintroduction&quot;&gt;I.	INTRODUCTION&lt;/h2&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;strong&gt;&lt;em&gt;Cloud&lt;/em&gt;&lt;/strong&gt; is a model for enabling convenient, on-demand network access to a shared pool of configurable computing resources (For example, networks, servers, storage, applications, and services) that can be rapidly provisioned and released with minimal management effort or service provider interaction [1].&lt;br /&gt;
+&lt;img src=&quot;/images/nist-definition-of-the-cloud.png&quot; alt=&quot;NIST Definition of the Cloud&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Infrastructure as a Service (IaaS)&lt;/em&gt; – In this cloud service model, the provider offers raw computing power, storage, and network infrastructure so that the consumer can load his/her own software components such as operating systems, applications, etc. in this infrastructure.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Platform as a Service (PaaS)&lt;/em&gt; - PaaS builds on IaaS and adds a set of software components such as operating systems, middleware products (application servers), and Web servers so that the consumer can develop and deploy applications in this platform.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Software as a Service (SaaS)&lt;/em&gt; - SaaS builds on top of PaaS and adds fully developed applications such as billing, collaboration, digital asset management, web content management, customer relationship management, point of sale applications to name a few. &lt;/p&gt;
+
+&lt;p class=&quot;pull-right&quot;&gt;To keep the scope manageable, this paper will only discuss SaaS and PaaS service models that are deployed using the public deployment model as highlighted in Figure 1. In the SaaS service model, an organization does not manage or control either the underlying infrastructure or the application that is deployed in the infrastructure. In the PaaS service model, the organization does not control or manage the underlying infrastructure, but does have control over the applications and data that are deployed in the infrastructure [2] as shown below:
+&lt;img src=&quot;/images/who-manages-what.png&quot; alt=&quot;Who Manages What?&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Public Cloud means that both the underlying platform (PaaS) and the applications (SaaS) that are hosted on the infrastructure are available to the general public and is owned and/or operated by an organization selling those cloud services. &lt;/p&gt;
+
+&lt;h3 id=&quot;aroles-and-responsibilities-in-the-cloud&quot;&gt;A.	Roles and responsibilities in the Cloud&lt;/h3&gt;
+&lt;p class=&quot;pull-right&quot;&gt;In order to study the security implications of using the public cloud for the intended service models, we have to understand the roles and responsibilities of the major actors in the cloud-computing domain [3] as shown below:
+&lt;img src=&quot;/images/roles-and-responsibilities.png&quot; alt=&quot;Roles and Responsibilities&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;cloud-consumer&quot;&gt;1)	Cloud Consumer&lt;/h4&gt;
+&lt;p&gt;A cloud consumer is an organization that makes use of the services provided by the cloud providers and brokers.&lt;/p&gt;
+
+&lt;h4 id=&quot;cloud-provider&quot;&gt;2)	Cloud Provider&lt;/h4&gt;
+&lt;p&gt;A cloud provider is an organization or entity that offers one or more cloud service models (IaaS, PaaS, SaaS) via one or more deployment models (public, private, hybrid) to interested parties. &lt;/p&gt;
+
+&lt;h4 id=&quot;cloud-broker&quot;&gt;3)	Cloud Broker&lt;/h4&gt;
+&lt;p class=&quot;pull-right&quot;&gt;As the application needs increase, the service models could get extremely complex. At this juncture, the cloud consumer could seek the help of a broker instead of going directly to the cloud provider. The cloud broker’s prime responsibility is to aggregate, enhance, or augment the services provided by one or more cloud service providers as shown in the diagram [3] below:
+&lt;img src=&quot;/images/cloud-broker-model.png&quot; alt=&quot;Cloud Broker Model&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;In the above scenario, the cloud consumer does not need to know about the underlying cloud providers since the service level agreement (SLA) will be created between the consumer and the broker. The cloud broker in turn will have SLAs with the cloud providers to satisfy the service levels that were committed to the consumer.&lt;/p&gt;
+
+&lt;h4 id=&quot;cloud-auditor&quot;&gt;4)	Cloud Auditor&lt;/h4&gt;
+&lt;p&gt;The other important actor from the reference model is the cloud auditor. A cloud consumer, broker, or provider could employ an auditor to verify the security controls, privacy impact, and performance of services provided by the cloud provider.  &lt;/p&gt;
+
+&lt;h4 id=&quot;cloud-carrier&quot;&gt;5)	Cloud Carrier&lt;/h4&gt;
+&lt;p class=&quot;pull-right&quot;&gt;A cloud carrier is an intermediary that provides connectivity and transport of cloud services from the cloud provider to the consumer.
+&lt;img src=&quot;/images/cloud-carrier-model.png&quot; alt=&quot;Cloud Carrier Model&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;In the above scenario [3], a cloud provider could seek the help of a cloud carrier to provide dedicated and/or encrypted connections between the provider’s services and the consumer.&lt;/p&gt;
+
+&lt;h2 id=&quot;iisecurity-implications&quot;&gt;II.	SECURITY IMPLICATIONS&lt;/h2&gt;
+&lt;p&gt;As shown in Figure 1, more control or management of components means responsibility for security controls. In the PaaS environment, since the cloud consumer is responsible for building and deploying applications, layering in an additional level of security controls at the application level falls under the cloud consumer. By the same token, the cloud provider is responsible for establishing security controls for all the other components including the middleware environment. Since there is very little extensibility option available for the consumer in the SaaS model, the provider bares responsibility for establishing security controls for the entire environment. &lt;/p&gt;
+
+&lt;h3 id=&quot;amulti-tenancy&quot;&gt;A.	Multi-tenancy&lt;/h3&gt;
+&lt;p class=&quot;pull-right&quot;&gt;One of the major characteristics of cloud computing is this idea of multi-tenancy. Multi-tenancy implies the use of same applications and resources by multiple cloud consumers that may belong to multiple organizations. Multi-tenancy allows cloud providers to provide economies of scale, availability, segmentation, isolation, and operational efficiency to their consumers [4].  Since PaaS builds on the infrastructure provided by IaaS and SaaS builds on PaaS, there is quite a bit of technology components that work together to enable multi-tenancy as shown in the following diagram:
+&lt;img src=&quot;/images/multi-tenancy-1.png&quot; alt=&quot;Multi-tenancy Model 1&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;In the case of IaaS, the same hardware resources are shared across multiple consumers using virtualization technologies as shown in the diagram below:
+&lt;img src=&quot;/images/multi-tenancy-2.png&quot; alt=&quot;Multi-tenancy Model 2&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;avirtual-machine-manager-vmm-also-known-as-hypervisor&quot;&gt;a)	Virtual Machine Manager (VMM) also known as Hypervisor&lt;/h5&gt;
+&lt;p&gt;VMM is the virtualization layer that runs on top of a server platform and manages CPU, memory, hard disk, network, and other hardware resources of the server host [5]. &lt;/p&gt;
+
+&lt;h5 id=&quot;bvm&quot;&gt;b)	VM&lt;/h5&gt;
+&lt;p&gt;A Virtual Machine (VM) is a software implementation of a physical computing environment in which the operating system and other application programs can be installed and run [5]. VMs emulates a physical computing environment and requests hardware resources such as CPU, memory etc. from the VMM. Some of the most common virtualization solutions in the market today include Xen, VMware, Hyper-V, and Oracle. &lt;/p&gt;
+
+&lt;p&gt;In the case of PaaS, middleware and other components could be installed and run within the VM. In the case of SaaS, a wide variety of applications can be installed and run on top of the middleware that is running within the VM. Therefore, the cloud consumer of PaaS or SaaS ends up in a virtual machine as shown in Figure 5. Using the virtualization technology, cloud providers could virtualize the hardware/platform, desktop, software, memory, storage, data, and network to successfully orchestrate services such as IaaS, PaaS, and SaaS.&lt;/p&gt;
+
+&lt;h4 id=&quot;data-breaches-and-shared-technology-threats&quot;&gt;2)	Data Breaches and Shared technology threats&lt;/h4&gt;
+&lt;p&gt;One of the security challenges of the virtualization technology is how isolated these individual virtual machines are from each other. In other words, ensuring sufficient isolation between VMs is the security challenge. As shown in Figure 5, a security compromise in the virtualization layer means that all the VMs running on the virtualized layer are also compromised thereby resulting in data breaches. The Cloud Security Alliance (CSA) has elevated this threat ranking from 5 to 1 in 2013 [6]. There are several articles on the Internet such as [7] that demonstrate as to how a malicious VM could extract fine-grained information from a victim’s VM running on the same physical computer. There are also vulnerabilities present in the virtualization technology that could compromise the entire fleet of VMs running on the VMMs [8]. One of the articles, [9], demonstrates the use of VASTO (Virtualization Assessment Tool) within the Metasploit framework (MSF) to compromise VMware hosts with dictionary-based brute force login, man-in-the-middle (MITM) attack etc. VASTO in conjunction with MSF could be used to compromise hosts that are running Xen, Hyper-V, and Oracle VMMs as well. &lt;/p&gt;
+
+&lt;h5 id=&quot;acontrols&quot;&gt;a)	Controls&lt;/h5&gt;
+&lt;p&gt;With the help of the cloud provider, a third-party cloud auditor could be employed to assess as to how secure or vulnerable the target virtual environment is. There are several tools such as VASTO, Netwrix, Blackbird Auditor, and VMinformer that could be successfully employed to audit the virtual environment in terms of client, hypervisor, support, management, and internal components. These tools check for the presence of misconfiguration, missing security patches, bad network scheme, weaknesses in the VMM layer, and Storage misconfiguration [9].  &lt;/p&gt;
+
+&lt;h4 id=&quot;more-threats&quot;&gt;3)	More Threats&lt;/h4&gt;
+&lt;p&gt;Along with data breaches and shared technology threats as outlined in the previous section, there are several other threats such as data loss, account or service traffic hijacking, insecure interfaces and APIs by the cloud provider, denial of service, malicious insiders, and insufficient due diligence [6].&lt;/p&gt;
+
+&lt;h5 id=&quot;acontrols-1&quot;&gt;a)	Controls&lt;/h5&gt;
+&lt;p&gt;To combat the various threats – see previous paragraph, establishment of a proper organization-wide risk management framework is essential. This is also part of doing due diligence that a cloud consumer is expected to carry out before embarking on the journey to move to the public cloud. Along with a solid risk management framework, there is also a greater need for securing web applications against a wide variety of attacks such as cross-site scripting (XSS), thread safety, access control, hidden form field manipulation, parameter manipulation, weak session cookies, SQL injection, insecure Web services, and Fail open authentication attacks [10]. Next set of sections will discuss the risk management framework along with a model for engineering secure web applications by taking the Open Security Architecture’s cloud computing security pattern, NIST’s cloud computing documents, CSA’s security reference model, OWASP’s web application security guidelines, SAFECode guidelines for Agile process frameworks into account. &lt;/p&gt;
+
+&lt;p&gt;I’ll contiunue my discussion in the next post.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;[1]	NIST. (2011). The NIST Definition of Cloud Computing. Available: http://csrc.nist.gov/publications/nistpubs/800-145/SP800-145.pdf&lt;/p&gt;
+
+&lt;p&gt;[2]	B. Lyons. (2011). Applying a Holistic Defense-in-Depth approach to the Cloud. Available: http://www.niksun.com/presentations/day1/NIKSUN_WWSMC_July25_BarryLyons.pdf&lt;/p&gt;
+
+&lt;p&gt;[3]	NIST. (2011). NIST Cloud Computing Reference Architecture. Available: http://www.nist.gov/customcf/get_pdf.cfm?pub_id=909505&lt;/p&gt;
+
+&lt;p&gt;[4]	CSA. (2011). Security Guidance for Critical Areas of Focus in Cloud Computing V3.0 : Cloud Security Alliance. Available: https://cloudsecurityalliance.org/download/security-guidance-for-critical-areas-of-focus-in-cloud-computing-v3&lt;/p&gt;
+
+&lt;p&gt;[5]	A. Desai. (2011). What is virtual machine (VM)? - Definition from WhatIs.com. Available: http://searchservervirtualization.techtarget.com/definition/virtual-machine&lt;/p&gt;
+
+&lt;p&gt;[6]	CSA. (2013). The Notorious Nine: Cloud Computing Top Threats in 2013 : Cloud Security Alliance. Available: https://cloudsecurityalliance.org/download/the-notorious-nine-cloud-computing-top-threats-in-2013&lt;/p&gt;
+
+&lt;p&gt;[7]	Y. Zhang, A. Juels, M. K. Reiter, and T. Ristenpart. (2012). Cross-VM side channels and their use to extract private keys. Available: http://doi.acm.org/10.1145/2382196.2382230&lt;/p&gt;
+
+&lt;p&gt;[8]	M. Schwartz. (2012). New Virtualization Vulnerability Allows Escape To Hypervisor Attacks – InformationWeek. Available: http://www.informationweek.com/news/security/app-security/240001996&lt;/p&gt;
+
+&lt;p&gt;[9]	S. Chauhan. (2012). Virtualization Security: Hacking VMware with VASTO. Available: http://resources.infosecinstitute.com/virtualization-security&lt;/p&gt;
+
+&lt;p&gt;[10]	OWASP. (2013). Category:OWASP WebGoat Project - OWASP. Available: https://http://www.owasp.org/index.php/Category:OWASP_WebGoat_Project&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-1/&quot;&gt;Public Cloud for Corporate Web Applications - Part 1&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on July 07, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>
