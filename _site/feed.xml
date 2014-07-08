@@ -4,7 +4,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="/feed.xml" />
 <link rel="alternate" type="text/html" href="" />
-<updated>2014-07-07T13:14:37-04:00</updated>
+<updated>2014-07-07T21:07:28-04:00</updated>
 <id>/</id>
 <author>
   <name>Narayanan Raghavan</name>
@@ -686,6 +686,911 @@ Finding and submitting requests with relevant details mandated by those request 
 &lt;p&gt;[2] Wikipedia. (2013). Transaction cost. Available: http://en.wikipedia.org/w/index.php?title=Transaction_cost&amp;amp;oldid=572207418&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;/ithub-part-1/&quot;&gt;itHUB - Part 1&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on November 15, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Public Cloud for Corporate Web Applications - Part 6]]></title>
+ <link rel="alternate" type="text/html" href="/public-cloud-for-corporate-web-applications-part-6/" />
+  <id>/public-cloud-for-corporate-web-applications-part-6</id>
+  <updated>2013-08-10 20:57:29 -0400T00:00:00-00:00</updated>
+  <published>2013-08-10T00:00:00-04:00</published>
+  
+  <author>
+    <name>Narayanan Raghavan</name>
+    <uri></uri>
+    <email>naruraghavan@icloud.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-5&quot;&gt;&lt;strong&gt;Part 5&lt;/strong&gt;&lt;/a&gt;, lets start exploring the Penetration Tests for the Cloud Environment in this post.&lt;/p&gt;
+
+&lt;h3 id=&quot;d--penetration-tests-for-the-cloud-environment&quot;&gt;D.  Penetration Tests for the Cloud Environment&lt;/h3&gt;
+&lt;p&gt;Penetration tests (Pen-tests), in this context, mean a set of methods to evaluate the security of the web application by simulating attacks against it before and after deploying the application on the public cloud. By testing the application for vulnerabilities before deploying the application on the cloud, we know how secure the web application is against those attacks. This will help set the baseline. By testing the web application after deploying it on the cloud, we can compare against the baseline to determine whether the cloud environment needs to be tweaked further or not. &lt;/p&gt;
+
+&lt;p&gt;Black, white, and gray box testing methods enable the security team and/or the development team with assessing the security posture of the web application [29]. &lt;/p&gt;
+
+&lt;h4 id=&quot;black-box-testing&quot;&gt;1)  Black Box Testing&lt;/h4&gt;
+
+&lt;p&gt;This testing method does not assume that the performer of these tests know the inner workings of the web applications in terms of its architecture, design, and code structures employed. When testing Commercial Off The Shelf (COTS) applications, employing a set of black box testing methods such as the use of automated scanning tools and manual penetration tests would help the team in assessing the security posture of the application.&lt;/p&gt;
+
+&lt;h4 id=&quot;white-box-testing&quot;&gt;2)  White Box Testing&lt;/h4&gt;
+
+&lt;p&gt;This testing method assumes that the performer of the tests know the inner workings of the web application in terms of its architecture and design. It also assumes that the performer of the test has access to the source code of the web application. Tests such as static code analysis, code crawlers, and debuggers are employed in this type of testing.&lt;/p&gt;
+
+&lt;h4 id=&quot;gray-box-testing&quot;&gt;3)  Gray Box Testing&lt;/h4&gt;
+
+&lt;p&gt;This testing method combines the strength of both black and white box-testing methods and assumes that the performer of the test has a little background of the web application in terms of architecture and design aspects and has access to the source code of the application. For example, taking the amount of external frameworks used to build the web application these days – ESAPI for security, “Spring” framework for presentation and data layers etc. – the development team and the security team know only a portion of the web application. Therefore, employing gray box testing methods make a lot of sense. &lt;/p&gt;
+
+&lt;h4 id=&quot;selecting-a-testing-framework&quot;&gt;4)  Selecting a testing framework&lt;/h4&gt;
+
+&lt;p&gt;The selection of one method over another depends the following factors:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Time allocated to the Pen-test&lt;/li&gt;
+  &lt;li&gt;Access to architecture, design, and code structures&lt;/li&gt;
+  &lt;li&gt;Availability of the security experts&lt;/li&gt;
+  &lt;li&gt;Goals of the test&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To assess the short-term effects of attackers with limited resources, the performer could decide to employ black box testing methods. On the other hand, to study the long-term effects of attackers with significant resources, the performer could decide to employ the gray box testing methods. Therefore, the selection really depends on the situation and the stipulated constraints as stated above.&lt;/p&gt;
+
+&lt;p&gt;OWASP testing guide has defined ten different categories of penetration testing to find vulnerabilities in web applications as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Information Gathering&lt;/li&gt;
+  &lt;li&gt;Configuration management Testing&lt;/li&gt;
+  &lt;li&gt;Business Logic Testing&lt;/li&gt;
+  &lt;li&gt;Authentication Testing&lt;/li&gt;
+  &lt;li&gt;Authorization Testing&lt;/li&gt;
+  &lt;li&gt;Session Management Testing&lt;/li&gt;
+  &lt;li&gt;Data Validation Testing&lt;/li&gt;
+  &lt;li&gt;Testing for Denial of Service&lt;/li&gt;
+  &lt;li&gt;Web Services Testing&lt;/li&gt;
+  &lt;li&gt;Ajax Testing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The security team could employ tools such as Kali Linux along with a whole host of security tools that come with it to successfully assess the security posture of the Web application. Kali Linux ships with a wide variety of security pen-test tools as shown in the screenshot below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/kali-linux.png&quot; alt=&quot;Kali Linux&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Before using any of these toolkits, it is mandatory to seek the written authorization from the CISO and/or the CIO of the organization. These pen-tests have to be run under the direct supervision or guidance of the CISO and/or the CIO. In some cases, the cloud broker or the provider has to clear the tests if performed against the cloud installations. Since the use or misuse of some of these tools would most probably result in property damages including the modification and/or destruction of data. &lt;/p&gt;
+
+&lt;h2 id=&quot;v--conclusion&quot;&gt;V.  CONCLUSION&lt;/h2&gt;
+
+&lt;p&gt;As explored in &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-1&quot;&gt;&lt;strong&gt;Part 1&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-2&quot;&gt;&lt;strong&gt;Part 2&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-3&quot;&gt;&lt;strong&gt;Part 3&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-4&quot;&gt;&lt;strong&gt;Part 4&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-5&quot;&gt;&lt;strong&gt;Part 5&lt;/strong&gt;&lt;/a&gt;, there are several security implications to moving corporate web applications to the public cloud. There are threats like data breaches originating from the use of shared technology environments and multi-tenancy models of the cloud platform. At the same time, the public cloud-computing platform cannot be ignored due to a false sense of security. Therefore, employing a solid risk management framework such as the NIST’s Cloud Risk Management Framework (CRMF) helps in identifying risks and ultimately validating the selection of security components and controls for a given set of risks. &lt;/p&gt;
+
+&lt;p&gt;The CRMF along with the CSA’s Trusted Cloud Initiative Reference Architecture (TCI-RA) identify the cloud actors that are responsible for those security components/controls. The clear delineation of responsibilities enhances the cloud consumer’s transparency and results in crafting a Service Level Agreement (SLA) that would work for all the cloud agents in question.   One of the biggest responsibilities of a cloud consumer in moving to the public cloud is to inject “security” into the Software Development Life Cycle (SDLC). This secured SDLC (SSDLC) will enable the consumer to thwart security threats that originate at the application layer. &lt;/p&gt;
+
+&lt;p&gt;Employing security-focused stories and tasks enable an Agile Scrum team to pay a close attention to security aspects right from the Sprint planning to code implementation and testing.  The SAFECode guidelines will help the development, QA, and security teams in creating a SSDLC platform that would make the engineering of security-aware web applications possible. In addition to following a SSDLC constructs, the use of security frameworks such as ESAPI reduces the implementation time of the security controls. &lt;/p&gt;
+
+&lt;p&gt;After the web application is built according to specifications, black, white, and gray box testing methods could be performed to assess the security posture of the web application. Several open source tools such as Kali Linux could be used to successfully perform those testing methods. Before performing any of these types of penetration tests, it is mandatory to get the written authorization from the CISO and/or the CIO. In some cases, it is necessary to get authorization from the cloud agent as well.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;[1] NIST. (2011). The NIST Definition of Cloud Computing. Available: http://csrc.nist.gov/publications/nistpubs/800-145/SP800-145.pdf&lt;/p&gt;
+
+&lt;p&gt;[2] B. Lyons. (2011). Applying a Holistic Defense-in-Depth approach to the Cloud. Available: http://www.niksun.com/presentations/day1/NIKSUN_WWSMC_July25_BarryLyons.pdf&lt;/p&gt;
+
+&lt;p&gt;[3] NIST. (2011). NIST Cloud Computing Reference Architecture. Available: http://www.nist.gov/customcf/get_pdf.cfm?pub_id=909505&lt;/p&gt;
+
+&lt;p&gt;[4] CSA. (2011). Security Guidance for Critical Areas of Focus in Cloud Computing V3.0 : Cloud Security Alliance. Available: https://cloudsecurityalliance.org/download/security-guidance-for-critical-areas-of-focus-in-cloud-computing-v3&lt;/p&gt;
+
+&lt;p&gt;[5] A. Desai. (2011). What is virtual machine (VM)? - Definition from WhatIs.com. Available: http://searchservervirtualization.techtarget.com/definition/virtual-machine&lt;/p&gt;
+
+&lt;p&gt;[6] CSA. (2013). The Notorious Nine: Cloud Computing Top Threats in 2013 : Cloud Security Alliance. Available: https://cloudsecurityalliance.org/download/the-notorious-nine-cloud-computing-top-threats-in-2013&lt;/p&gt;
+
+&lt;p&gt;[7] Y. Zhang, A. Juels, M. K. Reiter, and T. Ristenpart. (2012). Cross-VM side channels and their use to extract private keys. Available: http://doi.acm.org/10.1145/2382196.2382230&lt;/p&gt;
+
+&lt;p&gt;[8] M. Schwartz. (2012). New Virtualization Vulnerability Allows Escape To Hypervisor Attacks – InformationWeek. Available: http://www.informationweek.com/news/security/app-security/240001996&lt;/p&gt;
+
+&lt;p&gt;[9] S. Chauhan. (2012). Virtualization Security: Hacking VMware with VASTO. Available: http://resources.infosecinstitute.com/virtualization-security&lt;/p&gt;
+
+&lt;p&gt;[10]    OWASP. (2013). Category:OWASP WebGoat Project - OWASP. Available: https://http://www.owasp.org/index.php/Category:OWASP_WebGoat_Project&lt;/p&gt;
+
+&lt;p&gt;[11]    OSA, “SP-011: Cloud Computing Pattern,” ed, 2013.&lt;/p&gt;
+
+&lt;p&gt;[12]    NIST. (2011). Guidelines on Security and Privacy in Public Cloud Computing. Available: http://www.nist.gov/customcf/get_pdf.cfm?pub_id=909494&lt;/p&gt;
+
+&lt;p&gt;[13]    NIST. (2011). NIST Cloud Computing Security Reference Architecture (DRAFT). Available: http://collaborate.nist.gov/twiki-cloud-computing/pub/ &lt;br /&gt;
+CloudComputing/CloudSecurity/NIST_Security_Reference_Architecture_2013.05.15_v1.0.pdf&lt;/p&gt;
+
+&lt;p&gt;[14]    CSA. (2012). Cloud Controls Matrix v1.4 : Cloud Security Alliance. Available: https://cloudsecurityalliance.org/download/cloud-controls-matrix-v1-4&lt;/p&gt;
+
+&lt;p&gt;[15]    B. Damele. (2009). Advanced SQL injection to operating system full control. Available: https://http://www.owasp.org/images/d/dc/AppsecEU09-Damele-A-G-Advanced-SQL-injection-slides.pdf&lt;/p&gt;
+
+&lt;p&gt;[16]    T. Shimeall. (2013). Tactics and Penetration Testing. Available: https://blackboard.andrew.cmu.edu/bbcswebdav/pid-449058-dt-content-rid-3403035_1/xid-3403035_1&lt;/p&gt;
+
+&lt;p&gt;[17]    T. Shimeall. (2013). Web Hacking. Available: https://blackboard.andrew.cmu.edu/bbcswebdav/pid-449052-dt-content-rid-3403026_1/xid-3403026_1&lt;/p&gt;
+
+&lt;p&gt;[18]    T. Shimeall. (2013). Strategy. Available: https://blackboard.andrew.cmu.edu/bbcswebdav/pid-449058-dt-content-rid-3403035_1/xid-3403035_1&lt;/p&gt;
+
+&lt;p&gt;[19]    NIST. (2008). Volume I: Guide for Mapping Types of Information and Information Systems to Security Categories. Available: http://csrc.nist.gov/publications/nistpubs/800-60-rev1/SP800-60_Vol1-Rev1.pdf&lt;/p&gt;
+
+&lt;p&gt;[20]    NIST. (2006). Minimum Security Requirements for Federal Information and Information Systems Available: http://csrc.nist.gov/publications/fips/fips200/FIPS-200-final-march.pdf&lt;/p&gt;
+
+&lt;p&gt;[21]    NIST. (2013). NIST Cloud Computing Reference Architecture Cloud Service Metrics Description. Available: http://collaborate.nist.gov/twiki-cloud-computing/pub/CloudComputing/RATax_CloudMetrics_WAs_Docs/RATAX-CloudServiceMetricsDescription-DRAFT-20130621.pdf&lt;/p&gt;
+
+&lt;p&gt;[22]    SAFECode. (2012). Practical Security Stories and Security Tasks for Agile Development Environments. Available: http://www.safecode.org/publications/SAFECode_Agile_Dev_Security0712.pdf&lt;/p&gt;
+
+&lt;p&gt;[23]    J. Rockwood, “Choose Your Weapon Wisely: A handbook for determining the right software development method best suited for your team, client, and project (Independent Study Paper). Pittsburgh, PA: School of Computer Science, Carnegie Mellon University,” 2011.&lt;/p&gt;
+
+&lt;p&gt;[24]    H. Kniberg. (2007). Scrum and XP from the Tenches - How we do Scrum. Available: http://infoq.com/minibooks/scrum-xpfrom-the-trenches&lt;/p&gt;
+
+&lt;p&gt;[25]    M. Hüttermann, Agile ALM : lightweight tools and Agile strategies. Shelter Island, N.Y.: Manning, 2012.&lt;/p&gt;
+
+&lt;p&gt;[26]    SecurityNinja. (2009). Secure Development. Available: http://www.securityninja.co.uk/secure-development&lt;/p&gt;
+
+&lt;p&gt;[27]    OWASP. (2013). Projects/OWASP Java Encoder Project - OWASP. Available: https://http://www.owasp.org/index.php/Projects/OWASP_Java_Encoder_Project&lt;/p&gt;
+
+&lt;p&gt;[28]    OWASP, “Category:OWASP Enterprise Security API - OWASP,” ed, 2013.&lt;/p&gt;
+
+&lt;p&gt;[29]    D. Cornell. (2013). Web application testing: The difference between black, gray and white box testing. Available: http://searchsoftwarequality.techtarget.com/tip/Web-application-testing-The-difference-between-black-gray-and-white-box-testing&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-6/&quot;&gt;Public Cloud for Corporate Web Applications - Part 6&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on August 10, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Public Cloud for Corporate Web Applications - Part 5]]></title>
+ <link rel="alternate" type="text/html" href="/public-cloud-for-corporate-web-applications-part-5/" />
+  <id>/public-cloud-for-corporate-web-applications-part-5</id>
+  <updated>2013-08-07 20:33:22 -0400T00:00:00-00:00</updated>
+  <published>2013-08-07T00:00:00-04:00</published>
+  
+  <author>
+    <name>Narayanan Raghavan</name>
+    <uri></uri>
+    <email>naruraghavan@icloud.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-4&quot;&gt;&lt;strong&gt;Part 4&lt;/strong&gt;&lt;/a&gt;, lets start exploring the Secure Development Practices in this post.&lt;/p&gt;
+
+&lt;h3 id=&quot;c--employing-secure-development-practices&quot;&gt;C.  Employing Secure Development Practices&lt;/h3&gt;
+
+&lt;p&gt;Establishing a set of security libraries to do input and output validation, error handling, authentication and authorization, session management, secure resource access, secure communications, and secure storage [26] will help implement several security controls when moving to the cloud. Using a standard library will help contain the proliferation of inconsistent security implementations across teams for some known vulnerabilities. For example, OWASP Java Encoder library [27] could be used to implement secure coding requirements such as input and output validation and combat against a whole host of vulnerabilities such as cross-site scripting (XSS), SQL injection attacks etc.&lt;/p&gt;
+
+&lt;h4 id=&quot;input-validation&quot;&gt;1)  Input Validation&lt;/h4&gt;
+
+&lt;p&gt;Developers have to ensure that the data received is a valid input for the software component in question. There are four techniques to make sure that the data received is valid as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Whitelisting input&lt;/p&gt;
+
+    &lt;p&gt;Using this technique, the developer defines a set of known input values. For example, a regular expression used for whitelisting an email address as input could be: &lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;Boolean isGoodEmail = Pattern.matches(email,”^([a-zA-Z0-9_-.]+)@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.)|(([a-zA-Z0-9-]+.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(]?)$”);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Blacklisting input
+Based on some known vulnerabilities, the developer could actively check for combinations of characters that are usually signs of cross-site scripting and remove them as follows:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;String clean_input = bad_input.replaceAll(Pattern.quote(“’”));&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Canonicalization of Input
+Canonicalization is an operation by which the input (that could have been encoded by a malicious user to send scripts via input parameters) is reduced down to its simple form. &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;String canonicalized_input = ESAPI.canonicalize(input);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Encoding/Escaping of Input
+OWASP has published a library of Java methods [27, 28] to successfully encode or escape input data so that the input doesn’t contain any commands/scripts in them. For example, to ensure that there is no SQL scripting in the input, one could use the ESAPI as follows:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;String db_query_input = ESAPI.encodeForSQL(DB2_Codec, input);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;In the above code, by using the right codec for a database such as MySQLCodec, OracleCodec etc., the developer could potentially combat against SQL Injection Attacks. By maintaining a parameter-mapping table as shown below, a developer could apply necessary techniques to properly validate the input data.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/parameter-specs-for-input-validation.png&quot; alt=&quot;Parameter Specs for Input Validation&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;output-validation&quot;&gt;2)  Output Validation&lt;/h4&gt;
+
+&lt;p&gt;Cross-site scripting attacks originate through poorly validated output of a web application. Attackers often use this technique to orchestrate phishing attacks and extract valuable information from unsuspecting end user. Depending upon where the output is going to end up on a web page, developers have to choose the correct encoding technique. For example, if the output is going to end up as a URL, the output has to be encoded with URL special characters such as “?” and “&amp;amp;” etc. These characters have to be properly encoded with “%”. Once again, developers must start with a parameter table as follows:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/parameter-specs-for-output-validation.png&quot; alt=&quot;Parameter Specs for Output Validation&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;By using ESAPI (or a similar framework), encode the output as follows:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;String safe_output_url = ESAPI.encodeForURL(output);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;By the same token, output destined to go within the body of the web page, use the following technique:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;String safe_output_html = ESAPI.encodeForHTML(output);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Using the above technique, the “output” will be properly encoded to convert special HTML characters such as “&amp;lt;” to “&amp;lt;” etc. &lt;/p&gt;
+
+&lt;p&gt;On a similar note, other than URL (PercentCodec) and HTML (HTMLCodec) encoding techniques, there are&lt;/p&gt;
+
+&lt;p&gt;JavaScriptCodec, CSSCodec, and VBScriptCodec etc. to encode the output to go within a JavaScript, CSS, or VBScript.&lt;/p&gt;
+
+&lt;h5 id=&quot;a--why-do-we-need-to-do-input-validation-at-the-server-side&quot;&gt;a)  Why do we need to do input validation at the server side?&lt;/h5&gt;
+&lt;p&gt;Relying on client-side input validation is not recommended. By setting up a proxy such as WebScarab or BurpSuite etc., an attacker can easily bypass client-side validation completely as shown in the screenshot below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/modification-of-input-using-webscarab.png&quot; alt=&quot;Modification of Input using WebScarab&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Using these client-side proxy tools, an attacker will be able modify the HTTP header variables, change the values of query parameters, and add new query parameters if necessary. Therefore, it is not enough to just rely on client-side validations.&lt;/p&gt;
+
+&lt;h4 id=&quot;error-handling&quot;&gt;3)  Error Handling&lt;/h4&gt;
+
+&lt;p&gt;This is the most important step a developer has to pay special attention to. Attackers formulate and fine-tune their attack vectors by inducing error conditions and see how the web application reacts to those errors. When an error is not properly handled, oftentimes, the error message gets displayed on the web page. These error messages provide vital clues to the attackers as to the type of operating system, database, web server, application server, and authentication server that the web application uses or is built with. For example, ESAPI has several predefined exceptions that can be thrown and handled in the code. Some of the exceptions include EncodingException, IntrusionException, and EnterpriseSecurityException etc.&lt;/p&gt;
+
+&lt;h4 id=&quot;secure-storage&quot;&gt;4)  Secure Storage&lt;/h4&gt;
+
+&lt;p&gt;As discussed in the responsibility chart of various cloud actors, securing the storage of certain sensitive information such as password, credit card numbers, personal identification number (PIN) etc. falls under the cloud consumer’s responsibility. Therefore, the development team from the consumer side has to ensure that appropriate techniques such as one-way hashing, encryption of sensitive information are performed in an effective manner. There are several industrial strength cryptographic packages available such as Java Cryptographic Extension (JCE), Bouncy Castle etc. that the development team could easily incorporate into their code to enable secure storage of sensitive information on the cloud.&lt;/p&gt;
+
+&lt;p&gt;For example, ESAPI provides Java methods that enable users to either hash or encrypt sensitive information. The difference is that hashed information cannot be decrypted and is ideal for password storage. On the other hand, encrypted data can be decrypted using a key and this technique is useful for securing the other sensitive information such as credit card numbers etc. &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;String hashed_password = ESAPI.hash(plaintext_password, salt);
+String encrypted_credit_card = ESAPI.encrypt(plaintext_cc);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;What is interesting to note is the use of “salt” in the above hashing code. A salt is used as an additional input to a one-way hash function to strengthen the randomness of the resulting ciphertext. A good “salt” will combat against dictionary attacks and rainbow-table attacks. Since the hashes are randomized effectively by the use of the salt, the attackers are forced to change the dictionary/table constantly for comparison.&lt;/p&gt;
+
+&lt;p&gt;A similar technique must be employed to securely store property files. The property files are used in almost all of the layers and partitions of a web application. &lt;/p&gt;
+
+&lt;h4 id=&quot;secure-communications&quot;&gt;5)  Secure Communications&lt;/h4&gt;
+
+&lt;p&gt;Web pages that take any type of sensitive information, as input must be sent over a secure communication layer such as Transport Layer Security (TLS) or the Secured Socket Layer (SSL). When using SSL, the use of SSLv3 is recommended over SSLv2, as SSLv2 is not considered secure. &lt;/p&gt;
+
+&lt;p&gt;By following these security principles along with a pre-fabricated security library such as ESAPI [28], developers can exercise secure coding practices and successfully contribute towards implementing the security controls that the cloud consumer is responsible for.  &lt;/p&gt;
+
+&lt;p&gt;I’ll contiunue my discussion in the next post.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;[1] NIST. (2011). The NIST Definition of Cloud Computing. Available: http://csrc.nist.gov/publications/nistpubs/800-145/SP800-145.pdf&lt;/p&gt;
+
+&lt;p&gt;[2] B. Lyons. (2011). Applying a Holistic Defense-in-Depth approach to the Cloud. Available: http://www.niksun.com/presentations/day1/NIKSUN_WWSMC_July25_BarryLyons.pdf&lt;/p&gt;
+
+&lt;p&gt;[3] NIST. (2011). NIST Cloud Computing Reference Architecture. Available: http://www.nist.gov/customcf/get_pdf.cfm?pub_id=909505&lt;/p&gt;
+
+&lt;p&gt;[4] CSA. (2011). Security Guidance for Critical Areas of Focus in Cloud Computing V3.0 : Cloud Security Alliance. Available: https://cloudsecurityalliance.org/download/security-guidance-for-critical-areas-of-focus-in-cloud-computing-v3&lt;/p&gt;
+
+&lt;p&gt;[5] A. Desai. (2011). What is virtual machine (VM)? - Definition from WhatIs.com. Available: http://searchservervirtualization.techtarget.com/definition/virtual-machine&lt;/p&gt;
+
+&lt;p&gt;[6] CSA. (2013). The Notorious Nine: Cloud Computing Top Threats in 2013 : Cloud Security Alliance. Available: https://cloudsecurityalliance.org/download/the-notorious-nine-cloud-computing-top-threats-in-2013&lt;/p&gt;
+
+&lt;p&gt;[7] Y. Zhang, A. Juels, M. K. Reiter, and T. Ristenpart. (2012). Cross-VM side channels and their use to extract private keys. Available: http://doi.acm.org/10.1145/2382196.2382230&lt;/p&gt;
+
+&lt;p&gt;[8] M. Schwartz. (2012). New Virtualization Vulnerability Allows Escape To Hypervisor Attacks – InformationWeek. Available: http://www.informationweek.com/news/security/app-security/240001996&lt;/p&gt;
+
+&lt;p&gt;[9] S. Chauhan. (2012). Virtualization Security: Hacking VMware with VASTO. Available: http://resources.infosecinstitute.com/virtualization-security&lt;/p&gt;
+
+&lt;p&gt;[10]    OWASP. (2013). Category:OWASP WebGoat Project - OWASP. Available: https://http://www.owasp.org/index.php/Category:OWASP_WebGoat_Project&lt;/p&gt;
+
+&lt;p&gt;[11]    OSA, “SP-011: Cloud Computing Pattern,” ed, 2013.&lt;/p&gt;
+
+&lt;p&gt;[12]    NIST. (2011). Guidelines on Security and Privacy in Public Cloud Computing. Available: http://www.nist.gov/customcf/get_pdf.cfm?pub_id=909494&lt;/p&gt;
+
+&lt;p&gt;[13]    NIST. (2011). NIST Cloud Computing Security Reference Architecture (DRAFT). Available: http://collaborate.nist.gov/twiki-cloud-computing/pub/ &lt;br /&gt;
+CloudComputing/CloudSecurity/NIST_Security_Reference_Architecture_2013.05.15_v1.0.pdf&lt;/p&gt;
+
+&lt;p&gt;[14]    CSA. (2012). Cloud Controls Matrix v1.4 : Cloud Security Alliance. Available: https://cloudsecurityalliance.org/download/cloud-controls-matrix-v1-4&lt;/p&gt;
+
+&lt;p&gt;[15]    B. Damele. (2009). Advanced SQL injection to operating system full control. Available: https://http://www.owasp.org/images/d/dc/AppsecEU09-Damele-A-G-Advanced-SQL-injection-slides.pdf&lt;/p&gt;
+
+&lt;p&gt;[16]    T. Shimeall. (2013). Tactics and Penetration Testing. Available: https://blackboard.andrew.cmu.edu/bbcswebdav/pid-449058-dt-content-rid-3403035_1/xid-3403035_1&lt;/p&gt;
+
+&lt;p&gt;[17]    T. Shimeall. (2013). Web Hacking. Available: https://blackboard.andrew.cmu.edu/bbcswebdav/pid-449052-dt-content-rid-3403026_1/xid-3403026_1&lt;/p&gt;
+
+&lt;p&gt;[18]    T. Shimeall. (2013). Strategy. Available: https://blackboard.andrew.cmu.edu/bbcswebdav/pid-449058-dt-content-rid-3403035_1/xid-3403035_1&lt;/p&gt;
+
+&lt;p&gt;[19]    NIST. (2008). Volume I: Guide for Mapping Types of Information and Information Systems to Security Categories. Available: http://csrc.nist.gov/publications/nistpubs/800-60-rev1/SP800-60_Vol1-Rev1.pdf&lt;/p&gt;
+
+&lt;p&gt;[20]    NIST. (2006). Minimum Security Requirements for Federal Information and Information Systems Available: http://csrc.nist.gov/publications/fips/fips200/FIPS-200-final-march.pdf&lt;/p&gt;
+
+&lt;p&gt;[21]    NIST. (2013). NIST Cloud Computing Reference Architecture Cloud Service Metrics Description. Available: http://collaborate.nist.gov/twiki-cloud-computing/pub/CloudComputing/RATax_CloudMetrics_WAs_Docs/RATAX-CloudServiceMetricsDescription-DRAFT-20130621.pdf&lt;/p&gt;
+
+&lt;p&gt;[22]    SAFECode. (2012). Practical Security Stories and Security Tasks for Agile Development Environments. Available: http://www.safecode.org/publications/SAFECode_Agile_Dev_Security0712.pdf&lt;/p&gt;
+
+&lt;p&gt;[23]    J. Rockwood, “Choose Your Weapon Wisely: A handbook for determining the right software development method best suited for your team, client, and project (Independent Study Paper). Pittsburgh, PA: School of Computer Science, Carnegie Mellon University,” 2011.&lt;/p&gt;
+
+&lt;p&gt;[24]    H. Kniberg. (2007). Scrum and XP from the Tenches - How we do Scrum. Available: http://infoq.com/minibooks/scrum-xpfrom-the-trenches&lt;/p&gt;
+
+&lt;p&gt;[25]    M. Hüttermann, Agile ALM : lightweight tools and Agile strategies. Shelter Island, N.Y.: Manning, 2012.&lt;/p&gt;
+
+&lt;p&gt;[26]    SecurityNinja. (2009). Secure Development. Available: http://www.securityninja.co.uk/secure-development&lt;/p&gt;
+
+&lt;p&gt;[27]    OWASP. (2013). Projects/OWASP Java Encoder Project - OWASP. Available: https://http://www.owasp.org/index.php/Projects/OWASP_Java_Encoder_Project&lt;/p&gt;
+
+&lt;p&gt;[28]    OWASP, “Category:OWASP Enterprise Security API - OWASP,” ed, 2013.&lt;/p&gt;
+
+&lt;p&gt;[29]    D. Cornell. (2013). Web application testing: The difference between black, gray and white box testing. Available: http://searchsoftwarequality.techtarget.com/tip/Web-application-testing-The-difference-between-black-gray-and-white-box-testing&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-5/&quot;&gt;Public Cloud for Corporate Web Applications - Part 5&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on August 07, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Public Cloud for Corporate Web Applications - Part 4]]></title>
+ <link rel="alternate" type="text/html" href="/public-cloud-for-corporate-web-applications-part-4/" />
+  <id>/public-cloud-for-corporate-web-applications-part-4</id>
+  <updated>2013-08-01 20:17:31 -0400T00:00:00-00:00</updated>
+  <published>2013-08-01T00:00:00-04:00</published>
+  
+  <author>
+    <name>Narayanan Raghavan</name>
+    <uri></uri>
+    <email>naruraghavan@icloud.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-3&quot;&gt;&lt;strong&gt;Part 3&lt;/strong&gt;&lt;/a&gt;, lets start exploring the Software Engineering for the PaaS Service Model in this post.&lt;/p&gt;
+
+&lt;h3 id=&quot;b--software-engineering-for-the-paas-service-model&quot;&gt;B.  Software Engineering for the PaaS Service Model&lt;/h3&gt;
+
+&lt;p&gt;The software development environment has to lend itself to managing a wide variety of artifacts that emerge from a multitude of software life cycle management activities such as requirements management, change management, configuration management, build management, integration management, release management, and test management in the areas of define, design, code, test, and run [25]. In order to succeed in the security endeavor, there is a greater need to equip the development team with necessary software tools to enable complete tracing from requirements to code releases.&lt;/p&gt;
+
+&lt;p&gt;The following diagram illustrates the overall development environment with tasks organized in terms of Development, QA, Automated, and Security:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/software-engineering-for-paas-service-model.png&quot; alt=&quot;Software Engineering for PaaS Service Model&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;development-aka-scrum-team-tasks&quot;&gt;1)  Development aka. Scrum Team Tasks&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/dev-team-1.png&quot; alt=&quot;&quot; /&gt;Product Owner creates user stories and epics in the Agile Requirements Management Server. Developers, Security experts, and the Scrum master break the user stories and epics into multiple tasks and assign appropriate estimates in terms of story points. One convention that the team could follow is to equate one story point to one ideal man-day – A day of development that can be done when there are no external distractions such as meetings, discussions etc. Based on the team’s velocity, appropriate number of stories is selected to be part of the Sprint. The team along with the security expert determines the number of security-focused stories to be included in the Sprint based on the business requirements. Each story will have a “How to Demo” field populated to assist the QA team in properly testing the various functionalities of the software component.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/dev-team-2.png&quot; alt=&quot;&quot; /&gt;The development team is responsible for periodically checking in/syncing/rebasing their code into the enterprise version control system. The developer as well as the code reviewer must look for the successful completion of static code analysis. The development team is also responsible for setting up and configuring the various life cycle management servers such as the version control system, continuous integration server, dependency management, agile requirements management server etc. From time to time, the development team will also be responsible for peer code reviews, refactoring of code to improve performance and other non-functional architectural requirements. An automated code crawler that reviews the code for vulnerabilities such as OWASP Code Crawler is highly recommended over manual code reviews. Using the “defense in depth” principles, more than one type of code reviews can be done. The first pass could be the automatic code inspection through code crawlers as stated above and the second pass could be a manual code review by a peer or a security expert.&lt;/p&gt;
+
+&lt;h4 id=&quot;qa-team-tasks&quot;&gt;2)  QA Team Tasks&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/qa-team-1.png&quot; alt=&quot;&quot; /&gt;The QA team is responsible for performing the acceptance testing and reporting of the results to the development team. The acceptance testing will include both functionality and security-focused testing according to SAFECode stories. The acceptance testing is typically carried out in the Test Server as shown in the above diagram. The QA team is also responsible for configuring and writing test plans for the automated test server such as Selenium. &lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/qa-team-2.png&quot; alt=&quot;&quot; /&gt;The QA team is also responsible for performing tests against the QA and production environments on the public cloud as shown in the above diagram.&lt;/p&gt;
+
+&lt;h4 id=&quot;security-team-tasks&quot;&gt;3)  Security Team Tasks&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/security-team-1.png&quot; alt=&quot;&quot; /&gt;One of the major tasks of the security team is to train the scrum team on security practices that will successfully implement the stipulated security controls. The security team is also responsible for installing and configuring the necessary static code analysis tools, malware scanners, and code vulnerability scanners that can be automatically run upon on a build. The Continuous Integration Server will not deploy if the successful build failed one of the security tests such as static code analysis etc.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/security-team-2.png&quot; alt=&quot;&quot; /&gt;The security team is also responsible for securing the code deployment to the public cloud in terms of network equipment such as Firewalls, Intrusion Detection Systems etc. There is a need to set up firewall rules in terms of connectivity guidelines from the PaaS service provider such as protocol (HTTPS), ports, time of day restrictions etc.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/security-team-3.png&quot; alt=&quot;&quot; /&gt;The security team has to work with the PaaS broker or provider to set up the necessary SLA and incorporate provisions for security controls as described in the risk management framework section. It is this team’s responsibility to ensure that the “continuous monitoring” strategy is established and followed upon at a time interval stipulated in the SLA.&lt;/p&gt;
+
+&lt;h4 id=&quot;automated-tasks&quot;&gt;4)  Automated Tasks&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/auto-task-1.png&quot; alt=&quot;&quot; /&gt;Establishing a Continuous Integration (CI) Server is well worth the time and money. It makes a lot of sense for the development team to carve some time out to establish a version control system such as Atlassian Stash along with a CI Server (if there are none) with deployment plans such as Test, QA, and Production with appropriate build plans. As can be seen in Figure 16, the CI Server, according to the build/deployment plans setup, checks out the necessary source code from the version control system and executes those plans. Based on the deployment plan, it deploys the software component on Test, QA, or Production server as prescribed.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/auto-task-2.png&quot; alt=&quot;&quot; /&gt;The integration server, such as Atlassian Bamboo, deploys the software component on the Test server. It then notifies the QA team to start the acceptance testing for the software component.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/auto-task-3.png&quot; alt=&quot;&quot; /&gt;The CI Server deploys the software component to the automated test server such as Selenium. The automated tests will also include security-focus tests such as code vulnerability testing, static code analysis, and running of malware scanners. These tools upon successfully completing their tests would notify the QA, security, and development teams with results.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/auto-task-4.png&quot; alt=&quot;&quot; /&gt;The CI Server deploys the software component in the PaaS environment on the public cloud. The deployment could be targeted for either the QA or the production environment. The server notifies the QA team to initiate testing on the QA or production stage.&lt;/p&gt;
+
+&lt;p&gt;I’ll contiunue my discussion in the next post.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;[25]   M. Hüttermann, Agile ALM : lightweight tools and Agile strategies. Shelter Island, N.Y.: Manning, 2012.&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-4/&quot;&gt;Public Cloud for Corporate Web Applications - Part 4&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on August 01, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Public Cloud for Corporate Web Applications - Part 3]]></title>
+ <link rel="alternate" type="text/html" href="/public-cloud-for-corporate-web-applications-part-3/" />
+  <id>/public-cloud-for-corporate-web-applications-part-3</id>
+  <updated>2013-07-21 19:38:52 -0400T00:00:00-00:00</updated>
+  <published>2013-07-21T00:00:00-04:00</published>
+  
+  <author>
+    <name>Narayanan Raghavan</name>
+    <uri></uri>
+    <email>naruraghavan@icloud.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-2&quot;&gt;&lt;strong&gt;Part 2&lt;/strong&gt;&lt;/a&gt;, lets start exploring the usage of the PaaS model in this post.&lt;/p&gt;
+
+&lt;h2 id=&quot;iv-using-the-paas-service-model&quot;&gt;IV. USING THE PAAS SERVICE MODEL&lt;/h2&gt;
+&lt;p&gt;As illustrated in &lt;em&gt;Who Manages What?&lt;/em&gt; in &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-2&quot;&gt;&lt;strong&gt;Part 2&lt;/strong&gt;&lt;/a&gt;, the cloud consumer is responsible for the application and data that are deployed on the platform provided by the cloud agent – namely, the broker or the provider. Therefore, the cloud consumer is responsible for implementing the security controls to secure the application and data. A large number of attacks originate in the application layer especially for web applications. The CSA organizes application security into the following areas of focus [4]:&lt;/p&gt;
+
+&lt;p&gt;A.  Secure Software Development Life Cycle (SSDLC)&lt;br /&gt;
+B.  Authentication, Authorization, Compliance&lt;br /&gt;
+C.  Entitlement Processing and Encryption&lt;br /&gt;
+D.  Application Penetration Testing for the Cloud&lt;br /&gt;
+E.  Monitoring applications in the Cloud&lt;br /&gt;
+F.  Application Authentication, Compliance and the repercussions of multi-tenancy and shared infrastructure&lt;br /&gt;
+G.  Avoiding malicious software&lt;/p&gt;
+
+&lt;p&gt;The following section will delve into two major topics:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Secure application development&lt;/li&gt;
+  &lt;li&gt;Penetration Tests for the cloud environment&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;a--secure-software-development-life-cycle-ssdlc&quot;&gt;A.  Secure Software Development Life Cycle (SSDLC)&lt;/h3&gt;
+&lt;p&gt;A good application security starts early in the software development life cycle. To have a sense of application security throughout the development cycle, it makes a lot of sense to adopt one of the maturity models in the SDLC such as Building Security In Maturity Model (BSIMM), Software Assurance Maturity Model (SAMM), and System Security Engineering Capability Maturity Model (SSE-CMM). &lt;/p&gt;
+
+&lt;p&gt;For the purposes of this paper, we will explore the idea of incorporating security into agile development environments especially in Scrum-based web application software development [22]. &lt;/p&gt;
+
+&lt;h4 id=&quot;agile-scrum--a-quick-introduction&quot;&gt;1)  Agile Scrum – a quick introduction&lt;/h4&gt;
+
+&lt;p&gt;One of the strengths of this process framework is its ability to provide an “early feedback system” thereby an organization building the software can correct its course without spending too much time and money. Since the team developing the software constructs only a portion of the software at a time (a few features at a time), tests them, and deploys them. By deploying in chunks, the organization is able to get a set of early feedback from the marketplace and is able to correct its course.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/scrum-process-flow.png&quot; alt=&quot;Scrum Process Flow&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The following section introduces the various elements of the Scrum process from a 1000-foot view:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The Scrum Team
+    &lt;ul&gt;
+      &lt;li&gt;Scrum Master
+        &lt;ul&gt;
+          &lt;li&gt;Person responsible for the Scrum process, its correct implementation, and the maximization of its benefits.&lt;/li&gt;
+          &lt;li&gt;Not a leader of the team because the team is expected to be self-organizing.&lt;/li&gt;
+          &lt;li&gt;Responsible for removing any impediments between the development team, product owner, and customers.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Product Owner (PO)
+        &lt;ul&gt;
+          &lt;li&gt;A person responsible for managing the product backlog in terms of priority&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Development Team
+        &lt;ul&gt;
+          &lt;li&gt;Scrum team consists of 2-7 developers.&lt;/li&gt;
+          &lt;li&gt;The team makes decisions during the development in conjunction with the product owner.&lt;/li&gt;
+          &lt;li&gt;When there is a need for a bigger team (&amp;gt;7), split them to form multiple teams based on themes or epics.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Artifacts
+    &lt;ul&gt;
+      &lt;li&gt;User Story
+        &lt;ul&gt;
+          &lt;li&gt;A simple descriptive line of the requirement or feature that the PO is after. E.g. “Charge customer’s credit/debit card for the services rendered”.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Epic
+        &lt;ul&gt;
+          &lt;li&gt;A set of user stories. For example, an epic could be about “Online Payment processing”.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Product Backlog
+        &lt;ul&gt;
+          &lt;li&gt;Backlog is a prioritized list of project requirements or user stories or Epics with rough estimates. Estimates are based on story points.
+            &lt;ul&gt;
+              &lt;li&gt;An example of a story point could equate to an ideal man-day where the day is devoid of any external influences so that the developer could concentrate on the task 100%.&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;The list is sorted based on estimates in descending order.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Sprint Backlog
+        &lt;ul&gt;
+          &lt;li&gt;A set of project requirements taken from the product backlog to be worked on during a specific Sprint. &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Scrum Events
+    &lt;ul&gt;
+      &lt;li&gt;Sprint
+        &lt;ul&gt;
+          &lt;li&gt;Sprint is a period of time, a time box, that the team is expected to work on the Sprint backlog.&lt;/li&gt;
+          &lt;li&gt;Typically, 2-4 week sprints are common.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Daily Scrum Meetings
+        &lt;ul&gt;
+          &lt;li&gt;Fifteen minute standup meeting to discuss the following items:
+            &lt;ul&gt;
+              &lt;li&gt;Accomplishments from the last meeting.&lt;/li&gt;
+              &lt;li&gt;What is slated to be done before the next meeting&lt;/li&gt;
+              &lt;li&gt;Any impediments to be removed for project progress.&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Sprint Planning Meetings
+        &lt;ul&gt;
+          &lt;li&gt;PO presents the high priority items to the team&lt;/li&gt;
+          &lt;li&gt;The team decides as to what can or cannot be done during a particular sprint with an action plan document.&lt;/li&gt;
+          &lt;li&gt;Typically, the team attempts to split the user story into multiple tasks at this meeting.&lt;/li&gt;
+          &lt;li&gt;Security-focused stories and tasks are discussed and included.&lt;/li&gt;
+          &lt;li&gt;Sprint Review meeting or Demo
+            &lt;ul&gt;
+              &lt;li&gt;During this meeting, the team demonstrates all the completed features that are part of a sprint.&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;Sprint Retrospective meeting
+            &lt;ul&gt;
+              &lt;li&gt;The team discusses “Lessons learned” during the Sprint.&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;By following the process flow, the development team in conjunction with the Scrum Master and the Product Owner is able to engage in constant communication (informal) to properly handle requirements elicitation/analysis and subsequently the product feature code development and deployment. &lt;/p&gt;
+
+&lt;h4 id=&quot;missing-security-focus-in-agile-scrum&quot;&gt;2)  Missing Security Focus in Agile Scrum&lt;/h4&gt;
+
+&lt;p&gt;Though not a fault of the process framework, the emphasis on quick turn-around of feature implementation doesn’t help either. Since the “Sprints” are typically time-boxed between 2 and 4 weeks, developers often ignore application security controls or put them on the back burner. Since the PO is more interested in shipping the product with a heavy focus on business functionality, there is no step to ensure security controls are put in place by enforcing that the security requirements are captured in the stories and security-focused tasks are performed during the construction and testing phases of each story.&lt;/p&gt;
+
+&lt;h4 id=&quot;securing-the-sdlc-in-agile-scrum&quot;&gt;3)  Securing the SDLC in Agile Scrum&lt;/h4&gt;
+
+&lt;p&gt;As explained in the previous section, the development team constructs a set of user stories at a time (sprint backlog within 2-4 week sprints). To have a constant security awareness, user story after user story and Sprint after Sprint, it makes a lot of sense to have a permanent security-focused member on the team as shown in the following diagram – adapted from [24]:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/scrum-team-organization.png&quot; alt=&quot;Scrum Team Organization&quot; /&gt;&lt;br /&gt;
+&lt;sub&gt;* T – member with testing skills; S – member with Security skills&lt;/sub&gt;&lt;/p&gt;
+
+&lt;p&gt;Along with regular functionality testing, the QA team can also test for security issues and send the release back to the development team for fixes as shown in the diagram below – adapted from [24]:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A portion of the Sprint is dedicated to implementing SAFECode stories
+    &lt;ul&gt;
+      &lt;li&gt;This can be accomplished by adjusting the focus factor if the PO and the stakeholders don’t fully understand the security implications.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;A portion of bug-fixes address security vulnerabilities found during QA testing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sprint-release-engineering-with-acceptance-testing.png&quot; alt=&quot;Sprint Release Engineering with Acceptance Testing&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The responsibility of the team member will entail the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Conduct security analysis of all product features in the Sprint backlog
+    &lt;ul&gt;
+      &lt;li&gt;Conduct a threat model for each user story&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Security aspects to be considered, including but not limited to policy/compliance, legal, contractual, regulatory, and other security-related requirements&lt;/li&gt;
+  &lt;li&gt;Notify the PO of the security requirements in the Sprint planning meeting
+    &lt;ul&gt;
+      &lt;li&gt;Engage the Scrum master to work with legal and other departments to ensure security obligations are properly met.&lt;/li&gt;
+      &lt;li&gt;Adjust the story points of the stories/epics accordingly&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;User stories that have security implications would need to have additional tasks defined to cater to the implementation of security controls.&lt;/li&gt;
+  &lt;li&gt;Ensure that the Sprint doesn’t collect “Security Debt” [22] as a team
+    &lt;ul&gt;
+      &lt;li&gt;If the application has to ship with some security debt, ensure that the relevant stakeholders understand the risks and sign off on them&lt;/li&gt;
+      &lt;li&gt;Undone security tasks must go on the product backlog, so they can be included in one of the future Sprints.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;safecode-guidelines-for-the-scrum-team&quot;&gt;4)  SAFECode guidelines for the Scrum team&lt;/h4&gt;
+
+&lt;p&gt;SAFECode has defined a set of 36 security-focused stories with a breakdown of technical tasks that go along with each story. These stories are meant for the development and QA teams. One of the stories from the SAFECode guidelines is shown below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/safecode-security-focused-story.png&quot; alt=&quot;SAFECode Security-focused Story&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;safecode-guidelines-for-the-scrum-team-as-software-maintenance-tasks&quot;&gt;5)  SAFECode guidelines for the Scrum team as software maintenance tasks&lt;/h4&gt;
+
+&lt;p&gt;The idea here is to periodically run static code analysis tools, vulnerability scanners, and automated malware scanners during build/release cycles and fix the reported high-priority issues reported by those tools. Some of the guidelines provided by SAFECode are shown below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/safecode-guidelines-for-software-maintenace.png&quot; alt=&quot;SAFECode Guidelines for Software Maintenance&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It is also important to allocate time to do “code reviews” of riskier codes. SAFECode provides the definition of riskier code as follows:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/safecode-categorization-of-riskier-code.png&quot; alt=&quot;SAFECode Guidelines for Security Experts&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As shown in the previous sections, the Agile Scrum process could be made secure. The PO has to have visibility into these security tasks, as performing some of these security-focused tasks would impact the team’s velocity. In order for the SDLC to be secure and to ensure that the product that is put out Sprint after Sprint is secure, the team needs support from all the stakeholders especially from the line of business managers, IT functional managers, Chief Information Officer (CIO), Chief Information Security Officer (CISO), and in some cases the support of the Chief Executive Officer (CEO). &lt;/p&gt;
+
+&lt;p&gt;I’ll contiunue my discussion in the next post.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;[11]    OSA, “SP-011: Cloud Computing Pattern,” ed, 2013.&lt;/p&gt;
+
+&lt;p&gt;[12]    NIST. (2011). Guidelines on Security and Privacy in Public Cloud Computing. Available: http://www.nist.gov/customcf/get_pdf.cfm?pub_id=909494&lt;/p&gt;
+
+&lt;p&gt;[13]    NIST. (2011). NIST Cloud Computing Security Reference Architecture (DRAFT). Available: http://collaborate.nist.gov/twiki-cloud-computing/pub/CloudComputing/CloudSecurity/ &lt;br /&gt;
+NIST_Security_Reference_Architecture_2013.05.15_v1.0.pdf&lt;/p&gt;
+
+&lt;p&gt;[14]    CSA. (2012). Cloud Controls Matrix v1.4 : Cloud Security Alliance. Available: https://cloudsecurityalliance.org/download/cloud-controls-matrix-v1-4&lt;/p&gt;
+
+&lt;p&gt;[15]    B. Damele. (2009). Advanced SQL injection to operating system full control. Available: https://http://www.owasp.org/images/d/dc/AppsecEU09-Damele-A-G-Advanced-SQL-injection-slides.pdf&lt;/p&gt;
+
+&lt;p&gt;[16]    T. Shimeall. (2013). Tactics and Penetration Testing. Available: https://blackboard.andrew.cmu.edu/bbcswebdav/pid-449058-dt-content-rid-3403035_1/xid-3403035_1&lt;/p&gt;
+
+&lt;p&gt;[17]    T. Shimeall. (2013). Web Hacking. Available: https://blackboard.andrew.cmu.edu/bbcswebdav/pid-449052-dt-content-rid-3403026_1/xid-3403026_1&lt;/p&gt;
+
+&lt;p&gt;[18]    T. Shimeall. (2013). Strategy. Available: https://blackboard.andrew.cmu.edu/bbcswebdav/pid-449058-dt-content-rid-3403035_1/xid-3403035_1&lt;/p&gt;
+
+&lt;p&gt;[19]    NIST. (2008). Volume I: Guide for Mapping Types of Information and Information Systems to Security Categories. Available: http://csrc.nist.gov/publications/nistpubs/800-60-rev1/SP800-60_Vol1-Rev1.pdf&lt;/p&gt;
+
+&lt;p&gt;[20]    NIST. (2006). Minimum Security Requirements for Federal Information and Information Systems Available: http://csrc.nist.gov/publications/fips/fips200/FIPS-200-final-march.pdf&lt;/p&gt;
+
+&lt;p&gt;[21]    NIST. (2013). NIST Cloud Computing Reference Architecture Cloud Service Metrics Description. Available: http://collaborate.nist.gov/twiki-cloud-computing/pub/CloudComputing/RATax_CloudMetrics_WAs_Docs/RATAX-CloudServiceMetricsDescription-DRAFT-20130621.pdf&lt;/p&gt;
+
+&lt;p&gt;[22]    SAFECode. (2012). Practical Security Stories and Security Tasks for Agile Development Environments. Available: http://www.safecode.org/publications/SAFECode_Agile_Dev_Security0712.pdf&lt;/p&gt;
+
+&lt;p&gt;[23]    J. Rockwood, “Choose Your Weapon Wisely: A handbook for determining the right software development method best suited for your team, client, and project (Independent Study Paper). Pittsburgh, PA: School of Computer Science, Carnegie Mellon University,” 2011.&lt;/p&gt;
+
+&lt;p&gt;[24]    H. Kniberg. (2007). Scrum and XP from the Tenches - How we do Scrum. Available: http://infoq.com/minibooks/scrum-xpfrom-the-trenches&lt;/p&gt;
+
+&lt;p&gt;[25]    M. Hüttermann, Agile ALM : lightweight tools and Agile strategies. Shelter Island, N.Y.: Manning, 2012.&lt;/p&gt;
+
+&lt;p&gt;[26]    SecurityNinja. (2009). Secure Development. Available: http://www.securityninja.co.uk/secure-development&lt;/p&gt;
+
+&lt;p&gt;[27]    OWASP. (2013). Projects/OWASP Java Encoder Project - OWASP. Available: https://http://www.owasp.org/index.php/Projects/OWASP_Java_Encoder_Project&lt;/p&gt;
+
+&lt;p&gt;[28]    OWASP, “Category:OWASP Enterprise Security API - OWASP,” ed, 2013.&lt;/p&gt;
+
+&lt;p&gt;[29]    D. Cornell. (2013). Web application testing: The difference between black, gray and white box testing. Available: http://searchsoftwarequality.techtarget.com/tip/Web-application-testing-The-difference-between-black-gray-and-white-box-testing&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-3/&quot;&gt;Public Cloud for Corporate Web Applications - Part 3&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on July 21, 2013.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Public Cloud for Corporate Web Applications - Part 2]]></title>
+ <link rel="alternate" type="text/html" href="/public-cloud-for-corporate-web-applications-part-2/" />
+  <id>/public-cloud-for-corporate-web-applications-part-2</id>
+  <updated>2014-07-14 13:21:05 -0400T00:00:00-00:00</updated>
+  <published>2013-07-14T00:00:00-04:00</published>
+  
+  <author>
+    <name>Narayanan Raghavan</name>
+    <uri></uri>
+    <email>naruraghavan@icloud.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-1&quot;&gt;&lt;strong&gt;Part 1&lt;/strong&gt;&lt;/a&gt;, lets start exploring the risk management framework for  a little more in this post.&lt;/p&gt;
+
+&lt;h2 id=&quot;iii----risk-management-framework&quot;&gt;III.    RISK MANAGEMENT FRAMEWORK&lt;/h2&gt;
+&lt;p&gt;Since the actors, outlined in &lt;strong&gt;Part 1 - Roles and Responsibilities&lt;/strong&gt;, have varying degrees of ownership and influence in the cloud space, establishing security controls becomes a shared or split responsibility among the actors. From the cloud consumer’s angle, security should not be an impediment to embracing public cloud solutions. With that idea in mind, the risk management framework provides a step-by-step approach to identifying and documenting risks in general and validating as to what are acceptable risks to a consumer in relation to the compliance model, so that the cloud consumer can place a level of confidence in moving all the acceptable web applications/systems to the public cloud. &lt;/p&gt;
+
+&lt;p&gt;The following diagram shows the NIST’s cloud-adapted risk management framework (CRMF)[13]:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/cloud-adapted-risk-management-framework.png&quot; alt=&quot;Cloud-adapted Risk Management Framework&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;categorize-information-systems&quot;&gt;1)  Categorize Information Systems&lt;/h4&gt;
+&lt;p&gt;This step enables organizations to consistently map the security impact levels to the types of information and information systems. The type of information includes private, confidential, sensitive etc. The type of information systems includes mission critical, mission support etc. An information system processes one or more information types as input, output, and/or for internal needs.&lt;/p&gt;
+
+&lt;p&gt;The security objectives and the potential losses for information and information systems could be broadly classified in terms of the classical security goals as follows [19]:&lt;/p&gt;
+
+&lt;h5 id=&quot;a--confidentiality&quot;&gt;a)  Confidentiality&lt;/h5&gt;
+&lt;p&gt;A loss of confidentiality is the unauthorized disclosure of information.&lt;/p&gt;
+
+&lt;h5 id=&quot;b--integrity&quot;&gt;b)  Integrity&lt;/h5&gt;
+&lt;p&gt;A loss of integrity is the unauthorized modification or destruction of information.&lt;/p&gt;
+
+&lt;h5 id=&quot;c--availability&quot;&gt;c)  Availability&lt;/h5&gt;
+&lt;p&gt;A loss of availability is the disruption of access to or use of information or information systems.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Potential impact to an organization in case of a security breach could be modeled in terms of low, medium, and high ratings. &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h5 id=&quot;a--low-impact&quot;&gt;a)  Low Impact&lt;/h5&gt;
+&lt;p&gt;At this impact level, the loss of confidentiality, integrity, and availability would not impact the primary business objectives of the organization. There will be some degradation in mission capability and minor damage to organizational assets, but this would not stop the organization from meeting its objectives.&lt;/p&gt;
+
+&lt;h5 id=&quot;b--medium-impact&quot;&gt;b)  Medium Impact&lt;/h5&gt;
+&lt;p&gt;At this impact level, the loss of confidentiality, integrity, and availability would impact the primary business objectives of the organization. There will be significant degradation in mission capability and significant damage to organizational assets and/or operations.&lt;/p&gt;
+
+&lt;h5 id=&quot;c--high-impact&quot;&gt;c)  High Impact&lt;/h5&gt;
+&lt;p&gt;At this impact level, the loss of confidentiality, integrity, and availability would severely impact the primary business objectives of the organization. There will be major degradation or loss of mission capability and major damage or loss of organizational assets and/or operations.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;One way to identify information types could be based on the lines of businesses of an organization. For example, lines of businesses could include marketing, sales, manufacturing, R&amp;amp;D, learning &amp;amp; performance, dealer management etc.  &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Since every organization has a set of resource management areas such as information technology &amp;amp; management, human resources management, and financial management, care must be taken to include such resource management functions and their information types as well. For example, some of the information types within the human resources management function could be HR strategy, staff acquisition, employee performance mgmt., employee relation, benefits mgmt., and compensation mgmt., etc.   &lt;/p&gt;
+
+&lt;p&gt;Once the information types and information systems are identified, the next step is to assign potential impact of compromises to confidentiality, integrity, and availability as outlined in the following table:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/categorization-table.png&quot; alt=&quot;Table 1: Categorization&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For example, the information type of an organization’s corporate website for public consumption does not have any confidentiality requirement because everything on the website is for public consumption. Therefore, the security category could be defined in terms of the C/I/A triad as follows:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+
+Security Category_{public information} = \\
+        \{(confidentiality, not applicable), 
+            (integrity, medium), \\
+            (availability, medium)\} 
+          
+&lt;/script&gt;
+
+&lt;p&gt;After assigning security categories to all the information types that belong to a business area or a resource management function, all the information systems that support those functions must be mapped to those information types. This is a required step to aggregate the security category at the information system level. For example, a web-based contract renewal system could process two information types as follows:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+Security Category_{contract information}= \\
+\{(confidentiality,medium),(integrity,medium),(availability,low)\}
+&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+Security Category_{administrative information}= \\
+    \{(confidentiality,low),(integrity,low),(availability,low)\}
+
+&lt;/script&gt;
+
+&lt;p&gt;The resulting aggregate security category for the information system will be the maximum of the above two categories in each of the C/I/A triad as follows:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+Security Category_{web contracts system}= \\
+\{(confidentiality,medium),(integrity,medium),(availability,low)\}
+&lt;/script&gt;
+
+&lt;p&gt;When aggregating security categories, it is also beneficial to understand the context of the information system in relation to other systems – standalone, connected process flow etc. Without understanding the overall context, assignment of security categories could be erroneous.  &lt;/p&gt;
+
+&lt;p&gt;At the end of step 1, categorization of information systems, the organization must have a spreadsheet with all the information systems that are being evaluated for the suitability of moving over to the public cloud. This spreadsheet will contain all web-based information systems and their aggregate security categories mapped to their business area or resource management functional area.  &lt;/p&gt;
+
+&lt;h4 id=&quot;identify-security-requirements&quot;&gt;2)  Identify Security Requirements&lt;/h4&gt;
+&lt;p&gt;NIST defines seventeen security-related areas with regard to protecting the confidentiality, integrity, and availability of information systems and the information processed, stored, and/or transmitted by those systems [20]. Those security-related areas are access control, audit and availability, certification, configuration management, contingency planning, identification and authentication, incident response, maintenance, media protection, physical and environment protection, planning, personnel security, risk assessment, systems and services acquisition, system and communications protection, system and information integrity. &lt;/p&gt;
+
+&lt;p&gt;In the case of PaaS and SaaS, the majority of the selection of the security controls falls under the cloud agents such as the cloud provider, cloud broker, and cloud carrier. These cloud actors are required to address the cloud consumer’s areas of concerns as proposed by the NIST’s Security Reference Architecture [13] as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Risk Management
+    &lt;ul&gt;
+      &lt;li&gt;Risk analysis&lt;/li&gt;
+      &lt;li&gt;Risk Assessments&lt;/li&gt;
+      &lt;li&gt;Vulnerability assessment&lt;/li&gt;
+      &lt;li&gt;Incident reporting and response&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Business Continuity
+    &lt;ul&gt;
+      &lt;li&gt;Disaster recovery plans&lt;/li&gt;
+      &lt;li&gt;Recovery plans&lt;/li&gt;
+      &lt;li&gt;Recovery Point Objective (RPO)&lt;/li&gt;
+      &lt;li&gt;Recovery Time Objective (RTO)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Physical Security
+    &lt;ul&gt;
+      &lt;li&gt;Physical and environmental security policy&lt;/li&gt;
+      &lt;li&gt;Contingency plan&lt;/li&gt;
+      &lt;li&gt;Emergency response plan&lt;/li&gt;
+      &lt;li&gt;Facility layout&lt;/li&gt;
+      &lt;li&gt;Security Infrastructure&lt;/li&gt;
+      &lt;li&gt;Human Resources&lt;/li&gt;
+      &lt;li&gt;Visual inspection of the facility&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;User account termination procedures&lt;/li&gt;
+  &lt;li&gt;Compliance with National and International/Industry standards on security&lt;/li&gt;
+  &lt;li&gt;Transparent view of the security posture of the cloud provider, cloud broker, and the cloud carriers.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The good news is that an organization does not have to spend the time and money to create the combination of security components and how they map to responsibilities of various cloud actors from scratch. The CSA provides a comprehensive cloud control matrix based on the Trusted Cloud Initiative Reference Architecture (TCI-RA) as shown below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/csa-cloud-control-matrix-1-4.png&quot; alt=&quot;Table 2: The CSA Cloud Control Matrix v1.4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This excel sheet can be downloaded from [14]. What is good about this excel sheet is that it spells out the responsibility for establishing security controls among the various cloud actors. The NIST Security Reference Architecture (SRA) has adopted the TCI-RA and has created 346 security components under three different domains such as Business Operation Support Service (BOSS), Information Technology Operation Support (ITOS), and Security and Risk Management (S&amp;amp;RM) and four different service layers such as infrastructure services, information services, application services, and presentation services. Therefore, this is a streamlined, transparent risk management process where the responsibilities are clearly delineated as shown in the table below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/nist-sra-actor-based-responsibility-chart.png&quot; alt=&quot;Table 3: The NIST SRA Actor-based Responsibility Chart&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the above chart, “X” indicates that the respective security component has to be implemented by the actor; “A” indicates that the security component has to be implemented internally; “B” indicates that this is for “business broker only” and there is no direct association with the consumer; blank cell indicates that the security component is not needed for securing the cloud platform. &lt;/p&gt;
+
+&lt;p&gt;There is a mapping of security components from the TCI-RA to the NIST 800-53 family of security controls in the “800-53 Family” column in the spreadsheet. In the above example, &lt;strong&gt;BOSS→ Compliance→Intellectual Property Protection&lt;/strong&gt; is mapped to &lt;strong&gt;Access Control (AC)&lt;/strong&gt;. Similarly, there is a mapping to Awareness and Training (AT) as well.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Using the above methods, we now have a way to map security components to cloud deployment models with an eye towards which actor is responsible for what. &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The question now becomes as to what security components are absolutely needed by the consumer to have a secure move to the public cloud. This is where the combination of the last step – categorize information systems – and the security index system (SIS) comes in.  SIS defines five index values from zero to four as follows [13]:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sis.png&quot; alt=&quot;Table 4: The Security Index System (SIS)&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Based on security category obtained from applying step one, the cloud consumer could go on to applying security index values to all the security components as shown below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/nist-sis-draft.png&quot; alt=&quot;Table 5: NIST SIS (Draft)&quot; /&gt;&lt;br /&gt;
+&lt;sub&gt;* Ag = Aggregate score&lt;/sub&gt;&lt;/p&gt;
+
+&lt;p&gt;By following these steps, all the cloud actors know exactly what security components are needed for the migration and who is responsible for implementing them. This will also give an idea about choosing the right service model (PaaS or SaaS) for the web application in question.&lt;/p&gt;
+
+&lt;p&gt;CSA has a specific gap analysis model where the cloud actors could go about selecting the right set of security components for their cloud platform based on their compliance needs such as Health Insurance Portability and Accountability Act (HIPAA), Payment Card Industry Data Security Standard (PCI DSS), Gramm-Leach-Bliley Act (GLBA), and Sarbanes Oxley (SOX) etc. &lt;/p&gt;
+
+&lt;p&gt;For example, if an organization accepts, captures, stores, transmits, or processes credit/debit card data through one of its e-commerce application, the organization is expected to follow PCI DSS. &lt;/p&gt;
+
+&lt;p&gt;If the organization wants to migrate its application to the public cloud, all the relevant cloud agents – cloud consumer, provider, broker, carrier, and/or auditor – are expected to have all the necessary security components along with the controls in place to support the PCI DSS standard. To conform to PCI DSS standards, the cloud actors have to ensure that the following security components are implemented as follows:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/csa-recommendation-for-pci-dss-on-public-cloud.png&quot; alt=&quot;Table 5: NIST SIS (Draft)&quot; /&gt;&lt;br /&gt;
+&lt;sub&gt;* Merchant = Cloud Consumer; PAN = Personal Access Number&lt;/sub&gt;&lt;/p&gt;
+
+&lt;p&gt;By the same token, similar security requirements can be gathered for HIPAA, GLBA, and SOX.&lt;/p&gt;
+
+&lt;p&gt;At the end of step two, all the relevant cloud actors must know the baseline security controls and any supplemental controls needed due to compliance needs of the cloud consumer. The selection of controls could be based on the in-house technical expertise of the cloud consumer along with its assurance needs.&lt;/p&gt;
+
+&lt;h4 id=&quot;select-the-cloud-ecosystem-architecture&quot;&gt;3)  Select the Cloud Ecosystem Architecture&lt;/h4&gt;
+
+&lt;p&gt;Based on the business requirements and the security requirements outlined in the previous section, a cloud consumer could make a decision to either go with a single cloud provider or a set of cloud providers with the help of a broker as shown in the diagram below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/broker-based-cloud-ecosystem-architecture.png&quot; alt=&quot;Broker-based Cloud Ecosystem Architecture&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Imagine a scenario where a consumer is in need of a web content management solution, a video encoding service so the consumer could post videos across a wide variety of social websites such as Facebook, Twitter etc. and a Web development platform based on the “Spring” framework. In order to avail all of the above services, the cloud consumer might need to seek the help of three different cloud providers as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;Cloud Provider A&lt;/em&gt; – A SaaS-based Web Content Management Solution. E.g. SpringCM&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Cloud Provider B&lt;/em&gt; – A SaaS-based Video Encoding services. E.g. Brightcove&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Cloud Provider C&lt;/em&gt; – A PaaS-based Web development platform based on the Spring Framework. E.g. CloudFoundry.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In order to understand and implement all the security controls required to support the assurance needs, the cloud consumer has to deal with multiple Service Level Agreements (SLA) across the various cloud providers. Depending upon the technical expertise and the number of personnel supporting such efforts, the task of managing multiple SLAs could be daunting. This is where cloud brokers come in. As shown in the above figure, the cloud consumer is only signing one SLA with the broker leaving the entire responsibility of managing the business and security requirements across all of the cloud providers with the broker.&lt;/p&gt;
+
+&lt;h4 id=&quot;assess-the-cloud-services&quot;&gt;4)  Assess the Cloud Services&lt;/h4&gt;
+
+&lt;p&gt;Based on the set of security controls selected in step two and the ecosystem architecture selected in step three, the cloud consumer is well on the way to defining the service level agreement (SLA) with the intended cloud agent(s) – broker or provider(s). The SLA details the levels and types of services that are to be provided, including but not limited to the delivery time and performance parameters. A mind map of an SLA is shown below [13]:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mindmap-of-SLA.png&quot; alt=&quot;The mind map of SLA&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It is the responsibility of the cloud consumer to ensure that default contracts are not accepted when setting up the master service agreements. From a provider’s perspective it may be easy, but the agreement might not capture all of the assurance needs of the consumer.  &lt;/p&gt;
+
+&lt;h4 id=&quot;authorize-cloud-services&quot;&gt;5)  Authorize Cloud Services&lt;/h4&gt;
+
+&lt;p&gt;In this step, the cloud consumer must define a set of metrics that can validate the expectations defined in the service contract as stated in the previous step. The NIST Cloud Service Metrics document [21] defines a set of metrics for cloud services. An example is as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Service Availability – Percentage of uptime of resource over a period of time where:
+&lt;script type=&quot;math/tex&quot;&gt;
+Service\_Uptime\_Percentage = \frac{Qualified\_Uptime\_Total}{Observation\_Time\_Total} \times 100
+&lt;/script&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;For example, the SLA could state that the objective of the service availability metric to be: &lt;script type=&quot;math/tex&quot;&gt; Service\_Uptime\_Percentage=99\% &lt;/script&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A similar set of metrics must be defined in advance to ensure a proper delivery of services by the cloud brokers/providers. For example, “the number of concurrent users and the response time of the platform/service” could be one of the metrics.&lt;/p&gt;
+
+&lt;h4 id=&quot;monitor-the-services-provided&quot;&gt;6)  Monitor the services provided&lt;/h4&gt;
+
+&lt;p&gt;This is the crucial step to ensuring that the security controls that have been put in place as a part of securing the cloud service are functioning as intended and maintain the necessary security posture. Continuous monitoring enables the cloud agents to supplement security controls in case there is a need. A strategy for continuous monitoring could define as to how security and privacy controls will be monitored over time as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Frequency of monitoring activities&lt;/li&gt;
+  &lt;li&gt;Rigor and extent of monitoring activities&lt;/li&gt;
+  &lt;li&gt;Data feeds to be provided to the consumer&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The continuous monitoring strategy allows the consumer to see whether the SLA terms are met on an ongoing basis. &lt;/p&gt;
+
+&lt;p&gt;Together, these six steps must be able to prepare an organization to successfully move to the public cloud for their Web application needs. &lt;/p&gt;
+
+&lt;p&gt;I’ll contiunue my discussion in the next post.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;[11]    OSA, “SP-011: Cloud Computing Pattern,” ed, 2013.&lt;/p&gt;
+
+&lt;p&gt;[12]    NIST. (2011). Guidelines on Security and Privacy in Public Cloud Computing. Available: http://www.nist.gov/customcf/get_pdf.cfm?pub_id=909494&lt;/p&gt;
+
+&lt;p&gt;[13]    NIST. (2011). NIST Cloud Computing Security Reference Architecture (DRAFT). Available: http://collaborate.nist.gov/twiki-cloud-computing/pub/CloudComputing/CloudSecurity/ &lt;br /&gt;
+NIST_Security_Reference_Architecture_2013.05.15_v1.0.pdf&lt;/p&gt;
+
+&lt;p&gt;[14]    CSA. (2012). Cloud Controls Matrix v1.4 : Cloud Security Alliance. Available: https://cloudsecurityalliance.org/download/cloud-controls-matrix-v1-4&lt;/p&gt;
+
+&lt;p&gt;[15]    B. Damele. (2009). Advanced SQL injection to operating system full control. Available: https://http://www.owasp.org/images/d/dc/AppsecEU09-Damele-A-G-Advanced-SQL-injection-slides.pdf&lt;/p&gt;
+
+&lt;p&gt;[16]    T. Shimeall. (2013). Tactics and Penetration Testing. Available: https://blackboard.andrew.cmu.edu/bbcswebdav/pid-449058-dt-content-rid-3403035_1/xid-3403035_1&lt;/p&gt;
+
+&lt;p&gt;[17]    T. Shimeall. (2013). Web Hacking. Available: https://blackboard.andrew.cmu.edu/bbcswebdav/pid-449052-dt-content-rid-3403026_1/xid-3403026_1&lt;/p&gt;
+
+&lt;p&gt;[18]    T. Shimeall. (2013). Strategy. Available: https://blackboard.andrew.cmu.edu/bbcswebdav/pid-449058-dt-content-rid-3403035_1/xid-3403035_1&lt;/p&gt;
+
+&lt;p&gt;[19]    NIST. (2008). Volume I: Guide for Mapping Types of Information and Information Systems to Security Categories. Available: http://csrc.nist.gov/publications/nistpubs/800-60-rev1/SP800-60_Vol1-Rev1.pdf&lt;/p&gt;
+
+&lt;p&gt;[20]    NIST. (2006). Minimum Security Requirements for Federal Information and Information Systems Available: http://csrc.nist.gov/publications/fips/fips200/FIPS-200-final-march.pdf&lt;/p&gt;
+
+&lt;p&gt;[21]    NIST. (2013). NIST Cloud Computing Reference Architecture Cloud Service Metrics Description. Available: http://collaborate.nist.gov/twiki-cloud-computing/pub/CloudComputing/RATax_CloudMetrics_WAs_Docs/RATAX-CloudServiceMetricsDescription-DRAFT-20130621.pdf&lt;/p&gt;
+
+&lt;p&gt;[22]    SAFECode. (2012). Practical Security Stories and Security Tasks for Agile Development Environments. Available: http://www.safecode.org/publications/SAFECode_Agile_Dev_Security0712.pdf&lt;/p&gt;
+
+&lt;p&gt;[23]    J. Rockwood, “Choose Your Weapon Wisely: A handbook for determining the right software development method best suited for your team, client, and project (Independent Study Paper). Pittsburgh, PA: School of Computer Science, Carnegie Mellon University,” 2011.&lt;/p&gt;
+
+&lt;p&gt;[24]    H. Kniberg. (2007). Scrum and XP from the Tenches - How we do Scrum. Available: http://infoq.com/minibooks/scrum-xpfrom-the-trenches&lt;/p&gt;
+
+&lt;p&gt;[25]    M. Hüttermann, Agile ALM : lightweight tools and Agile strategies. Shelter Island, N.Y.: Manning, 2012.&lt;/p&gt;
+
+&lt;p&gt;[26]    SecurityNinja. (2009). Secure Development. Available: http://www.securityninja.co.uk/secure-development&lt;/p&gt;
+
+&lt;p&gt;[27]    OWASP. (2013). Projects/OWASP Java Encoder Project - OWASP. Available: https://http://www.owasp.org/index.php/Projects/OWASP_Java_Encoder_Project&lt;/p&gt;
+
+&lt;p&gt;[28]    OWASP, “Category:OWASP Enterprise Security API - OWASP,” ed, 2013.&lt;/p&gt;
+
+&lt;p&gt;[29]    D. Cornell. (2013). Web application testing: The difference between black, gray and white box testing. Available: http://searchsoftwarequality.techtarget.com/tip/Web-application-testing-The-difference-between-black-gray-and-white-box-testing&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-2/&quot;&gt;Public Cloud for Corporate Web Applications - Part 2&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on July 14, 2013.&lt;/p&gt;</content>
 </entry>
 
 

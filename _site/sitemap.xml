@@ -37,6 +37,10 @@
         <loc>/page2/index.html</loc>
     </url>
     
+    <url>
+        <loc>/page3/index.html</loc>
+    </url>
+    
 
     
     <url>
@@ -61,6 +65,26 @@
     
     <url>
         <loc>/ithub-part-1/</loc>
+    </url>
+    
+    <url>
+        <loc>/public-cloud-for-corporate-web-applications-part-6/</loc>
+    </url>
+    
+    <url>
+        <loc>/public-cloud-for-corporate-web-applications-part-5/</loc>
+    </url>
+    
+    <url>
+        <loc>/public-cloud-for-corporate-web-applications-part-4/</loc>
+    </url>
+    
+    <url>
+        <loc>/public-cloud-for-corporate-web-applications-part-3/</loc>
+    </url>
+    
+    <url>
+        <loc>/public-cloud-for-corporate-web-applications-part-2/</loc>
     </url>
     
     <url>

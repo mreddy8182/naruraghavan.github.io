@@ -1,0 +1,506 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Public Cloud for Corporate Web Applications - Part 2 &#8211; Technology Blog</title>
+<meta name="description" content="IT/Software Engineering and Management.">
+<meta name="keywords" content="Information Technology & Management, Security Management, Defensive Hacking, Cloud Computing">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/images/abstract-5.jpg">
+
+<meta name="twitter:title" content="Public Cloud for Corporate Web Applications - Part 2">
+<meta name="twitter:description" content="IT/Software Engineering and Management.">
+<meta name="twitter:creator" content="@naruraghavan">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Public Cloud for Corporate Web Applications - Part 2">
+<meta property="og:description" content="IT/Software Engineering and Management.">
+<meta property="og:url" content="/public-cloud-for-corporate-web-applications-part-2/">
+<meta property="og:site_name" content="Technology Blog">
+
+
+
+
+
+<link rel="canonical" href="/public-cloud-for-corporate-web-applications-part-2/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Technology Blog Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.min.css">
+<!-- Webfonts -->
+<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+</head>
+
+<body id="post" class="feature">
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+	<button class="dl-trigger">Open Menu</button>
+	<ul class="dl-menu">
+		<li><a href="">Home</a></li>
+		<li>
+			<a href="#">About</a>
+			<ul class="dl-submenu">
+				<li>
+					<img src="/images/avatar-2.png" alt="Narayanan Raghavan photo" class="author-photo">
+					<h4>Narayanan Raghavan</h4>
+					<p>15+ years of Software building experience. Masters degree from Carnegie Mellon.</p>
+				</li>
+				<li><a href="/about/">Learn More</a></li>
+				<li>
+					<a href="mailto:naruraghavan@icloud.com"><i class="fa fa-envelope"></i> Email</a>
+				</li>
+				<li>
+					<a href="http://twitter.com/naruraghavan"><i class="fa fa-twitter"></i> Twitter</a>
+				</li>
+				
+				
+				<li>
+					<a href="http://linkedin.com/in/naruraghavan"><i class="fa fa-linkedin"></i> LinkedIn</a>
+				</li>
+				<li>
+					<a href="http://github.com/naruraghavan"><i class="fa fa-github"></i> GitHub</a>
+				</li>
+				
+				
+				
+				
+			</ul><!-- /.dl-submenu -->
+		</li>
+		<li>
+			<a href="#">Posts</a>
+			<ul class="dl-submenu">
+				<li><a href="/posts/">All Posts</a></li>
+				<li><a href="/tags/">All Tags</a></li>
+			</ul>
+		</li>
+		
+	</ul><!-- /.dl-menu -->
+</nav><!-- /.dl-menuwrapper -->
+
+
+
+<div class="entry-header">
+  <div class="image-credit">Image source: <a href="http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/">dargadgetz</a></div><!-- /.image-credit -->
+  <div class="entry-image">
+    <img src="/images/abstract-5.jpg" alt="Public Cloud for Corporate Web Applications - Part 2">
+  </div><!-- /.entry-image -->
+</div><!-- /.entry-header -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <header class="header-title">
+      <div class="header-title-wrap">
+        
+          <h1 class="entry-title"><a href="/public-cloud-for-corporate-web-applications-part-2/" rel="bookmark" title="Public Cloud for Corporate Web Applications - Part 2">Public Cloud for Corporate Web Applications - Part 2</a></h1>
+        
+        <h2>July 14, 2013</h2>
+        
+        <p class="entry-reading-time">
+          <i class="fa fa-clock-o"></i>
+          
+          Reading time ~18 minutes
+        </p><!-- /.entry-reading-time -->
+        
+      </div><!-- /.header-title-wrap -->
+    </header>
+    <div class="entry-content">
+      <p>Continuing from where we left off in <a href="/public-cloud-for-corporate-web-applications-part-1"><strong>Part 1</strong></a>, lets start exploring the risk management framework for  a little more in this post.</p>
+
+<h2 id="iii----risk-management-framework">III.    RISK MANAGEMENT FRAMEWORK</h2>
+<p>Since the actors, outlined in <strong>Part 1 - Roles and Responsibilities</strong>, have varying degrees of ownership and influence in the cloud space, establishing security controls becomes a shared or split responsibility among the actors. From the cloud consumer’s angle, security should not be an impediment to embracing public cloud solutions. With that idea in mind, the risk management framework provides a step-by-step approach to identifying and documenting risks in general and validating as to what are acceptable risks to a consumer in relation to the compliance model, so that the cloud consumer can place a level of confidence in moving all the acceptable web applications/systems to the public cloud. </p>
+
+<p>The following diagram shows the NIST’s cloud-adapted risk management framework (CRMF)[13]:</p>
+
+<p><img src="/images/cloud-adapted-risk-management-framework.png" alt="Cloud-adapted Risk Management Framework" /></p>
+
+<h4 id="categorize-information-systems">1)  Categorize Information Systems</h4>
+<p>This step enables organizations to consistently map the security impact levels to the types of information and information systems. The type of information includes private, confidential, sensitive etc. The type of information systems includes mission critical, mission support etc. An information system processes one or more information types as input, output, and/or for internal needs.</p>
+
+<p>The security objectives and the potential losses for information and information systems could be broadly classified in terms of the classical security goals as follows [19]:</p>
+
+<h5 id="a--confidentiality">a)  Confidentiality</h5>
+<p>A loss of confidentiality is the unauthorized disclosure of information.</p>
+
+<h5 id="b--integrity">b)  Integrity</h5>
+<p>A loss of integrity is the unauthorized modification or destruction of information.</p>
+
+<h5 id="c--availability">c)  Availability</h5>
+<p>A loss of availability is the disruption of access to or use of information or information systems.</p>
+
+<blockquote>
+  <p>Potential impact to an organization in case of a security breach could be modeled in terms of low, medium, and high ratings. </p>
+</blockquote>
+
+<h5 id="a--low-impact">a)  Low Impact</h5>
+<p>At this impact level, the loss of confidentiality, integrity, and availability would not impact the primary business objectives of the organization. There will be some degradation in mission capability and minor damage to organizational assets, but this would not stop the organization from meeting its objectives.</p>
+
+<h5 id="b--medium-impact">b)  Medium Impact</h5>
+<p>At this impact level, the loss of confidentiality, integrity, and availability would impact the primary business objectives of the organization. There will be significant degradation in mission capability and significant damage to organizational assets and/or operations.</p>
+
+<h5 id="c--high-impact">c)  High Impact</h5>
+<p>At this impact level, the loss of confidentiality, integrity, and availability would severely impact the primary business objectives of the organization. There will be major degradation or loss of mission capability and major damage or loss of organizational assets and/or operations.</p>
+
+<blockquote>
+  <p>One way to identify information types could be based on the lines of businesses of an organization. For example, lines of businesses could include marketing, sales, manufacturing, R&amp;D, learning &amp; performance, dealer management etc.  </p>
+</blockquote>
+
+<p>Since every organization has a set of resource management areas such as information technology &amp; management, human resources management, and financial management, care must be taken to include such resource management functions and their information types as well. For example, some of the information types within the human resources management function could be HR strategy, staff acquisition, employee performance mgmt., employee relation, benefits mgmt., and compensation mgmt., etc.   </p>
+
+<p>Once the information types and information systems are identified, the next step is to assign potential impact of compromises to confidentiality, integrity, and availability as outlined in the following table:</p>
+
+<p><img src="/images/categorization-table.png" alt="Table 1: Categorization" /></p>
+
+<p>For example, the information type of an organization’s corporate website for public consumption does not have any confidentiality requirement because everything on the website is for public consumption. Therefore, the security category could be defined in terms of the C/I/A triad as follows:</p>
+
+<script type="math/tex; mode=display">
+
+Security Category_{public information} = \\
+        \{(confidentiality, not applicable), 
+            (integrity, medium), \\
+            (availability, medium)\} 
+          
+</script>
+
+<p>After assigning security categories to all the information types that belong to a business area or a resource management function, all the information systems that support those functions must be mapped to those information types. This is a required step to aggregate the security category at the information system level. For example, a web-based contract renewal system could process two information types as follows:</p>
+
+<script type="math/tex; mode=display">
+Security Category_{contract information}= \\
+\{(confidentiality,medium),(integrity,medium),(availability,low)\}
+</script>
+
+<script type="math/tex; mode=display">
+Security Category_{administrative information}= \\
+    \{(confidentiality,low),(integrity,low),(availability,low)\}
+
+</script>
+
+<p>The resulting aggregate security category for the information system will be the maximum of the above two categories in each of the C/I/A triad as follows:</p>
+
+<script type="math/tex; mode=display">
+Security Category_{web contracts system}= \\
+\{(confidentiality,medium),(integrity,medium),(availability,low)\}
+</script>
+
+<p>When aggregating security categories, it is also beneficial to understand the context of the information system in relation to other systems – standalone, connected process flow etc. Without understanding the overall context, assignment of security categories could be erroneous.  </p>
+
+<p>At the end of step 1, categorization of information systems, the organization must have a spreadsheet with all the information systems that are being evaluated for the suitability of moving over to the public cloud. This spreadsheet will contain all web-based information systems and their aggregate security categories mapped to their business area or resource management functional area.  </p>
+
+<h4 id="identify-security-requirements">2)  Identify Security Requirements</h4>
+<p>NIST defines seventeen security-related areas with regard to protecting the confidentiality, integrity, and availability of information systems and the information processed, stored, and/or transmitted by those systems [20]. Those security-related areas are access control, audit and availability, certification, configuration management, contingency planning, identification and authentication, incident response, maintenance, media protection, physical and environment protection, planning, personnel security, risk assessment, systems and services acquisition, system and communications protection, system and information integrity. </p>
+
+<p>In the case of PaaS and SaaS, the majority of the selection of the security controls falls under the cloud agents such as the cloud provider, cloud broker, and cloud carrier. These cloud actors are required to address the cloud consumer’s areas of concerns as proposed by the NIST’s Security Reference Architecture [13] as follows:</p>
+
+<ul>
+  <li>Risk Management
+    <ul>
+      <li>Risk analysis</li>
+      <li>Risk Assessments</li>
+      <li>Vulnerability assessment</li>
+      <li>Incident reporting and response</li>
+    </ul>
+  </li>
+  <li>Business Continuity
+    <ul>
+      <li>Disaster recovery plans</li>
+      <li>Recovery plans</li>
+      <li>Recovery Point Objective (RPO)</li>
+      <li>Recovery Time Objective (RTO)</li>
+    </ul>
+  </li>
+  <li>Physical Security
+    <ul>
+      <li>Physical and environmental security policy</li>
+      <li>Contingency plan</li>
+      <li>Emergency response plan</li>
+      <li>Facility layout</li>
+      <li>Security Infrastructure</li>
+      <li>Human Resources</li>
+      <li>Visual inspection of the facility</li>
+    </ul>
+  </li>
+  <li>User account termination procedures</li>
+  <li>Compliance with National and International/Industry standards on security</li>
+  <li>Transparent view of the security posture of the cloud provider, cloud broker, and the cloud carriers.</li>
+</ul>
+
+<p>The good news is that an organization does not have to spend the time and money to create the combination of security components and how they map to responsibilities of various cloud actors from scratch. The CSA provides a comprehensive cloud control matrix based on the Trusted Cloud Initiative Reference Architecture (TCI-RA) as shown below:</p>
+
+<p><img src="/images/csa-cloud-control-matrix-1-4.png" alt="Table 2: The CSA Cloud Control Matrix v1.4" /></p>
+
+<p>This excel sheet can be downloaded from [14]. What is good about this excel sheet is that it spells out the responsibility for establishing security controls among the various cloud actors. The NIST Security Reference Architecture (SRA) has adopted the TCI-RA and has created 346 security components under three different domains such as Business Operation Support Service (BOSS), Information Technology Operation Support (ITOS), and Security and Risk Management (S&amp;RM) and four different service layers such as infrastructure services, information services, application services, and presentation services. Therefore, this is a streamlined, transparent risk management process where the responsibilities are clearly delineated as shown in the table below:</p>
+
+<p><img src="/images/nist-sra-actor-based-responsibility-chart.png" alt="Table 3: The NIST SRA Actor-based Responsibility Chart" /></p>
+
+<p>In the above chart, “X” indicates that the respective security component has to be implemented by the actor; “A” indicates that the security component has to be implemented internally; “B” indicates that this is for “business broker only” and there is no direct association with the consumer; blank cell indicates that the security component is not needed for securing the cloud platform. </p>
+
+<p>There is a mapping of security components from the TCI-RA to the NIST 800-53 family of security controls in the “800-53 Family” column in the spreadsheet. In the above example, <strong>BOSS→ Compliance→Intellectual Property Protection</strong> is mapped to <strong>Access Control (AC)</strong>. Similarly, there is a mapping to Awareness and Training (AT) as well.</p>
+
+<blockquote>
+  <p>Using the above methods, we now have a way to map security components to cloud deployment models with an eye towards which actor is responsible for what. </p>
+</blockquote>
+
+<p>The question now becomes as to what security components are absolutely needed by the consumer to have a secure move to the public cloud. This is where the combination of the last step – categorize information systems – and the security index system (SIS) comes in.  SIS defines five index values from zero to four as follows [13]:</p>
+
+<p><img src="/images/sis.png" alt="Table 4: The Security Index System (SIS)" /></p>
+
+<p>Based on security category obtained from applying step one, the cloud consumer could go on to applying security index values to all the security components as shown below:</p>
+
+<p><img src="/images/nist-sis-draft.png" alt="Table 5: NIST SIS (Draft)" /><br />
+<sub>* Ag = Aggregate score</sub></p>
+
+<p>By following these steps, all the cloud actors know exactly what security components are needed for the migration and who is responsible for implementing them. This will also give an idea about choosing the right service model (PaaS or SaaS) for the web application in question.</p>
+
+<p>CSA has a specific gap analysis model where the cloud actors could go about selecting the right set of security components for their cloud platform based on their compliance needs such as Health Insurance Portability and Accountability Act (HIPAA), Payment Card Industry Data Security Standard (PCI DSS), Gramm-Leach-Bliley Act (GLBA), and Sarbanes Oxley (SOX) etc. </p>
+
+<p>For example, if an organization accepts, captures, stores, transmits, or processes credit/debit card data through one of its e-commerce application, the organization is expected to follow PCI DSS. </p>
+
+<p>If the organization wants to migrate its application to the public cloud, all the relevant cloud agents – cloud consumer, provider, broker, carrier, and/or auditor – are expected to have all the necessary security components along with the controls in place to support the PCI DSS standard. To conform to PCI DSS standards, the cloud actors have to ensure that the following security components are implemented as follows:</p>
+
+<p><img src="/images/csa-recommendation-for-pci-dss-on-public-cloud.png" alt="Table 5: NIST SIS (Draft)" /><br />
+<sub>* Merchant = Cloud Consumer; PAN = Personal Access Number</sub></p>
+
+<p>By the same token, similar security requirements can be gathered for HIPAA, GLBA, and SOX.</p>
+
+<p>At the end of step two, all the relevant cloud actors must know the baseline security controls and any supplemental controls needed due to compliance needs of the cloud consumer. The selection of controls could be based on the in-house technical expertise of the cloud consumer along with its assurance needs.</p>
+
+<h4 id="select-the-cloud-ecosystem-architecture">3)  Select the Cloud Ecosystem Architecture</h4>
+
+<p>Based on the business requirements and the security requirements outlined in the previous section, a cloud consumer could make a decision to either go with a single cloud provider or a set of cloud providers with the help of a broker as shown in the diagram below:</p>
+
+<p><img src="/images/broker-based-cloud-ecosystem-architecture.png" alt="Broker-based Cloud Ecosystem Architecture" /></p>
+
+<p>Imagine a scenario where a consumer is in need of a web content management solution, a video encoding service so the consumer could post videos across a wide variety of social websites such as Facebook, Twitter etc. and a Web development platform based on the “Spring” framework. In order to avail all of the above services, the cloud consumer might need to seek the help of three different cloud providers as follows:</p>
+
+<ul>
+  <li><em>Cloud Provider A</em> – A SaaS-based Web Content Management Solution. E.g. SpringCM</li>
+  <li><em>Cloud Provider B</em> – A SaaS-based Video Encoding services. E.g. Brightcove</li>
+  <li><em>Cloud Provider C</em> – A PaaS-based Web development platform based on the Spring Framework. E.g. CloudFoundry.</li>
+</ul>
+
+<p>In order to understand and implement all the security controls required to support the assurance needs, the cloud consumer has to deal with multiple Service Level Agreements (SLA) across the various cloud providers. Depending upon the technical expertise and the number of personnel supporting such efforts, the task of managing multiple SLAs could be daunting. This is where cloud brokers come in. As shown in the above figure, the cloud consumer is only signing one SLA with the broker leaving the entire responsibility of managing the business and security requirements across all of the cloud providers with the broker.</p>
+
+<h4 id="assess-the-cloud-services">4)  Assess the Cloud Services</h4>
+
+<p>Based on the set of security controls selected in step two and the ecosystem architecture selected in step three, the cloud consumer is well on the way to defining the service level agreement (SLA) with the intended cloud agent(s) – broker or provider(s). The SLA details the levels and types of services that are to be provided, including but not limited to the delivery time and performance parameters. A mind map of an SLA is shown below [13]:</p>
+
+<p><img src="/images/mindmap-of-SLA.png" alt="The mind map of SLA" /></p>
+
+<p>It is the responsibility of the cloud consumer to ensure that default contracts are not accepted when setting up the master service agreements. From a provider’s perspective it may be easy, but the agreement might not capture all of the assurance needs of the consumer.  </p>
+
+<h4 id="authorize-cloud-services">5)  Authorize Cloud Services</h4>
+
+<p>In this step, the cloud consumer must define a set of metrics that can validate the expectations defined in the service contract as stated in the previous step. The NIST Cloud Service Metrics document [21] defines a set of metrics for cloud services. An example is as follows:</p>
+
+<ul>
+  <li>
+    <p>Service Availability – Percentage of uptime of resource over a period of time where:
+<script type="math/tex">
+Service\_Uptime\_Percentage = \frac{Qualified\_Uptime\_Total}{Observation\_Time\_Total} \times 100
+</script></p>
+
+    <ul>
+      <li>For example, the SLA could state that the objective of the service availability metric to be: <script type="math/tex"> Service\_Uptime\_Percentage=99\% </script></li>
+    </ul>
+  </li>
+</ul>
+
+<p>A similar set of metrics must be defined in advance to ensure a proper delivery of services by the cloud brokers/providers. For example, “the number of concurrent users and the response time of the platform/service” could be one of the metrics.</p>
+
+<h4 id="monitor-the-services-provided">6)  Monitor the services provided</h4>
+
+<p>This is the crucial step to ensuring that the security controls that have been put in place as a part of securing the cloud service are functioning as intended and maintain the necessary security posture. Continuous monitoring enables the cloud agents to supplement security controls in case there is a need. A strategy for continuous monitoring could define as to how security and privacy controls will be monitored over time as follows:</p>
+
+<ul>
+  <li>Frequency of monitoring activities</li>
+  <li>Rigor and extent of monitoring activities</li>
+  <li>Data feeds to be provided to the consumer</li>
+</ul>
+
+<p>The continuous monitoring strategy allows the consumer to see whether the SLA terms are met on an ongoing basis. </p>
+
+<p>Together, these six steps must be able to prepare an organization to successfully move to the public cloud for their Web application needs. </p>
+
+<p>I’ll contiunue my discussion in the next post.</p>
+
+<hr />
+<p>[11]    OSA, “SP-011: Cloud Computing Pattern,” ed, 2013.</p>
+
+<p>[12]    NIST. (2011). Guidelines on Security and Privacy in Public Cloud Computing. Available: http://www.nist.gov/customcf/get_pdf.cfm?pub_id=909494</p>
+
+<p>[13]    NIST. (2011). NIST Cloud Computing Security Reference Architecture (DRAFT). Available: http://collaborate.nist.gov/twiki-cloud-computing/pub/CloudComputing/CloudSecurity/ <br />
+NIST_Security_Reference_Architecture_2013.05.15_v1.0.pdf</p>
+
+<p>[14]    CSA. (2012). Cloud Controls Matrix v1.4 : Cloud Security Alliance. Available: https://cloudsecurityalliance.org/download/cloud-controls-matrix-v1-4</p>
+
+<p>[15]    B. Damele. (2009). Advanced SQL injection to operating system full control. Available: https://http://www.owasp.org/images/d/dc/AppsecEU09-Damele-A-G-Advanced-SQL-injection-slides.pdf</p>
+
+<p>[16]    T. Shimeall. (2013). Tactics and Penetration Testing. Available: https://blackboard.andrew.cmu.edu/bbcswebdav/pid-449058-dt-content-rid-3403035_1/xid-3403035_1</p>
+
+<p>[17]    T. Shimeall. (2013). Web Hacking. Available: https://blackboard.andrew.cmu.edu/bbcswebdav/pid-449052-dt-content-rid-3403026_1/xid-3403026_1</p>
+
+<p>[18]    T. Shimeall. (2013). Strategy. Available: https://blackboard.andrew.cmu.edu/bbcswebdav/pid-449058-dt-content-rid-3403035_1/xid-3403035_1</p>
+
+<p>[19]    NIST. (2008). Volume I: Guide for Mapping Types of Information and Information Systems to Security Categories. Available: http://csrc.nist.gov/publications/nistpubs/800-60-rev1/SP800-60_Vol1-Rev1.pdf</p>
+
+<p>[20]    NIST. (2006). Minimum Security Requirements for Federal Information and Information Systems Available: http://csrc.nist.gov/publications/fips/fips200/FIPS-200-final-march.pdf</p>
+
+<p>[21]    NIST. (2013). NIST Cloud Computing Reference Architecture Cloud Service Metrics Description. Available: http://collaborate.nist.gov/twiki-cloud-computing/pub/CloudComputing/RATax_CloudMetrics_WAs_Docs/RATAX-CloudServiceMetricsDescription-DRAFT-20130621.pdf</p>
+
+<p>[22]    SAFECode. (2012). Practical Security Stories and Security Tasks for Agile Development Environments. Available: http://www.safecode.org/publications/SAFECode_Agile_Dev_Security0712.pdf</p>
+
+<p>[23]    J. Rockwood, “Choose Your Weapon Wisely: A handbook for determining the right software development method best suited for your team, client, and project (Independent Study Paper). Pittsburgh, PA: School of Computer Science, Carnegie Mellon University,” 2011.</p>
+
+<p>[24]    H. Kniberg. (2007). Scrum and XP from the Tenches - How we do Scrum. Available: http://infoq.com/minibooks/scrum-xpfrom-the-trenches</p>
+
+<p>[25]    M. Hüttermann, Agile ALM : lightweight tools and Agile strategies. Shelter Island, N.Y.: Manning, 2012.</p>
+
+<p>[26]    SecurityNinja. (2009). Secure Development. Available: http://www.securityninja.co.uk/secure-development</p>
+
+<p>[27]    OWASP. (2013). Projects/OWASP Java Encoder Project - OWASP. Available: https://http://www.owasp.org/index.php/Projects/OWASP_Java_Encoder_Project</p>
+
+<p>[28]    OWASP, “Category:OWASP Enterprise Security API - OWASP,” ed, 2013.</p>
+
+<p>[29]    D. Cornell. (2013). Web application testing: The difference between black, gray and white box testing. Available: http://searchsoftwarequality.techtarget.com/tip/Web-application-testing-The-difference-between-black-gray-and-white-box-testing</p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags/#Information Technology & Management" title="Pages tagged Information Technology & Management" class="tag">Information Technology & Management</a><a href="/tags/#Security Management" title="Pages tagged Security Management" class="tag">Security Management</a><a href="/tags/#Defensive Hacking" title="Pages tagged Defensive Hacking" class="tag">Defensive Hacking</a><a href="/tags/#Cloud Computing" title="Pages tagged Cloud Computing" class="tag">Cloud Computing</a></span>
+        <span><a href="/public-cloud-for-corporate-web-applications-part-2/" rel="bookmark" title="Public Cloud for Corporate Web Applications - Part 2">Public Cloud for Corporate Web Applications - Part 2</a> was published on <span class="entry-date date published updated"><time datetime="2013-07-14T00:00:00-04:00">July 14, 2013</time></span></span>
+        (revised: <span class="entry-date date modified"><time datetime="2014-07-14 13:21:05 -0400">07/14/2014</time></span>)
+        <span class="author vcard"><span class="fn"><a href="/about/" title="About Narayanan Raghavan">Narayanan Raghavan</a></span></span>
+        <div class="social-share">
+          <ul class="socialcount socialcount-small inline-list">
+            <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=/public-cloud-for-corporate-web-applications-part-2/" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+            <li class="twitter"><a href="https://twitter.com/intent/tweet?text=/public-cloud-for-corporate-web-applications-part-2/" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+            <li class="googleplus"><a href="https://plus.google.com/share?url=/public-cloud-for-corporate-web-applications-part-2/" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+          </ul>
+        </div><!-- /.social-share -->
+      </footer>
+    </div><!-- /.entry-content -->
+    <section id="disqus_thread"></section><!-- /#disqus_thread -->
+    
+    <div class="read-more">
+      
+        <div class="read-more-header">
+          <a href="/public-cloud-for-corporate-web-applications-part-1/" class="read-more-btn">Read More</a>
+        </div><!-- /.read-more-header -->
+        <div class="read-more-content">
+          <h3><a href="/ithub-part-6/" title="itHUB - Part 6">itHUB - Part 6</a></h3>
+          <p>###C.   Anticipatory Service ModelsBy understanding the customer more and more, itHUB can evolve from being an interactive model for prov...&hellip; <a href="/ithub-part-6/">Continue reading</a></p>
+        </div><!-- /.read-more-content -->
+      
+      <div class="read-more-list">
+        
+          <div class="list-item">
+            <h4><a href="/ithub-part-5/" title="itHUB - Part 5">itHUB - Part 5</a></h4>
+            <span>Published on January 10, 2014</span>
+          </div><!-- /.list-item -->
+        
+          <div class="list-item">
+            <h4><a href="/ithub-part-4/" title="itHUB - Part 4">itHUB - Part 4</a></h4>
+            <span>Published on January 01, 2014</span>
+          </div><!-- /.list-item -->
+        
+      </div><!-- /.read-more-list -->
+      
+    </div><!-- /.read-more -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2014 Narayanan Raghavan. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/hpstr/">HPSTR Theme</a>.</span>
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52449804-1', 'auto');  
+  ga('require', 'linkid', 'linkid.js');
+  ga('send', 'pageview');
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'naruraghavangithubio'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>	        
+
+</body>
+</html>

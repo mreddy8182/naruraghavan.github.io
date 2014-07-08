@@ -1,0 +1,485 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Public Cloud for Corporate Web Applications - Part 3 &#8211; Technology Blog</title>
+<meta name="description" content="IT/Software Engineering and Management.">
+<meta name="keywords" content="Information Technology & Management, Security Management, Defensive Hacking, Cloud Computing">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/images/abstract-5.jpg">
+
+<meta name="twitter:title" content="Public Cloud for Corporate Web Applications - Part 3">
+<meta name="twitter:description" content="IT/Software Engineering and Management.">
+<meta name="twitter:creator" content="@naruraghavan">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Public Cloud for Corporate Web Applications - Part 3">
+<meta property="og:description" content="IT/Software Engineering and Management.">
+<meta property="og:url" content="/public-cloud-for-corporate-web-applications-part-3/">
+<meta property="og:site_name" content="Technology Blog">
+
+
+
+
+
+<link rel="canonical" href="/public-cloud-for-corporate-web-applications-part-3/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Technology Blog Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.min.css">
+<!-- Webfonts -->
+<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+</head>
+
+<body id="post" class="feature">
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+	<button class="dl-trigger">Open Menu</button>
+	<ul class="dl-menu">
+		<li><a href="">Home</a></li>
+		<li>
+			<a href="#">About</a>
+			<ul class="dl-submenu">
+				<li>
+					<img src="/images/avatar-2.png" alt="Narayanan Raghavan photo" class="author-photo">
+					<h4>Narayanan Raghavan</h4>
+					<p>15+ years of Software building experience. Masters degree from Carnegie Mellon.</p>
+				</li>
+				<li><a href="/about/">Learn More</a></li>
+				<li>
+					<a href="mailto:naruraghavan@icloud.com"><i class="fa fa-envelope"></i> Email</a>
+				</li>
+				<li>
+					<a href="http://twitter.com/naruraghavan"><i class="fa fa-twitter"></i> Twitter</a>
+				</li>
+				
+				
+				<li>
+					<a href="http://linkedin.com/in/naruraghavan"><i class="fa fa-linkedin"></i> LinkedIn</a>
+				</li>
+				<li>
+					<a href="http://github.com/naruraghavan"><i class="fa fa-github"></i> GitHub</a>
+				</li>
+				
+				
+				
+				
+			</ul><!-- /.dl-submenu -->
+		</li>
+		<li>
+			<a href="#">Posts</a>
+			<ul class="dl-submenu">
+				<li><a href="/posts/">All Posts</a></li>
+				<li><a href="/tags/">All Tags</a></li>
+			</ul>
+		</li>
+		
+	</ul><!-- /.dl-menu -->
+</nav><!-- /.dl-menuwrapper -->
+
+
+
+<div class="entry-header">
+  <div class="image-credit">Image source: <a href="http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/">dargadgetz</a></div><!-- /.image-credit -->
+  <div class="entry-image">
+    <img src="/images/abstract-5.jpg" alt="Public Cloud for Corporate Web Applications - Part 3">
+  </div><!-- /.entry-image -->
+</div><!-- /.entry-header -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <header class="header-title">
+      <div class="header-title-wrap">
+        
+          <h1 class="entry-title"><a href="/public-cloud-for-corporate-web-applications-part-3/" rel="bookmark" title="Public Cloud for Corporate Web Applications - Part 3">Public Cloud for Corporate Web Applications - Part 3</a></h1>
+        
+        <h2>July 21, 2013</h2>
+        
+        <p class="entry-reading-time">
+          <i class="fa fa-clock-o"></i>
+          
+          Reading time ~12 minutes
+        </p><!-- /.entry-reading-time -->
+        
+      </div><!-- /.header-title-wrap -->
+    </header>
+    <div class="entry-content">
+      <p>Continuing from where we left off in <a href="/public-cloud-for-corporate-web-applications-part-2"><strong>Part 2</strong></a>, lets start exploring the usage of the PaaS model in this post.</p>
+
+<h2 id="iv-using-the-paas-service-model">IV. USING THE PAAS SERVICE MODEL</h2>
+<p>As illustrated in <em>Who Manages What?</em> in <a href="/public-cloud-for-corporate-web-applications-part-2"><strong>Part 2</strong></a>, the cloud consumer is responsible for the application and data that are deployed on the platform provided by the cloud agent – namely, the broker or the provider. Therefore, the cloud consumer is responsible for implementing the security controls to secure the application and data. A large number of attacks originate in the application layer especially for web applications. The CSA organizes application security into the following areas of focus [4]:</p>
+
+<p>A.  Secure Software Development Life Cycle (SSDLC)<br />
+B.  Authentication, Authorization, Compliance<br />
+C.  Entitlement Processing and Encryption<br />
+D.  Application Penetration Testing for the Cloud<br />
+E.  Monitoring applications in the Cloud<br />
+F.  Application Authentication, Compliance and the repercussions of multi-tenancy and shared infrastructure<br />
+G.  Avoiding malicious software</p>
+
+<p>The following section will delve into two major topics:</p>
+
+<ul>
+  <li>Secure application development</li>
+  <li>Penetration Tests for the cloud environment</li>
+</ul>
+
+<h3 id="a--secure-software-development-life-cycle-ssdlc">A.  Secure Software Development Life Cycle (SSDLC)</h3>
+<p>A good application security starts early in the software development life cycle. To have a sense of application security throughout the development cycle, it makes a lot of sense to adopt one of the maturity models in the SDLC such as Building Security In Maturity Model (BSIMM), Software Assurance Maturity Model (SAMM), and System Security Engineering Capability Maturity Model (SSE-CMM). </p>
+
+<p>For the purposes of this paper, we will explore the idea of incorporating security into agile development environments especially in Scrum-based web application software development [22]. </p>
+
+<h4 id="agile-scrum--a-quick-introduction">1)  Agile Scrum – a quick introduction</h4>
+
+<p>One of the strengths of this process framework is its ability to provide an “early feedback system” thereby an organization building the software can correct its course without spending too much time and money. Since the team developing the software constructs only a portion of the software at a time (a few features at a time), tests them, and deploys them. By deploying in chunks, the organization is able to get a set of early feedback from the marketplace and is able to correct its course.</p>
+
+<p><img src="/images/scrum-process-flow.png" alt="Scrum Process Flow" /></p>
+
+<p>The following section introduces the various elements of the Scrum process from a 1000-foot view:</p>
+
+<ol>
+  <li>The Scrum Team
+    <ul>
+      <li>Scrum Master
+        <ul>
+          <li>Person responsible for the Scrum process, its correct implementation, and the maximization of its benefits.</li>
+          <li>Not a leader of the team because the team is expected to be self-organizing.</li>
+          <li>Responsible for removing any impediments between the development team, product owner, and customers.</li>
+        </ul>
+      </li>
+      <li>Product Owner (PO)
+        <ul>
+          <li>A person responsible for managing the product backlog in terms of priority</li>
+        </ul>
+      </li>
+      <li>Development Team
+        <ul>
+          <li>Scrum team consists of 2-7 developers.</li>
+          <li>The team makes decisions during the development in conjunction with the product owner.</li>
+          <li>When there is a need for a bigger team (&gt;7), split them to form multiple teams based on themes or epics.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Artifacts
+    <ul>
+      <li>User Story
+        <ul>
+          <li>A simple descriptive line of the requirement or feature that the PO is after. E.g. “Charge customer’s credit/debit card for the services rendered”.</li>
+        </ul>
+      </li>
+      <li>Epic
+        <ul>
+          <li>A set of user stories. For example, an epic could be about “Online Payment processing”.</li>
+        </ul>
+      </li>
+      <li>Product Backlog
+        <ul>
+          <li>Backlog is a prioritized list of project requirements or user stories or Epics with rough estimates. Estimates are based on story points.
+            <ul>
+              <li>An example of a story point could equate to an ideal man-day where the day is devoid of any external influences so that the developer could concentrate on the task 100%.</li>
+            </ul>
+          </li>
+          <li>The list is sorted based on estimates in descending order.</li>
+        </ul>
+      </li>
+      <li>Sprint Backlog
+        <ul>
+          <li>A set of project requirements taken from the product backlog to be worked on during a specific Sprint. </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Scrum Events
+    <ul>
+      <li>Sprint
+        <ul>
+          <li>Sprint is a period of time, a time box, that the team is expected to work on the Sprint backlog.</li>
+          <li>Typically, 2-4 week sprints are common.</li>
+        </ul>
+      </li>
+      <li>Daily Scrum Meetings
+        <ul>
+          <li>Fifteen minute standup meeting to discuss the following items:
+            <ul>
+              <li>Accomplishments from the last meeting.</li>
+              <li>What is slated to be done before the next meeting</li>
+              <li>Any impediments to be removed for project progress.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Sprint Planning Meetings
+        <ul>
+          <li>PO presents the high priority items to the team</li>
+          <li>The team decides as to what can or cannot be done during a particular sprint with an action plan document.</li>
+          <li>Typically, the team attempts to split the user story into multiple tasks at this meeting.</li>
+          <li>Security-focused stories and tasks are discussed and included.</li>
+          <li>Sprint Review meeting or Demo
+            <ul>
+              <li>During this meeting, the team demonstrates all the completed features that are part of a sprint.</li>
+            </ul>
+          </li>
+          <li>Sprint Retrospective meeting
+            <ul>
+              <li>The team discusses “Lessons learned” during the Sprint.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p>By following the process flow, the development team in conjunction with the Scrum Master and the Product Owner is able to engage in constant communication (informal) to properly handle requirements elicitation/analysis and subsequently the product feature code development and deployment. </p>
+
+<h4 id="missing-security-focus-in-agile-scrum">2)  Missing Security Focus in Agile Scrum</h4>
+
+<p>Though not a fault of the process framework, the emphasis on quick turn-around of feature implementation doesn’t help either. Since the “Sprints” are typically time-boxed between 2 and 4 weeks, developers often ignore application security controls or put them on the back burner. Since the PO is more interested in shipping the product with a heavy focus on business functionality, there is no step to ensure security controls are put in place by enforcing that the security requirements are captured in the stories and security-focused tasks are performed during the construction and testing phases of each story.</p>
+
+<h4 id="securing-the-sdlc-in-agile-scrum">3)  Securing the SDLC in Agile Scrum</h4>
+
+<p>As explained in the previous section, the development team constructs a set of user stories at a time (sprint backlog within 2-4 week sprints). To have a constant security awareness, user story after user story and Sprint after Sprint, it makes a lot of sense to have a permanent security-focused member on the team as shown in the following diagram – adapted from [24]:</p>
+
+<p><img src="/images/scrum-team-organization.png" alt="Scrum Team Organization" /><br />
+<sub>* T – member with testing skills; S – member with Security skills</sub></p>
+
+<p>Along with regular functionality testing, the QA team can also test for security issues and send the release back to the development team for fixes as shown in the diagram below – adapted from [24]:</p>
+
+<ul>
+  <li>A portion of the Sprint is dedicated to implementing SAFECode stories
+    <ul>
+      <li>This can be accomplished by adjusting the focus factor if the PO and the stakeholders don’t fully understand the security implications.</li>
+    </ul>
+  </li>
+  <li>A portion of bug-fixes address security vulnerabilities found during QA testing</li>
+</ul>
+
+<p><img src="/images/sprint-release-engineering-with-acceptance-testing.png" alt="Sprint Release Engineering with Acceptance Testing" /></p>
+
+<p>The responsibility of the team member will entail the following:</p>
+
+<ul>
+  <li>Conduct security analysis of all product features in the Sprint backlog
+    <ul>
+      <li>Conduct a threat model for each user story</li>
+    </ul>
+  </li>
+  <li>Security aspects to be considered, including but not limited to policy/compliance, legal, contractual, regulatory, and other security-related requirements</li>
+  <li>Notify the PO of the security requirements in the Sprint planning meeting
+    <ul>
+      <li>Engage the Scrum master to work with legal and other departments to ensure security obligations are properly met.</li>
+      <li>Adjust the story points of the stories/epics accordingly</li>
+    </ul>
+  </li>
+  <li>User stories that have security implications would need to have additional tasks defined to cater to the implementation of security controls.</li>
+  <li>Ensure that the Sprint doesn’t collect “Security Debt” [22] as a team
+    <ul>
+      <li>If the application has to ship with some security debt, ensure that the relevant stakeholders understand the risks and sign off on them</li>
+      <li>Undone security tasks must go on the product backlog, so they can be included in one of the future Sprints.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="safecode-guidelines-for-the-scrum-team">4)  SAFECode guidelines for the Scrum team</h4>
+
+<p>SAFECode has defined a set of 36 security-focused stories with a breakdown of technical tasks that go along with each story. These stories are meant for the development and QA teams. One of the stories from the SAFECode guidelines is shown below:</p>
+
+<p><img src="/images/safecode-security-focused-story.png" alt="SAFECode Security-focused Story" /></p>
+
+<h4 id="safecode-guidelines-for-the-scrum-team-as-software-maintenance-tasks">5)  SAFECode guidelines for the Scrum team as software maintenance tasks</h4>
+
+<p>The idea here is to periodically run static code analysis tools, vulnerability scanners, and automated malware scanners during build/release cycles and fix the reported high-priority issues reported by those tools. Some of the guidelines provided by SAFECode are shown below:</p>
+
+<p><img src="/images/safecode-guidelines-for-software-maintenace.png" alt="SAFECode Guidelines for Software Maintenance" /></p>
+
+<p>It is also important to allocate time to do “code reviews” of riskier codes. SAFECode provides the definition of riskier code as follows:</p>
+
+<p><img src="/images/safecode-categorization-of-riskier-code.png" alt="SAFECode Guidelines for Security Experts" /></p>
+
+<p>As shown in the previous sections, the Agile Scrum process could be made secure. The PO has to have visibility into these security tasks, as performing some of these security-focused tasks would impact the team’s velocity. In order for the SDLC to be secure and to ensure that the product that is put out Sprint after Sprint is secure, the team needs support from all the stakeholders especially from the line of business managers, IT functional managers, Chief Information Officer (CIO), Chief Information Security Officer (CISO), and in some cases the support of the Chief Executive Officer (CEO). </p>
+
+<p>I’ll contiunue my discussion in the next post.</p>
+
+<hr />
+<p>[11]    OSA, “SP-011: Cloud Computing Pattern,” ed, 2013.</p>
+
+<p>[12]    NIST. (2011). Guidelines on Security and Privacy in Public Cloud Computing. Available: http://www.nist.gov/customcf/get_pdf.cfm?pub_id=909494</p>
+
+<p>[13]    NIST. (2011). NIST Cloud Computing Security Reference Architecture (DRAFT). Available: http://collaborate.nist.gov/twiki-cloud-computing/pub/CloudComputing/CloudSecurity/ <br />
+NIST_Security_Reference_Architecture_2013.05.15_v1.0.pdf</p>
+
+<p>[14]    CSA. (2012). Cloud Controls Matrix v1.4 : Cloud Security Alliance. Available: https://cloudsecurityalliance.org/download/cloud-controls-matrix-v1-4</p>
+
+<p>[15]    B. Damele. (2009). Advanced SQL injection to operating system full control. Available: https://http://www.owasp.org/images/d/dc/AppsecEU09-Damele-A-G-Advanced-SQL-injection-slides.pdf</p>
+
+<p>[16]    T. Shimeall. (2013). Tactics and Penetration Testing. Available: https://blackboard.andrew.cmu.edu/bbcswebdav/pid-449058-dt-content-rid-3403035_1/xid-3403035_1</p>
+
+<p>[17]    T. Shimeall. (2013). Web Hacking. Available: https://blackboard.andrew.cmu.edu/bbcswebdav/pid-449052-dt-content-rid-3403026_1/xid-3403026_1</p>
+
+<p>[18]    T. Shimeall. (2013). Strategy. Available: https://blackboard.andrew.cmu.edu/bbcswebdav/pid-449058-dt-content-rid-3403035_1/xid-3403035_1</p>
+
+<p>[19]    NIST. (2008). Volume I: Guide for Mapping Types of Information and Information Systems to Security Categories. Available: http://csrc.nist.gov/publications/nistpubs/800-60-rev1/SP800-60_Vol1-Rev1.pdf</p>
+
+<p>[20]    NIST. (2006). Minimum Security Requirements for Federal Information and Information Systems Available: http://csrc.nist.gov/publications/fips/fips200/FIPS-200-final-march.pdf</p>
+
+<p>[21]    NIST. (2013). NIST Cloud Computing Reference Architecture Cloud Service Metrics Description. Available: http://collaborate.nist.gov/twiki-cloud-computing/pub/CloudComputing/RATax_CloudMetrics_WAs_Docs/RATAX-CloudServiceMetricsDescription-DRAFT-20130621.pdf</p>
+
+<p>[22]    SAFECode. (2012). Practical Security Stories and Security Tasks for Agile Development Environments. Available: http://www.safecode.org/publications/SAFECode_Agile_Dev_Security0712.pdf</p>
+
+<p>[23]    J. Rockwood, “Choose Your Weapon Wisely: A handbook for determining the right software development method best suited for your team, client, and project (Independent Study Paper). Pittsburgh, PA: School of Computer Science, Carnegie Mellon University,” 2011.</p>
+
+<p>[24]    H. Kniberg. (2007). Scrum and XP from the Tenches - How we do Scrum. Available: http://infoq.com/minibooks/scrum-xpfrom-the-trenches</p>
+
+<p>[25]    M. Hüttermann, Agile ALM : lightweight tools and Agile strategies. Shelter Island, N.Y.: Manning, 2012.</p>
+
+<p>[26]    SecurityNinja. (2009). Secure Development. Available: http://www.securityninja.co.uk/secure-development</p>
+
+<p>[27]    OWASP. (2013). Projects/OWASP Java Encoder Project - OWASP. Available: https://http://www.owasp.org/index.php/Projects/OWASP_Java_Encoder_Project</p>
+
+<p>[28]    OWASP, “Category:OWASP Enterprise Security API - OWASP,” ed, 2013.</p>
+
+<p>[29]    D. Cornell. (2013). Web application testing: The difference between black, gray and white box testing. Available: http://searchsoftwarequality.techtarget.com/tip/Web-application-testing-The-difference-between-black-gray-and-white-box-testing</p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="/tags/#Information Technology & Management" title="Pages tagged Information Technology & Management" class="tag">Information Technology & Management</a><a href="/tags/#Security Management" title="Pages tagged Security Management" class="tag">Security Management</a><a href="/tags/#Defensive Hacking" title="Pages tagged Defensive Hacking" class="tag">Defensive Hacking</a><a href="/tags/#Cloud Computing" title="Pages tagged Cloud Computing" class="tag">Cloud Computing</a></span>
+        <span><a href="/public-cloud-for-corporate-web-applications-part-3/" rel="bookmark" title="Public Cloud for Corporate Web Applications - Part 3">Public Cloud for Corporate Web Applications - Part 3</a> was published on <span class="entry-date date published updated"><time datetime="2013-07-21T00:00:00-04:00">July 21, 2013</time></span></span>
+        (revised: <span class="entry-date date modified"><time datetime="2013-07-21 19:38:52 -0400">07/21/2013</time></span>)
+        <span class="author vcard"><span class="fn"><a href="/about/" title="About Narayanan Raghavan">Narayanan Raghavan</a></span></span>
+        <div class="social-share">
+          <ul class="socialcount socialcount-small inline-list">
+            <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=/public-cloud-for-corporate-web-applications-part-3/" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+            <li class="twitter"><a href="https://twitter.com/intent/tweet?text=/public-cloud-for-corporate-web-applications-part-3/" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+            <li class="googleplus"><a href="https://plus.google.com/share?url=/public-cloud-for-corporate-web-applications-part-3/" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+          </ul>
+        </div><!-- /.social-share -->
+      </footer>
+    </div><!-- /.entry-content -->
+    <section id="disqus_thread"></section><!-- /#disqus_thread -->
+    
+    <div class="read-more">
+      
+        <div class="read-more-header">
+          <a href="/public-cloud-for-corporate-web-applications-part-2/" class="read-more-btn">Read More</a>
+        </div><!-- /.read-more-header -->
+        <div class="read-more-content">
+          <h3><a href="/ithub-part-6/" title="itHUB - Part 6">itHUB - Part 6</a></h3>
+          <p>###C.   Anticipatory Service ModelsBy understanding the customer more and more, itHUB can evolve from being an interactive model for prov...&hellip; <a href="/ithub-part-6/">Continue reading</a></p>
+        </div><!-- /.read-more-content -->
+      
+      <div class="read-more-list">
+        
+          <div class="list-item">
+            <h4><a href="/ithub-part-5/" title="itHUB - Part 5">itHUB - Part 5</a></h4>
+            <span>Published on January 10, 2014</span>
+          </div><!-- /.list-item -->
+        
+          <div class="list-item">
+            <h4><a href="/ithub-part-4/" title="itHUB - Part 4">itHUB - Part 4</a></h4>
+            <span>Published on January 01, 2014</span>
+          </div><!-- /.list-item -->
+        
+      </div><!-- /.read-more-list -->
+      
+    </div><!-- /.read-more -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2014 Narayanan Raghavan. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/hpstr/">HPSTR Theme</a>.</span>
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52449804-1', 'auto');  
+  ga('require', 'linkid', 'linkid.js');
+  ga('send', 'pageview');
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'naruraghavangithubio'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>	        
+
+</body>
+</html>
