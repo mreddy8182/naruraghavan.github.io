@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <title>Deploying Spring Boot Applications in IBM WebSphere Application Server &#8211; Technology Blog</title>
 <meta name="description" content="IT/Software Engineering and Management.">
-<meta name="keywords" content="DevOps, Software Engineering, Technology Operations, Release Management, WebSphere Application Server">
+<meta name="keywords" content="DevOps, Software Engineering, Technology Operations, Release Management, WebSphere Application Server, WebSphere Liberty Profile">
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary_large_image">
@@ -130,7 +130,7 @@
         
           <h1 class="entry-title"><a href="http://naruraghavan.github.io/deploying-spring-boot-applications-in-ibm-websphere-application-server/" rel="bookmark" title="Deploying Spring Boot Applications in IBM WebSphere Application Server">Deploying Spring Boot Applications in IBM WebSphere Application Server</a></h1>
         
-        <h2>July 20, 2014</h2>
+        <h2>July 21, 2014</h2>
         
         <p class="entry-reading-time">
           <i class="fa fa-clock-o"></i>
@@ -214,12 +214,12 @@
 
 <p>Since Spring Boot 1.1.4 and starter package <code>spring-boot-starter-data-jpa</code> contains hibernate JPA 2.1 support, it will collide with the JPA 2.0 jars that ship with WAS 8.5.5.2. There is no quick way to make WAS load your jar files through class loader order <code>PARENT_LAST</code>. </p>
 
-<p>The only way I could get the Spring Boot with JPA application to work was to downgrade hibernate jars to version <code>hibernate-release-4.2.15.Final</code>.</p>
+<p>I could get the Spring Boot with JPA application to work was to downgrade hibernate jars to version <code>hibernate-release-4.2.15.Final</code>.</p>
 
       <footer class="entry-meta">
-        <span class="entry-tags"><a href="http://naruraghavan.github.io/tags/#DevOps" title="Pages tagged DevOps" class="tag">DevOps</a><a href="http://naruraghavan.github.io/tags/#Software Engineering" title="Pages tagged Software Engineering" class="tag">Software Engineering</a><a href="http://naruraghavan.github.io/tags/#Technology Operations" title="Pages tagged Technology Operations" class="tag">Technology Operations</a><a href="http://naruraghavan.github.io/tags/#Release Management" title="Pages tagged Release Management" class="tag">Release Management</a><a href="http://naruraghavan.github.io/tags/#WebSphere Application Server" title="Pages tagged WebSphere Application Server" class="tag">WebSphere Application Server</a></span>
-        <span><a href="http://naruraghavan.github.io/deploying-spring-boot-applications-in-ibm-websphere-application-server/" rel="bookmark" title="Deploying Spring Boot Applications in IBM WebSphere Application Server">Deploying Spring Boot Applications in IBM WebSphere Application Server</a> was published on <span class="entry-date date published updated"><time datetime="2014-07-20T00:00:00-04:00">July 20, 2014</time></span></span>
-        (revised: <span class="entry-date date modified"><time datetime="2014-07-20 20:23:08 -0400">07/20/2014</time></span>)
+        <span class="entry-tags"><a href="http://naruraghavan.github.io/tags/#DevOps" title="Pages tagged DevOps" class="tag">DevOps</a><a href="http://naruraghavan.github.io/tags/#Software Engineering" title="Pages tagged Software Engineering" class="tag">Software Engineering</a><a href="http://naruraghavan.github.io/tags/#Technology Operations" title="Pages tagged Technology Operations" class="tag">Technology Operations</a><a href="http://naruraghavan.github.io/tags/#Release Management" title="Pages tagged Release Management" class="tag">Release Management</a><a href="http://naruraghavan.github.io/tags/#WebSphere Application Server" title="Pages tagged WebSphere Application Server" class="tag">WebSphere Application Server</a><a href="http://naruraghavan.github.io/tags/#WebSphere Liberty Profile" title="Pages tagged WebSphere Liberty Profile" class="tag">WebSphere Liberty Profile</a></span>
+        <span><a href="http://naruraghavan.github.io/deploying-spring-boot-applications-in-ibm-websphere-application-server/" rel="bookmark" title="Deploying Spring Boot Applications in IBM WebSphere Application Server">Deploying Spring Boot Applications in IBM WebSphere Application Server</a> was published on <span class="entry-date date published updated"><time datetime="2014-07-21T00:00:00-04:00">July 21, 2014</time></span></span>
+        (revised: <span class="entry-date date modified"><time datetime="2014-07-21 15:29:49 -0400">07/21/2014</time></span>)
         <span class="author vcard"><span class="fn"><a href="http://naruraghavan.github.io/about/" title="About Narayanan Raghavan">Narayanan Raghavan</a></span></span>
         <div class="social-share">
           <ul class="socialcount socialcount-small inline-list">
