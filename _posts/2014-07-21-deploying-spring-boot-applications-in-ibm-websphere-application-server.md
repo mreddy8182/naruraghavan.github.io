@@ -38,3 +38,17 @@ and the ```server.xml``` should look somewhat like the following:
   <application id="Gradle___NetStarContentRestServices___ncrs_war__exploded_" location="/Users/Naru/IdeaProjects/NetStarContentRestServices/out/artifacts/NetStarContentRestServices/exploded/ncrs.war" name="Gradle___NetStarContentRestServices___ncrs_war__exploded_" type="war" />
 </server>
 {% endhighlight %}
+
+Since Spring Boot starter package for web ```spring-boot-starter-web``` uses embedded tomcat by default, I ended up specifying the following in my ```build.gradle``` file as follows:
+
+{% highlight gradle %}
+providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+{% endhighlight %}
+
+The ```providedRuntime``` directive makes sure that the war plugin moves the embeeded tomcat jar files to ```/WEB-INF/lib-provided``` from ```/WEB-INF/lib``` directory. 
+
+>>>The premise of Spring Boot is to develop and run Spring applications as standalones - extremely good for development teams. 
+
+If you build the war file Without the above directive, the embedded tomcat jars will also be placed along with the other jar dependencies in the ```/WEB-INF/lib``` directory. [Here](https://github.com/spring-projects/spring-boot/issues/1194) is the question I posed to the Spring Boot team to get my application war file to work in a regular Tomcat or WLP environment.
+
+Once the above situation with the application war file was fixed, my application deployed and ran fine within the WLP environment. After successfully getting the application to work in WLP environment, I moved onto deploying it in my test WAS 8.5.5.2 environment. To my surpise, the application did not even deploy properly. I had to perform a bunch of steps to get my REST application to work.
