@@ -1,216 +1,81 @@
-<!doctype html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
-<head>
-<meta charset="utf-8">
-<title>Latest Posts &#8211; Technology Blog</title>
-<meta name="description" content="Describe this nonsense.">
-<meta name="keywords" content="Jekyll, theme, themes, responsive, blog, modern">
+---
+layout: post
+title: "Deploying Spring Boot Applications in IBM WebSphere Application Server"
+modified: 2014-07-20 20:23:08 -0400
+tags: [DevOps,Software Engineering,Technology Operations,Release Management, WebSphere Application Server]
+image:
+  feature: abstract-11.jpg
+  credit: dargadgetz
+  creditlink: http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/
+comments: true
+share: true
+---
+Though the Spring Projects make our lives easier on a daily basis, as a development lead, I do face technical difficulties in bridging the gap between development and operations. One such difficulty was to get one of my applications developed using a wide variety of Spring technnologies - Spring Data JPA, Spring Data Rest, Spring Hateoas, and Spring Data Redis - to deploy on WebSphere Application Server. I was excited to use Spring Boot 1.1.4 and Spring IO Platform 1.0.1 to manage my development and version management. 
 
-<!-- Twitter Cards -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://naruraghavan.github.io/images/abstract-1.jpg">
+I enjoyed my dev time every day until it was time to deploy the application on IBM WebSphere Application Server (WAS). Expecting the Operations team to troubleshoot the deployment problems may not even be possible given the human resource availability/constraints on that team. Therefore, it becomes an additional development story within a Sprint (in Agile Scrum parlance) for the core dev team to execute.  
 
-<meta name="twitter:title" content="Latest Posts">
-<meta name="twitter:description" content="Describe this nonsense.">
-<meta name="twitter:creator" content="@naruraghavan">
+## Deploying on WebSphere Liberty Profile (WLP)
+My initial idea was to get the application up and running within WLP. You can download the runtime [here](https://developer.ibm.com/wasdev/downloads/liberty-profile-using-non-eclipse-environments/).
 
-<!-- Open Graph -->
-<meta property="og:locale" content="en_US">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Latest Posts">
-<meta property="og:description" content="Describe this nonsense.">
-<meta property="og:url" content="http://naruraghavan.github.io/index.html">
-<meta property="og:site_name" content="Technology Blog">
+After a little bit of struggle, I got WLP working within my IntelliJ IDE as shown below:
 
+![WLP in IntelliJ]({{ site.url }}/images/WLP-in-IntelliJ.png) 
 
+and the ```server.xml``` should look somewhat like the following:
 
+{% highlight xml%}
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="new server">
+  <!-- Enable features -->
+  <featureManager>
+    <feature>localConnector-1.0</feature>
+    <feature>jsp-2.2</feature>
+  </featureManager>
+  <!-- To access this server from a remote client add a host attribute to the following element, e.g. host="*" -->
+  <httpEndpoint httpPort="9080" httpsPort="9443" id="defaultHttpEndpoint" />
+  <applicationMonitor updateTrigger="mbean" />
+  <jspEngine jdkSourceLevel="16" />
+  <application id="Gradle___NetStarContentRestServices___ncrs_war__exploded_" location="/Users/Naru/IdeaProjects/NetStarContentRestServices/out/artifacts/NetStarContentRestServices/exploded/ncrs.war" name="Gradle___NetStarContentRestServices___ncrs_war__exploded_" type="war" />
+</server>
+{% endhighlight %}
 
+Since Spring Boot starter package for web ```spring-boot-starter-web``` uses embedded tomcat by default, I ended up specifying the following in my ```build.gradle``` file as follows:
 
-<link rel="canonical" href="http://naruraghavan.github.io/">
-<link href="http://naruraghavan.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Technology Blog Feed">
+{% highlight gradle %}
+providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+{% endhighlight %}
 
+The ```providedRuntime``` directive makes sure that the war plugin moves the embeeded tomcat jar files to ```/WEB-INF/lib-provided``` from ```/WEB-INF/lib``` directory. 
 
-<!-- http://t.co/dKP3o1e -->
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+>The premise of Spring Boot is to develop and run Spring applications as standalones - extremely good for development teams. 
 
-<!-- For all browsers -->
-<link rel="stylesheet" href="http://naruraghavan.github.io/assets/css/main.min.css">
-<!-- Webfonts -->
-<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+If you build the war file Without the above directive, the embedded tomcat jars will also be placed along with the other jar dependencies in the ```/WEB-INF/lib``` directory. [Here](https://github.com/spring-projects/spring-boot/issues/1194) is the question I posed to the Spring Boot team to get my application war file to work in a regular Tomcat or WLP environment.
 
-<meta http-equiv="cleartype" content="on">
+Once the above situation with the application war file was fixed, my application deployed and ran fine within the WLP environment. After successfully getting the application to work in WLP environment, I moved onto deploying it in my test WAS 8.5.5.2 environment. To my surpise, the application did not even deploy properly. I had to perform a bunch of steps to get my REST application to work.
 
-<!-- Load Modernizr -->
-<script src="http://naruraghavan.github.io/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+## Deploying on WebSphere Application Server (WAS)  
+The key to a successful deployment of Spring Boot applications in WAS is to setup a shared library as shown below:
 
-<!-- Icons -->
-<!-- 16x16 -->
-<link rel="shortcut icon" href="http://naruraghavan.github.io/favicon.ico">
-<!-- 32x32 -->
-<link rel="shortcut icon" href="http://naruraghavan.github.io/favicon.png">
-<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="http://naruraghavan.github.io/images/apple-touch-icon-precomposed.png">
-<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://naruraghavan.github.io/images/apple-touch-icon-72x72-precomposed.png">
-<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://naruraghavan.github.io/images/apple-touch-icon-114x114-precomposed.png">
-<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://naruraghavan.github.io/images/apple-touch-icon-144x144-precomposed.png">
+[Shared Library Setup in WAS]({{ site.url }}/images/WAS-shared-library-setup.png) 
 
+I removed all the jar files under ```/WEB-INF/lib```  from my war file and placed them into the shared library. After setting up the shared library, I changed the class loader order as follows:
 
+[Class Loader Order]({{ site.url }}/images/class-loader-order.png)
 
-</head>
+Though the application started, I got hit with JPA persistence issues as follows:
 
-<body id="post-index" class="feature">
-
-<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
-<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
-	<button class="dl-trigger">Open Menu</button>
-	<ul class="dl-menu">
-		<li><a href="http://naruraghavan.github.io">Home</a></li>
-		<li>
-			<a href="#">About</a>
-			<ul class="dl-submenu">
-				<li>
-					<img src="http://naruraghavan.github.io/images/avatar-2.png" alt="Narayanan Raghavan photo" class="author-photo">
-					<h4>Narayanan Raghavan</h4>
-					<p>15+ years of Software building experience. Masters degree from Carnegie Mellon.</p>
-				</li>
-				<li><a href="http://naruraghavan.github.io/about/">Learn More</a></li>
-				<li>
-					<a href="mailto:naruraghavan@icloud.com"><i class="fa fa-envelope"></i> Email</a>
-				</li>
-				<li>
-					<a href="http://twitter.com/naruraghavan"><i class="fa fa-twitter"></i> Twitter</a>
-				</li>
-				
-				
-				<li>
-					<a href="http://linkedin.com/in/naruraghavan"><i class="fa fa-linkedin"></i> LinkedIn</a>
-				</li>
-				<li>
-					<a href="http://github.com/naruraghavan"><i class="fa fa-github"></i> GitHub</a>
-				</li>
-				
-				
-				
-				
-			</ul><!-- /.dl-submenu -->
-		</li>
-		<li>
-			<a href="#">Posts</a>
-			<ul class="dl-submenu">
-				<li><a href="http://naruraghavan.github.io/posts/">All Posts</a></li>
-				<li><a href="http://naruraghavan.github.io/tags/">All Tags</a></li>
-			</ul>
-		</li>
-		
-	</ul><!-- /.dl-menu -->
-</nav><!-- /.dl-menuwrapper -->
-
-
-<div class="entry-header">
-  <div class="image-credit">Image source: <a href="http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/">dargadgetz</a></div><!-- /.image-credit -->
-  
-    <div class="entry-image">
-      <img src="http://naruraghavan.github.io/images/abstract-1.jpg" alt="Latest Posts">
-    </div><!-- /.entry-image -->
-  
-  <div class="header-title">
-    <div class="header-title-wrap">
-      <h1>Technology Blog</h1>
-      <h2>Latest Posts</h2>
-    </div><!-- /.header-title-wrap -->
-  </div><!-- /.header-title -->
-</div><!-- /.entry-header -->
-
-<div id="main" role="main">
-  
-<article class="hentry">
-  <header>
-    <div class="entry-meta">
-      <span class="entry-date date published updated"><time datetime="2014-07-20T00:00:00-04:00"><a href="http://naruraghavan.github.io/deploying-spring-boot-application-in-ibm-websphere-application-server/">July 20, 2014</a></time></span><span class="author vcard"><span class="fn"><a href="http://naruraghavan.github.io/about/" title="About Narayanan Raghavan">Narayanan Raghavan</a></span></span>&nbsp; &bull; &nbsp;<span class="entry-comments"><a href="http://naruraghavan.github.io/deploying-spring-boot-application-in-ibm-websphere-application-server/#disqus_thread">Comment</a></span>
-      
-      <span class="entry-reading-time pull-right">
-        <i class="fa fa-clock-o"></i>
-        
-        Reading time ~12 minutes
-      </span><!-- /.entry-reading-time -->
-      
-    </div><!-- /.entry-meta -->
-    
-      <h1 class="entry-title"><a href="http://naruraghavan.github.io/deploying-spring-boot-application-in-ibm-websphere-application-server/" rel="bookmark" title="Deploying Spring Boot Applications in IBM WebSphere Application Server" itemprop="url">Deploying Spring Boot Applications in IBM WebSphere Application Server</a></h1>
-    
-  </header>
-  <div class="entry-content">
-    <p>Though the Spring Projects make our lives easier on a daily basis, as a development lead, I do face technical difficulties in bridging the gap between development and operations. One such difficulty was to get one of my applications developed using a wide variety of Spring technnologies - Spring Data JPA, Spring Data Rest, Spring Hateoas, and Spring Data Redis - to deploy on WebSphere Application Server. I was excited to use Spring Boot 1.1.4 and Spring IO Platform 1.0.1 to manage my development and version management. </p>
-
-<p>I enjoyed my dev time every day until it was time to deploy the application on IBM WebSphere Application Server (WAS). Expecting the Operations team to troubleshoot the deployment problems may not even be possible given the human resource availability/constraints on that team. Therefore, it becomes an additional development story within a Sprint (in Agile Scrum parlance) for the core dev team to execute.  </p>
-
-<h2 id="deploying-on-websphere-liberty-profile-wlp">Deploying on WebSphere Liberty Profile (WLP)</h2>
-<p>My initial idea was to get the application up and running within WLP. You can download the runtime <a href="https://developer.ibm.com/wasdev/downloads/liberty-profile-using-non-eclipse-environments/">here</a>.</p>
-
-<p>After a little bit of struggle, I got WLP working within my IntelliJ IDE as shown below:</p>
-
-<p><img src="http://naruraghavan.github.io/images/WLP-in-IntelliJ.png" alt="WLP in IntelliJ" /> </p>
-
-<p>and the <code>server.xml</code> should look somewhat like the following:</p>
-
-<div class="highlight"><pre><code class="language-xml" data-lang="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;server description=&quot;new server&quot;&gt;
-  &lt;!-- Enable features --&gt;
-  &lt;featureManager&gt;
-    &lt;feature&gt;localConnector-1.0&lt;/feature&gt;
-    &lt;feature&gt;jsp-2.2&lt;/feature&gt;
-  &lt;/featureManager&gt;
-  &lt;!-- To access this server from a remote client add a host attribute to the following element, e.g. host=&quot;*&quot; --&gt;
-  &lt;httpEndpoint httpPort=&quot;9080&quot; httpsPort=&quot;9443&quot; id=&quot;defaultHttpEndpoint&quot; /&gt;
-  &lt;applicationMonitor updateTrigger=&quot;mbean&quot; /&gt;
-  &lt;jspEngine jdkSourceLevel=&quot;16&quot; /&gt;
-  &lt;application id=&quot;Gradle___NetStarContentRestServices___ncrs_war__exploded_&quot; location=&quot;/Users/Naru/IdeaProjects/NetStarContentRestServices/out/artifacts/NetStarContentRestServices/exploded/ncrs.war&quot; name=&quot;Gradle___NetStarContentRestServices___ncrs_war__exploded_&quot; type=&quot;war&quot; /&gt;
-&lt;/server&gt;</code></pre></div>
-
-<p>Since Spring Boot starter package for web <code>spring-boot-starter-web</code> uses embedded tomcat by default, I ended up specifying the following in my <code>build.gradle</code> file as follows:</p>
-
-<div class="highlight"><pre><code class="language-gradle" data-lang="gradle">providedRuntime(&quot;org.springframework.boot:spring-boot-starter-tomcat&quot;)</code></pre></div>
-
-<p>The <code>providedRuntime</code> directive makes sure that the war plugin moves the embeeded tomcat jar files to <code>/WEB-INF/lib-provided</code> from <code>/WEB-INF/lib</code> directory. </p>
-
-<blockquote>
-  <p>The premise of Spring Boot is to develop and run Spring applications as standalones - extremely good for development teams. </p>
-</blockquote>
-
-<p>If you build the war file Without the above directive, the embedded tomcat jars will also be placed along with the other jar dependencies in the <code>/WEB-INF/lib</code> directory. <a href="https://github.com/spring-projects/spring-boot/issues/1194">Here</a> is the question I posed to the Spring Boot team to get my application war file to work in a regular Tomcat or WLP environment.</p>
-
-<p>Once the above situation with the application war file was fixed, my application deployed and ran fine within the WLP environment. After successfully getting the application to work in WLP environment, I moved onto deploying it in my test WAS 8.5.5.2 environment. To my surpise, the application did not even deploy properly. I had to perform a bunch of steps to get my REST application to work.</p>
-
-<h2 id="deploying-on-websphere-application-server-was">Deploying on WebSphere Application Server (WAS)</h2>
-<p>The key to a successful deployment of Spring Boot applications in WAS is to setup a shared library as shown below:</p>
-
-<p><a href="http://naruraghavan.github.io/images/WAS-shared-library-setup.png">Shared Library Setup in WAS</a> </p>
-
-<p>I removed all the jar files under <code>/WEB-INF/lib</code>  from my war file and placed them into the shared library. After setting up the shared library, I changed the class loader order as follows:</p>
-
-<p><a href="http://naruraghavan.github.io/images/class-loader-order.png">Class Loader Order</a></p>
-
-<p>Though the application started, I got hit with JPA persistence issues as follows:</p>
-
-<div class="highlight"><pre><code class="language-log" data-lang="log">[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O 
+{% highlight log %}
+[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O 
 [7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O   .   ____          _            __ _ _
-[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O  /\\ / ___&#39;_ __ _ _(_)_ __  __ _ \ \ \ \
-[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O ( ( )\___ | &#39;_ | &#39;_| | &#39;_ \/ _` | \ \ \ \
+[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
 [7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O   &#39;  |____| .__|_| |_|_| |_\__, | / / / /
+[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O   '  |____| .__|_| |_|_| |_\__, | / / / /
 [7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O  =========|_|==============|___/=/_/_/_/
 [7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O  :: Spring Boot ::        (v1.1.4.RELEASE)
 [7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O 
 [7/20/14 11:30:25:404 EDT] 0000005c SystemOut     O 2014-07-20 11:30:25,388 ERROR         org.springframework.boot.SpringApplication: 338 - Application startup failed
-org.springframework.context.ApplicationContextException: Unable to start embedded container; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name &#39;org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration$DispatcherServletConfiguration&#39;: Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.boot.autoconfigure.web.ServerProperties org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration$DispatcherServletConfiguration.server; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name &#39;serverProperties&#39;: Could not bind properties; nested exception is javax.validation.ValidationException: HV000041: Call to TraversableResolver.isReachable() threw an exception.
+org.springframework.context.ApplicationContextException: Unable to start embedded container; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration$DispatcherServletConfiguration': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.boot.autoconfigure.web.ServerProperties org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration$DispatcherServletConfiguration.server; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'serverProperties': Could not bind properties; nested exception is javax.validation.ValidationException: HV000041: Call to TraversableResolver.isReachable() threw an exception.
     at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.onRefresh(EmbeddedWebApplicationContext.java:135) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
     at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:476) ~[spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
     at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:120) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
@@ -323,7 +188,7 @@ org.springframework.context.ApplicationContextException: Unable to start embedde
     at com.ibm.io.async.ResultHandler.runEventProcessingLoop(ResultHandler.java:775) [com.ibm.ws.runtime.jar:na]
     at com.ibm.io.async.ResultHandler$2.run(ResultHandler.java:905) [com.ibm.ws.runtime.jar:na]
     at com.ibm.ws.util.ThreadPool$Worker.run(ThreadPool.java:1864) [com.ibm.ws.runtime.jar:na]
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name &#39;org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration$DispatcherServletConfiguration&#39;: Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.boot.autoconfigure.web.ServerProperties org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration$DispatcherServletConfiguration.server; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name &#39;serverProperties&#39;: Could not bind properties; nested exception is javax.validation.ValidationException: HV000041: Call to TraversableResolver.isReachable() threw an exception.
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration$DispatcherServletConfiguration': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.boot.autoconfigure.web.ServerProperties org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration$DispatcherServletConfiguration.server; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'serverProperties': Could not bind properties; nested exception is javax.validation.ValidationException: HV000041: Call to TraversableResolver.isReachable() threw an exception.
     at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:292) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
     at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1185) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
     at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
@@ -347,12 +212,12 @@ Caused by: org.springframework.beans.factory.BeanCreationException: Error creati
     at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.createEmbeddedServletContainer(EmbeddedWebApplicationContext.java:164) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
     at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.onRefresh(EmbeddedWebApplicationContext.java:132) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
     ... 111 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.boot.autoconfigure.web.ServerProperties org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration$DispatcherServletConfiguration.server; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name &#39;serverProperties&#39;: Could not bind properties; nested exception is javax.validation.ValidationException: HV000041: Call to TraversableResolver.isReachable() threw an exception.
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.boot.autoconfigure.web.ServerProperties org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration$DispatcherServletConfiguration.server; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'serverProperties': Could not bind properties; nested exception is javax.validation.ValidationException: HV000041: Call to TraversableResolver.isReachable() threw an exception.
     at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:508) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
     at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
     at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:289) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
     ... 132 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name &#39;serverProperties&#39;: Could not bind properties; nested exception is javax.validation.ValidationException: HV000041: Call to TraversableResolver.isReachable() threw an exception.
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'serverProperties': Could not bind properties; nested exception is javax.validation.ValidationException: HV000041: Call to TraversableResolver.isReachable() threw an exception.
     at org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor.postProcessBeforeInitialization(ConfigurationPropertiesBindingPostProcessor.java:290) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
     at org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor.postProcessBeforeInitialization(ConfigurationPropertiesBindingPostProcessor.java:242) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
     at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:407) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
@@ -389,147 +254,15 @@ Caused by: java.lang.ClassCastException: com.ibm.websphere.persistence.Persisten
     at org.hibernate.validator.internal.engine.resolver.DefaultTraversableResolver.isReachable(DefaultTraversableResolver.java:130) ~[hibernate-validator-5.0.3.Final.jar:5.0.3.Final]
     at org.hibernate.validator.internal.engine.resolver.SingleThreadCachedTraversableResolver.isReachable(SingleThreadCachedTraversableResolver.java:46) ~[hibernate-validator-5.0.3.Final.jar:5.0.3.Final]
     at org.hibernate.validator.internal.engine.ValidatorImpl.isReachable(ValidatorImpl.java:1307) ~[hibernate-validator-5.0.3.Final.jar:5.0.3.Final]
-    ... 159 common frames omitted</code></pre></div>
+    ... 159 common frames omitted
+{% endhighlight %}
 
-<p><code>java.lang.ClassCastException: com.ibm.websphere.persistence.PersistenceProviderImpl 
-</code>
-The exception is due to the JPA 2.0 jars that are shipped with WAS 8.5.5.2. Unfortunately, I couldn’t find a way to fix the issue by changing out the default java persistence API as shown below:</p>
+```java.lang.ClassCastException: com.ibm.websphere.persistence.PersistenceProviderImpl 
+```
+The exception is due to the JPA 2.0 jars that are shipped with WAS 8.5.5.2. Unfortunately, I couldn't find a way to fix the issue by changing out the default java persistence API as shown below:
 
-<p><img src="http://naruraghavan.github.io/images/alternate-persistence-provider-in-WAS.png" alt="Persistence Provider" /> </p>
+![Persistence Provider]({{ site.url }}/images/alternate-persistence-provider-in-WAS.png) 
 
-<p>Since Spring Boot 1.1.4 and starter package <code>spring-boot-starter-data-jpa</code> contains hibernate JPA 2.1 support, it will collide with the JPA 2.0 jars that ship with WAS 8.5.5.2. There is no quick way to make WAS load your jar files through class loader order <code>PARENT_LAST</code>. </p>
+Since Spring Boot 1.1.4 and starter package ```spring-boot-starter-data-jpa``` contains hibernate JPA 2.1 support, it will collide with the JPA 2.0 jars that ship with WAS 8.5.5.2. There is no quick way to make WAS load your jar files through class loader order ```PARENT_LAST```. 
 
-<p>The only way I could get the Spring Boot with JPA application to work was to downgrade hibernate jars to version <code>hibernate-release-4.2.15.Final</code> - especially, <code>hibernate-entitymanager-4.2.15.Final.jar</code> and <code>hibernate-core-4.2.15.Final</code> jars.</p>
-
-  </div><!-- /.entry-content -->
-</article><!-- /.hentry -->
-
-<article class="hentry">
-  <header>
-    <div class="entry-meta">
-      <span class="entry-date date published updated"><time datetime="2014-02-15T00:00:00-05:00"><a href="http://naruraghavan.github.io/ithub-part-6/">February 15, 2014</a></time></span><span class="author vcard"><span class="fn"><a href="http://naruraghavan.github.io/about/" title="About Narayanan Raghavan">Narayanan Raghavan</a></span></span>&nbsp; &bull; &nbsp;<span class="entry-comments"><a href="http://naruraghavan.github.io/ithub-part-6/#disqus_thread">Comment</a></span>
-      
-      <span class="entry-reading-time pull-right">
-        <i class="fa fa-clock-o"></i>
-        
-        Reading time ~2 minutes
-      </span><!-- /.entry-reading-time -->
-      
-    </div><!-- /.entry-meta -->
-    
-      <h1 class="entry-title"><a href="http://naruraghavan.github.io/ithub-part-6/" rel="bookmark" title="itHUB - Part 6" itemprop="url">itHUB - Part 6</a></h1>
-    
-  </header>
-  <div class="entry-content">
-    <p>Continuing from where we left off in <a href="http://naruraghavan.github.io/ithub-part-5"><strong>Part 5</strong></a>, lets start exploring the configuration and administration aspects of itHUB a little more in this post.</p>
-
-<h3 id="c---anticipatory-service-models">C.   Anticipatory Service Models</h3>
-<p>By understanding the customer more and more, itHUB can evolve from being an interactive model for providing products and services to anticipatory model for offering products and services. </p>
-
-<p class="pull-right"><img src="http://naruraghavan.github.io/images/anticipatory-service-models.png" alt="Anticipatory Service Models" /></p>
-
-<p>The Anticipatory Service Manager (ASM) component could be built using a combination of the event-driven architecture model and the prediction API described in the previous section. In the event-driven model, ASM will look for a predetermined set of events such as the New Hire event from PeopleSoft. Upon receiving the event, ASM will create the appropriate requests for the new hire. Some of the requests that can be submitted for a new hire include desktop/laptop, smart phone, any business unit specific applications etc. </p>
-
-<h2 id="v----conclusion">V.    CONCLUSION</h2>
-
-<p>This article, distributed across 6 posts, discussed several techniques with which IT departments could transform from being a reactive informational IT shop to a more dynamic anticipatory service model where the IT department proactively caters to the IT needs of an organization. The first transformation from the more traditional informational model is to setup an online storefront – the itHUB.  itHUB is an implementation of the interactive model where customers interact with the system to submit, track, and approve/reject requests and service providers offer products and services through the system by administering request types.   To create and sustain the network effect, this article suggested the inclusion of wiki/blog, reviews &amp; ratings, and Q&amp;A features. The article also suggested some ways for implementing recommendation of products and services and sentiment analysis to improve the understanding of the IT customer. Finally, the ASM model was introduced to facilitate the need for making IT departments more agile and proactive.</p>
-
-
-  </div><!-- /.entry-content -->
-</article><!-- /.hentry -->
-
-
-<div class="pagination">
-  
-    Previous
-  
-  <ul class="inline-list">
-    <li>
-      
-        <span class="current-page">1</span>
-      
-    </li>
-    
-      <li>
-        
-          <a href="http://naruraghavan.github.io/page2">2</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="http://naruraghavan.github.io/page3">3</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="http://naruraghavan.github.io/page4">4</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="http://naruraghavan.github.io/page5">5</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="http://naruraghavan.github.io/page6">6</a>
-        
-      </li>
-    
-      <li>
-        
-          <a href="http://naruraghavan.github.io/page7">7</a>
-        
-      </li>
-    
-  </ul>
-  
-    <a href="http://naruraghavan.github.io/page2" class="btn">Next</a>
-  
-</div><!-- /.pagination -->
-</div><!-- /#main -->
-
-<div class="footer-wrapper">
-  <footer role="contentinfo">
-    <span>&copy; 2014 Narayanan Raghavan. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/hpstr/">HPSTR Theme</a>.</span>
-  </footer>
-</div><!-- /.footer-wrapper -->
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="http://naruraghavan.github.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-<script src="http://naruraghavan.github.io/assets/js/scripts.min.js"></script>
-
-<!-- Asynchronous Google Analytics snippet -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-52449804-1', 'auto');  
-  ga('require', 'linkid', 'linkid.js');
-  ga('send', 'pageview');
-</script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  jax: ["input/TeX", "output/HTML-CSS"],
-  tex2jax: {
-    inlineMath: [ ['$', '$'] ],
-    displayMath: [ ['$$', '$$']],
-    processEscapes: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-  },
-  messageStyle: "none",
-  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
-});
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
-
-          
-
-</body>
-</html>
+The only way I could get the Spring Boot with JPA application to work was to downgrade hibernate jars to version ```hibernate-release-4.2.15.Final``` - especially, ```hibernate-entitymanager-4.2.15.Final.jar``` and ```hibernate-core-4.2.15.Final``` jars.
