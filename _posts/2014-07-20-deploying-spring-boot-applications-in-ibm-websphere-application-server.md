@@ -10,7 +10,7 @@ image:
 comments: true
 share: true
 ---
-Though the Spring Projects make our lives easier on a daily basis, as a development lead, I do face technical difficulties in bridging the gap between development and operations. One such difficulty was to get one of my applications developed using a wide variety of Spring technnologies - Spring Data JPA, Spring Data Rest, Spring Hateoas, and Spring Data Redis - to deploy on WebSphere Application Server. I was excited to use Spring Boot 1.1.4 and Spring IO Platform 1.0.1 to manage my development and version management. 
+Though the Spring Projects make our lives easier on a daily basis, as a development lead, I do face technical difficulties in bridging the gap between development and operations. One such difficulty was to get one of my applications developed using a wide variety of Spring technnologies - Spring Data JPA, Spring Data Rest, Spring Hateoas, and Spring Data Redis - to deploy on WebSphere Application Server. I was excited to use Spring Boot 1.1.4 and Spring IO Platform 1.0.1 to manage my development and version management.   
 
 I enjoyed my dev time every day until it was time to deploy the application on IBM WebSphere Application Server (WAS). Expecting the Operations team to troubleshoot the deployment problems may not even be possible given the human resource availability/constraints on that team. Therefore, it becomes an additional development story within a Sprint (in Agile Scrum parlance) for the core dev team to execute.  
 
@@ -56,11 +56,11 @@ Once the above situation with the application war file was fixed, my application
 ## Deploying on WebSphere Application Server (WAS)  
 The key to a successful deployment of Spring Boot applications in WAS is to setup a shared library as shown below:
 
-[Shared Library Setup in WAS]({{ site.url }}/images/WAS-shared-library-setup.png) 
+![Shared Library Setup in WAS]({{ site.url }}/images/WAS-shared-library-setup.png) 
 
 I removed all the jar files under ```/WEB-INF/lib```  from my war file and placed them into the shared library. After setting up the shared library, I changed the class loader order as follows:
 
-[Class Loader Order]({{ site.url }}/images/class-loader-order.png)
+![Class Loader Order]({{ site.url }}/images/class-loader-order.png)
 
 Though the application started, I got hit with JPA persistence issues as follows:
 
@@ -265,4 +265,4 @@ The exception is due to the JPA 2.0 jars that are shipped with WAS 8.5.5.2. Unfo
 
 Since Spring Boot 1.1.4 and starter package ```spring-boot-starter-data-jpa``` contains hibernate JPA 2.1 support, it will collide with the JPA 2.0 jars that ship with WAS 8.5.5.2. There is no quick way to make WAS load your jar files through class loader order ```PARENT_LAST```. 
 
-The only way I could get the Spring Boot with JPA application to work was to downgrade hibernate jars to version ```hibernate-release-4.2.15.Final``` - especially, ```hibernate-entitymanager-4.2.15.Final.jar``` and ```hibernate-core-4.2.15.Final``` jars.
+The only way I could get the Spring Boot with JPA application to work was to downgrade hibernate jars to version ```hibernate-release-4.2.15.Final```.

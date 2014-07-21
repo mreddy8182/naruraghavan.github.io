@@ -3,8 +3,8 @@ description:      IT/Software Engineering and Management.
 disqus_shortname: naruraghavangithubio
 reading_time:     true
 words_per_minute: 120
-url:              http://naruraghavan.github.io
-#url:               localhost
+#url:              http://naruraghavan.github.io
+url:               http://localhost:4000
 
 # Owner/author information
 owner:

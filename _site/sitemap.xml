@@ -1,114 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://naruraghavan.github.io</loc>
+        <loc>http://localhost:4000</loc>
     </url>
     
     
     <url>
-        <loc>http://naruraghavan.github.io/404.html</loc>
+        <loc>http://localhost:4000/404.html</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/about/</loc>
+        <loc>http://localhost:4000/about/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/feed.xml</loc>
+        <loc>http://localhost:4000/feed.xml</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/index.html</loc>
+        <loc>http://localhost:4000/index.html</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/posts/</loc>
+        <loc>http://localhost:4000/posts/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/sitemap.xml</loc>
+        <loc>http://localhost:4000/sitemap.xml</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/tags/</loc>
+        <loc>http://localhost:4000/tags/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/page2/index.html</loc>
+        <loc>http://localhost:4000/page2/index.html</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/page3/index.html</loc>
+        <loc>http://localhost:4000/page3/index.html</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/page4/index.html</loc>
+        <loc>http://localhost:4000/page4/index.html</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/page5/index.html</loc>
+        <loc>http://localhost:4000/page5/index.html</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/page6/index.html</loc>
+        <loc>http://localhost:4000/page6/index.html</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/page7/index.html</loc>
+        <loc>http://localhost:4000/page7/index.html</loc>
     </url>
     
 
     
     <url>
-        <loc>http://naruraghavan.github.io/deploying-spring-boot-applications-in-ibm-websphere-application-server/</loc>
+        <loc>http://localhost:4000/deploying-spring-boot-applications-in-ibm-websphere-application-server/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/ithub-part-6/</loc>
+        <loc>http://localhost:4000/ithub-part-6/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/ithub-part-5/</loc>
+        <loc>http://localhost:4000/ithub-part-5/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/ithub-part-4/</loc>
+        <loc>http://localhost:4000/ithub-part-4/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/ithub-part-3/</loc>
+        <loc>http://localhost:4000/ithub-part-3/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/ithub-part-2/</loc>
+        <loc>http://localhost:4000/ithub-part-2/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/ithub-part-1/</loc>
+        <loc>http://localhost:4000/ithub-part-1/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-6/</loc>
+        <loc>http://localhost:4000/public-cloud-for-corporate-web-applications-part-6/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-5/</loc>
+        <loc>http://localhost:4000/public-cloud-for-corporate-web-applications-part-5/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-4/</loc>
+        <loc>http://localhost:4000/public-cloud-for-corporate-web-applications-part-4/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-3/</loc>
+        <loc>http://localhost:4000/public-cloud-for-corporate-web-applications-part-3/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-2/</loc>
+        <loc>http://localhost:4000/public-cloud-for-corporate-web-applications-part-2/</loc>
     </url>
     
     <url>
-        <loc>http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-1/</loc>
+        <loc>http://localhost:4000/public-cloud-for-corporate-web-applications-part-1/</loc>
     </url>
     
 </urlset>
