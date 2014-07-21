@@ -65,13 +65,6 @@ I removed all the jar files under ```/WEB-INF/lib```  from my war file and place
 Though the application started, I got hit with JPA persistence issues as follows:
 
 {% highlight log %}
-[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O 
-[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O   .   ____          _            __ _ _
-[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
-[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O   '  |____| .__|_| |_|_| |_\__, | / / / /
-[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O  =========|_|==============|___/=/_/_/_/
 [7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O  :: Spring Boot ::        (v1.1.4.RELEASE)
 [7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O 
 [7/20/14 11:30:25:404 EDT] 0000005c SystemOut     O 2014-07-20 11:30:25,388 ERROR         org.springframework.boot.SpringApplication: 338 - Application startup failed
