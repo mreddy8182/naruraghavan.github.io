@@ -1,94 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc></loc>
+        <loc>http://naruraghavan.github.io</loc>
     </url>
     
     
     <url>
-        <loc>/404.html</loc>
+        <loc>http://naruraghavan.github.io/404.html</loc>
     </url>
     
     <url>
-        <loc>/about/</loc>
+        <loc>http://naruraghavan.github.io/about/</loc>
     </url>
     
     <url>
-        <loc>/feed.xml</loc>
+        <loc>http://naruraghavan.github.io/feed.xml</loc>
     </url>
     
     <url>
-        <loc>/index.html</loc>
+        <loc>http://naruraghavan.github.io/index.html</loc>
     </url>
     
     <url>
-        <loc>/posts/</loc>
+        <loc>http://naruraghavan.github.io/posts/</loc>
     </url>
     
     <url>
-        <loc>/sitemap.xml</loc>
+        <loc>http://naruraghavan.github.io/sitemap.xml</loc>
     </url>
     
     <url>
-        <loc>/tags/</loc>
+        <loc>http://naruraghavan.github.io/tags/</loc>
     </url>
     
     <url>
-        <loc>/page2/index.html</loc>
+        <loc>http://naruraghavan.github.io/page2/index.html</loc>
     </url>
     
     <url>
-        <loc>/page3/index.html</loc>
+        <loc>http://naruraghavan.github.io/page3/index.html</loc>
+    </url>
+    
+    <url>
+        <loc>http://naruraghavan.github.io/page4/index.html</loc>
+    </url>
+    
+    <url>
+        <loc>http://naruraghavan.github.io/page5/index.html</loc>
+    </url>
+    
+    <url>
+        <loc>http://naruraghavan.github.io/page6/index.html</loc>
+    </url>
+    
+    <url>
+        <loc>http://naruraghavan.github.io/page7/index.html</loc>
     </url>
     
 
     
     <url>
-        <loc>/ithub-part-6/</loc>
+        <loc>http://naruraghavan.github.io/deploying-spring-boot-application-in-ibm-websphere-application-server-8-dot-5-5-dot-2/</loc>
     </url>
     
     <url>
-        <loc>/ithub-part-5/</loc>
+        <loc>http://naruraghavan.github.io/ithub-part-6/</loc>
     </url>
     
     <url>
-        <loc>/ithub-part-4/</loc>
+        <loc>http://naruraghavan.github.io/ithub-part-5/</loc>
     </url>
     
     <url>
-        <loc>/ithub-part-3/</loc>
+        <loc>http://naruraghavan.github.io/ithub-part-4/</loc>
     </url>
     
     <url>
-        <loc>/ithub-part-2/</loc>
+        <loc>http://naruraghavan.github.io/ithub-part-3/</loc>
     </url>
     
     <url>
-        <loc>/ithub-part-1/</loc>
+        <loc>http://naruraghavan.github.io/ithub-part-2/</loc>
     </url>
     
     <url>
-        <loc>/public-cloud-for-corporate-web-applications-part-6/</loc>
+        <loc>http://naruraghavan.github.io/ithub-part-1/</loc>
     </url>
     
     <url>
-        <loc>/public-cloud-for-corporate-web-applications-part-5/</loc>
+        <loc>http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-6/</loc>
     </url>
     
     <url>
-        <loc>/public-cloud-for-corporate-web-applications-part-4/</loc>
+        <loc>http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-5/</loc>
     </url>
     
     <url>
-        <loc>/public-cloud-for-corporate-web-applications-part-3/</loc>
+        <loc>http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-4/</loc>
     </url>
     
     <url>
-        <loc>/public-cloud-for-corporate-web-applications-part-2/</loc>
+        <loc>http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-3/</loc>
     </url>
     
     <url>
-        <loc>/public-cloud-for-corporate-web-applications-part-1/</loc>
+        <loc>http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-2/</loc>
+    </url>
+    
+    <url>
+        <loc>http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-1/</loc>
     </url>
     
 </urlset>

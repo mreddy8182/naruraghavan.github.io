@@ -2,33 +2,305 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Technology Blog</title>
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="/feed.xml" />
-<link rel="alternate" type="text/html" href="" />
-<updated>2014-07-07T21:07:28-04:00</updated>
-<id>/</id>
+<link rel="self" type="application/atom+xml" href="http://naruraghavan.github.io/feed.xml" />
+<link rel="alternate" type="text/html" href="http://naruraghavan.github.io" />
+<updated>2014-07-20T23:16:21-04:00</updated>
+<id>http://naruraghavan.github.io/</id>
 <author>
   <name>Narayanan Raghavan</name>
-  <uri>/</uri>
+  <uri>http://naruraghavan.github.io/</uri>
   <email>naruraghavan@icloud.com</email>
 </author>
 
 
 <entry>
+  <title type="html"><![CDATA[Deploying Spring Boot Applications in IBM WebSphere Application Server]]></title>
+ <link rel="alternate" type="text/html" href="http://naruraghavan.github.io/deploying-spring-boot-application-in-ibm-websphere-application-server-8-dot-5-5-dot-2/" />
+  <id>http://naruraghavan.github.io/deploying-spring-boot-application-in-ibm-websphere-application-server-8-dot-5-5-dot-2</id>
+  <updated>2014-07-20 20:23:08 -0400T00:00:00-00:00</updated>
+  <published>2014-07-20T00:00:00-04:00</published>
+  
+  <author>
+    <name>Narayanan Raghavan</name>
+    <uri>http://naruraghavan.github.io</uri>
+    <email>naruraghavan@icloud.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Though the Spring Projects make our lives easier on a daily basis, as a development lead, I do face technical difficulties in bridging the gap between development and operations. One such difficulty was to get one of my applications developed using a wide variety of Spring technnologies - Spring Data JPA, Spring Data Rest, Spring Hateoas, and Spring Data Redis - to deploy on WebSphere Application Server. I was excited to use Spring Boot 1.1.4 and Spring IO Platform 1.0.1 to manage my development and version management. &lt;/p&gt;
+
+&lt;p&gt;I enjoyed my dev time every day until it was time to deploy the application on IBM WebSphere Application Server (WAS). Expecting the Operations team to troubleshoot the deployment problems may not even be possible given the human resource availability/constraints on that team. Therefore, it becomes an additional development story within a Sprint (in Agile Scrum parlance) for the core dev team to execute.  &lt;/p&gt;
+
+&lt;h2 id=&quot;deploying-on-websphere-liberty-profile-wlp&quot;&gt;Deploying on WebSphere Liberty Profile (WLP)&lt;/h2&gt;
+&lt;p&gt;My initial idea was to get the application up and running within WLP. You can download the runtime &lt;a href=&quot;https://developer.ibm.com/wasdev/downloads/liberty-profile-using-non-eclipse-environments/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;After a little bit of struggle, I got WLP working within my IntelliJ IDE as shown below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/WLP-in-IntelliJ.png&quot; alt=&quot;WLP in IntelliJ&quot; /&gt; &lt;/p&gt;
+
+&lt;p&gt;and the &lt;code&gt;server.xml&lt;/code&gt; should look somewhat like the following:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;server description=&amp;quot;new server&amp;quot;&amp;gt;
+  &amp;lt;!-- Enable features --&amp;gt;
+  &amp;lt;featureManager&amp;gt;
+    &amp;lt;feature&amp;gt;localConnector-1.0&amp;lt;/feature&amp;gt;
+    &amp;lt;feature&amp;gt;jsp-2.2&amp;lt;/feature&amp;gt;
+  &amp;lt;/featureManager&amp;gt;
+  &amp;lt;!-- To access this server from a remote client add a host attribute to the following element, e.g. host=&amp;quot;*&amp;quot; --&amp;gt;
+  &amp;lt;httpEndpoint httpPort=&amp;quot;9080&amp;quot; httpsPort=&amp;quot;9443&amp;quot; id=&amp;quot;defaultHttpEndpoint&amp;quot; /&amp;gt;
+  &amp;lt;applicationMonitor updateTrigger=&amp;quot;mbean&amp;quot; /&amp;gt;
+  &amp;lt;jspEngine jdkSourceLevel=&amp;quot;16&amp;quot; /&amp;gt;
+  &amp;lt;application id=&amp;quot;Gradle___NetStarContentRestServices___ncrs_war__exploded_&amp;quot; location=&amp;quot;/Users/Naru/IdeaProjects/NetStarContentRestServices/out/artifacts/NetStarContentRestServices/exploded/ncrs.war&amp;quot; name=&amp;quot;Gradle___NetStarContentRestServices___ncrs_war__exploded_&amp;quot; type=&amp;quot;war&amp;quot; /&amp;gt;
+&amp;lt;/server&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Since Spring Boot starter package for web &lt;code&gt;spring-boot-starter-web&lt;/code&gt; uses embedded tomcat by default, I ended up specifying the following in my &lt;code&gt;build.gradle&lt;/code&gt; file as follows:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-gradle&quot; data-lang=&quot;gradle&quot;&gt;providedRuntime(&amp;quot;org.springframework.boot:spring-boot-starter-tomcat&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;providedRuntime&lt;/code&gt; directive makes sure that the war plugin moves the embeeded tomcat jar files to &lt;code&gt;/WEB-INF/lib-provided&lt;/code&gt; from &lt;code&gt;/WEB-INF/lib&lt;/code&gt; directory. &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The premise of Spring Boot is to develop and run Spring applications as standalones - extremely good for development teams. &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;If you build the war file Without the above directive, the embedded tomcat jars will also be placed along with the other jar dependencies in the &lt;code&gt;/WEB-INF/lib&lt;/code&gt; directory. &lt;a href=&quot;https://github.com/spring-projects/spring-boot/issues/1194&quot;&gt;Here&lt;/a&gt; is the question I posed to the Spring Boot team to get my application war file to work in a regular Tomcat or WLP environment.&lt;/p&gt;
+
+&lt;p&gt;Once the above situation with the application war file was fixed, my application deployed and ran fine within the WLP environment. After successfully getting the application to work in WLP environment, I moved onto deploying it in my test WAS 8.5.5.2 environment. To my surpise, the application did not even deploy properly. I had to perform a bunch of steps to get my REST application to work.&lt;/p&gt;
+
+&lt;h2 id=&quot;deploying-on-websphere-application-server-was&quot;&gt;Deploying on WebSphere Application Server (WAS)&lt;/h2&gt;
+&lt;p&gt;The key to a successful deployment of Spring Boot applications in WAS is to setup a shared library as shown below:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/images/WAS-shared-library-setup.png&quot;&gt;Shared Library Setup in WAS&lt;/a&gt; &lt;/p&gt;
+
+&lt;p&gt;I removed all the jar files under &lt;code&gt;/WEB-INF/lib&lt;/code&gt;  from my war file and placed them into the shared library. After setting up the shared library, I changed the class loader order as follows:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/images/class-loader-order.png&quot;&gt;Class Loader Order&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Though the application started, I got hit with JPA persistence issues as follows:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-log&quot; data-lang=&quot;log&quot;&gt;[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O 
+[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O   .   ____          _            __ _ _
+[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O  /\\ / ___&amp;#39;_ __ _ _(_)_ __  __ _ \ \ \ \
+[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O ( ( )\___ | &amp;#39;_ | &amp;#39;_| | &amp;#39;_ \/ _` | \ \ \ \
+[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O   &amp;#39;  |____| .__|_| |_|_| |_\__, | / / / /
+[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O  =========|_|==============|___/=/_/_/_/
+[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O  :: Spring Boot ::        (v1.1.4.RELEASE)
+[7/20/14 11:30:21:544 EDT] 0000005c SystemOut     O 
+[7/20/14 11:30:25:404 EDT] 0000005c SystemOut     O 2014-07-20 11:30:25,388 ERROR         org.springframework.boot.SpringApplication: 338 - Application startup failed
+org.springframework.context.ApplicationContextException: Unable to start embedded container; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name &amp;#39;org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration$DispatcherServletConfiguration&amp;#39;: Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.boot.autoconfigure.web.ServerProperties org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration$DispatcherServletConfiguration.server; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name &amp;#39;serverProperties&amp;#39;: Could not bind properties; nested exception is javax.validation.ValidationException: HV000041: Call to TraversableResolver.isReachable() threw an exception.
+    at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.onRefresh(EmbeddedWebApplicationContext.java:135) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
+    at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:476) ~[spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:120) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
+    at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:691) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
+    at org.springframework.boot.SpringApplication.run(SpringApplication.java:320) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
+    at org.springframework.boot.builder.SpringApplicationBuilder.run(SpringApplicationBuilder.java:142) [spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
+    at org.springframework.boot.context.web.SpringBootServletInitializer.createRootApplicationContext(SpringBootServletInitializer.java:89) [spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
+    at org.springframework.boot.context.web.SpringBootServletInitializer.onStartup(SpringBootServletInitializer.java:51) [spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
+    at org.springframework.web.SpringServletContainerInitializer.onStartup(SpringServletContainerInitializer.java:175) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at com.ibm.ws.webcontainer.webapp.WebAppImpl.initializeServletContainerInitializers(WebAppImpl.java:613) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.webapp.WebAppImpl.initialize(WebAppImpl.java:409) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.webapp.WebGroupImpl.addWebApplication(WebGroupImpl.java:88) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.VirtualHostImpl.addWebApplication(VirtualHostImpl.java:169) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.WSWebContainer.addWebApp(WSWebContainer.java:749) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.WSWebContainer.addWebApplication(WSWebContainer.java:634) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.component.WebContainerImpl.install(WebContainerImpl.java:426) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.component.WebContainerImpl.start(WebContainerImpl.java:718) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.runtime.component.ApplicationMgrImpl.start(ApplicationMgrImpl.java:1177) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.runtime.component.DeployedApplicationImpl.fireDeployedObjectStart(DeployedApplicationImpl.java:1370) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.runtime.component.DeployedModuleImpl.start(DeployedModuleImpl.java:639) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.runtime.component.DeployedApplicationImpl.start(DeployedApplicationImpl.java:968) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.runtime.component.ApplicationMgrImpl.startApplication(ApplicationMgrImpl.java:776) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.runtime.component.ApplicationMgrImpl.startApplicationDynamically(ApplicationMgrImpl.java:1379) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.runtime.component.ApplicationMgrImpl.start(ApplicationMgrImpl.java:2189) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.runtime.component.CompositionUnitMgrImpl.start(CompositionUnitMgrImpl.java:446) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.runtime.component.CompositionUnitImpl.start(CompositionUnitImpl.java:123) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.runtime.component.CompositionUnitMgrImpl.start(CompositionUnitMgrImpl.java:389) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.runtime.component.CompositionUnitMgrImpl.access$500(CompositionUnitMgrImpl.java:117) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.runtime.component.CompositionUnitMgrImpl$1.run(CompositionUnitMgrImpl.java:664) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.security.auth.ContextManagerImpl.runAs(ContextManagerImpl.java:5384) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.security.auth.ContextManagerImpl.runAsSystem(ContextManagerImpl.java:5600) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.security.core.SecurityContext.runAsSystem(SecurityContext.java:255) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.runtime.component.CompositionUnitMgrImpl.startCompositionUnit(CompositionUnitMgrImpl.java:678) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.runtime.component.CompositionUnitMgrImpl.startCompositionUnit(CompositionUnitMgrImpl.java:622) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.runtime.component.ApplicationMgrImpl.startApplication(ApplicationMgrImpl.java:1269) [com.ibm.ws.runtime.jar:na]
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.7.0]
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:94) ~[na:1.7.0]
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55) ~[na:1.7.0]
+    at java.lang.reflect.Method.invoke(Method.java:619) ~[na:2.6 (04-09-2014)]
+    at sun.reflect.misc.Trampoline.invoke(MethodUtil.java:87) [na:1.7.0]
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.7.0]
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:94) ~[na:1.7.0]
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55) ~[na:1.7.0]
+    at java.lang.reflect.Method.invoke(Method.java:619) ~[na:2.6 (04-09-2014)]
+    at sun.reflect.misc.MethodUtil.invoke(MethodUtil.java:291) [na:1.7.0]
+    at javax.management.modelmbean.RequiredModelMBean$4.run(RequiredModelMBean.java:1260) [na:1.7.0]
+    at java.security.AccessController.doPrivileged(AccessController.java:300) [na:1.7.0]
+    at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:87) [na:1.7.0]
+    at javax.management.modelmbean.RequiredModelMBean.invokeMethod(RequiredModelMBean.java:1254) [na:1.7.0]
+    at javax.management.modelmbean.RequiredModelMBean.invoke(RequiredModelMBean.java:1092) [na:1.7.0]
+    at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:831) [na:1.7.0]
+    at com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:813) [na:1.7.0]
+    at com.ibm.ws.management.AdminServiceImpl$1.run(AdminServiceImpl.java:1335) [com.ibm.ws.admin.core.jar:na]
+    at com.ibm.ws.security.util.AccessController.doPrivileged(AccessController.java:118) [bootstrap.jar:WAS855.SERV1 [cf021412.02]]
+    at com.ibm.ws.management.AdminServiceImpl.invoke(AdminServiceImpl.java:1228) [com.ibm.ws.admin.core.jar:na]
+    at com.ibm.ws.management.commands.AdminServiceCommands$InvokeCmd.execute(AdminServiceCommands.java:251) [com.ibm.ws.admin.core.jar:na]
+    at com.ibm.ws.console.core.mbean.MBeanHelper.invoke(MBeanHelper.java:241) [wsccore-core_module.jar:na]
+    at com.ibm.ws.console.appdeployment.ApplicationDeploymentCollectionAction.execute(ApplicationDeploymentCollectionAction.java:578) [appmanagement-appmanagement_module.jar:na]
+    at org.apache.struts.action.RequestProcessor.processActionPerform(Unknown Source) [struts.jar:na]
+    at org.apache.struts.action.RequestProcessor.process(Unknown Source) [struts.jar:na]
+    at org.apache.struts.action.ActionServlet.process(Unknown Source) [struts.jar:na]
+    at org.apache.struts.action.ActionServlet.doPost(Unknown Source) [struts.jar:na]
+    at javax.servlet.http.HttpServlet.service(HttpServlet.java:595) [javax.j2ee.servlet.jar:na]
+    at javax.servlet.http.HttpServlet.service(HttpServlet.java:668) [javax.j2ee.servlet.jar:na]
+    at com.ibm.ws.webcontainer.servlet.ServletWrapper.service(ServletWrapper.java:1230) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:779) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:478) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.servlet.ServletWrapperImpl.handleRequest(ServletWrapperImpl.java:178) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.filter.WebAppFilterChain.invokeTarget(WebAppFilterChain.java:136) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.filter.WebAppFilterChain.doFilter(WebAppFilterChain.java:79) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.filter.WebAppFilterManager.doFilter(WebAppFilterManager.java:960) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.filter.WebAppFilterManager.invokeFilters(WebAppFilterManager.java:1064) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.webapp.WebAppRequestDispatcher.dispatch(WebAppRequestDispatcher.java:1385) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.webapp.WebAppRequestDispatcher.forward(WebAppRequestDispatcher.java:194) [com.ibm.ws.webcontainer.jar:na]
+    at org.apache.struts.action.RequestProcessor.doForward(Unknown Source) [struts.jar:na]
+    at org.apache.struts.tiles.TilesRequestProcessor.doForward(Unknown Source) [struts.jar:na]
+    at org.apache.struts.action.RequestProcessor.processForwardConfig(Unknown Source) [struts.jar:na]
+    at org.apache.struts.tiles.TilesRequestProcessor.processForwardConfig(Unknown Source) [struts.jar:na]
+    at org.apache.struts.action.RequestProcessor.process(Unknown Source) [struts.jar:na]
+    at org.apache.struts.action.ActionServlet.process(Unknown Source) [struts.jar:na]
+    at org.apache.struts.action.ActionServlet.doPost(Unknown Source) [struts.jar:na]
+    at javax.servlet.http.HttpServlet.service(HttpServlet.java:595) [javax.j2ee.servlet.jar:na]
+    at javax.servlet.http.HttpServlet.service(HttpServlet.java:668) [javax.j2ee.servlet.jar:na]
+    at com.ibm.ws.webcontainer.servlet.ServletWrapper.service(ServletWrapper.java:1230) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:779) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.servlet.ServletWrapper.handleRequest(ServletWrapper.java:478) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.servlet.ServletWrapperImpl.handleRequest(ServletWrapperImpl.java:178) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.filter.WebAppFilterChain.invokeTarget(WebAppFilterChain.java:136) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.filter.WebAppFilterChain.doFilter(WebAppFilterChain.java:97) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.console.core.servlet.WSCUrlFilter.setUpCommandAssistance(WSCUrlFilter.java:955) [isclite.jar:na]
+    at com.ibm.ws.console.core.servlet.WSCUrlFilter.continueStoringTaskState(WSCUrlFilter.java:504) [isclite.jar:na]
+    at com.ibm.ws.console.core.servlet.WSCUrlFilter.doFilter(WSCUrlFilter.java:325) [isclite.jar:na]
+    at com.ibm.ws.webcontainer.filter.FilterInstanceWrapper.doFilter(FilterInstanceWrapper.java:195) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.filter.WebAppFilterChain.doFilter(WebAppFilterChain.java:91) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.filter.WebAppFilterManager.doFilter(WebAppFilterManager.java:960) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.filter.WebAppFilterManager.invokeFilters(WebAppFilterManager.java:1064) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.servlet.CacheServletWrapper.handleRequest(CacheServletWrapper.java:87) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.WebContainer.handleRequest(WebContainer.java:914) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.WSWebContainer.handleRequest(WSWebContainer.java:1662) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.webcontainer.channel.WCChannelLink.ready(WCChannelLink.java:200) [com.ibm.ws.webcontainer.jar:na]
+    at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.handleDiscrimination(HttpInboundLink.java:459) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.handleNewRequest(HttpInboundLink.java:526) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.http.channel.inbound.impl.HttpInboundLink.processRequest(HttpInboundLink.java:312) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.http.channel.inbound.impl.HttpICLReadCallback.complete(HttpICLReadCallback.java:88) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.tcp.channel.impl.AioReadCompletionListener.futureCompleted(AioReadCompletionListener.java:175) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.io.async.AbstractAsyncFuture.invokeCallback(AbstractAsyncFuture.java:217) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.io.async.AsyncChannelFuture.fireCompletionActions(AsyncChannelFuture.java:161) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.io.async.AsyncFuture.completed(AsyncFuture.java:138) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.io.async.ResultHandler.complete(ResultHandler.java:204) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.io.async.ResultHandler.runEventProcessingLoop(ResultHandler.java:775) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.io.async.ResultHandler$2.run(ResultHandler.java:905) [com.ibm.ws.runtime.jar:na]
+    at com.ibm.ws.util.ThreadPool$Worker.run(ThreadPool.java:1864) [com.ibm.ws.runtime.jar:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name &amp;#39;org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration$DispatcherServletConfiguration&amp;#39;: Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.boot.autoconfigure.web.ServerProperties org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration$DispatcherServletConfiguration.server; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name &amp;#39;serverProperties&amp;#39;: Could not bind properties; nested exception is javax.validation.ValidationException: HV000041: Call to TraversableResolver.isReachable() threw an exception.
+    at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:292) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1185) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:370) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1094) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:989) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:504) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:198) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.getOrderedBeansOfType(EmbeddedWebApplicationContext.java:367) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
+    at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.getServletContextInitializerBeans(EmbeddedWebApplicationContext.java:233) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
+    at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext$1.onStartup(EmbeddedWebApplicationContext.java:213) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
+    at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.createEmbeddedServletContainer(EmbeddedWebApplicationContext.java:164) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
+    at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.onRefresh(EmbeddedWebApplicationContext.java:132) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
+    ... 111 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.boot.autoconfigure.web.ServerProperties org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration$DispatcherServletConfiguration.server; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name &amp;#39;serverProperties&amp;#39;: Could not bind properties; nested exception is javax.validation.ValidationException: HV000041: Call to TraversableResolver.isReachable() threw an exception.
+    at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:508) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:289) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    ... 132 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name &amp;#39;serverProperties&amp;#39;: Could not bind properties; nested exception is javax.validation.ValidationException: HV000041: Call to TraversableResolver.isReachable() threw an exception.
+    at org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor.postProcessBeforeInitialization(ConfigurationPropertiesBindingPostProcessor.java:290) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
+    at org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor.postProcessBeforeInitialization(ConfigurationPropertiesBindingPostProcessor.java:242) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:407) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1545) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:539) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1017) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:960) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:858) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:480) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    ... 134 common frames omitted
+Caused by: javax.validation.ValidationException: HV000041: Call to TraversableResolver.isReachable() threw an exception.
+    at org.hibernate.validator.internal.engine.ValidatorImpl.isReachable(ValidatorImpl.java:1316) ~[hibernate-validator-5.0.3.Final.jar:5.0.3.Final]
+    at org.hibernate.validator.internal.engine.ValidatorImpl.isValidationRequired(ValidatorImpl.java:1292) ~[hibernate-validator-5.0.3.Final.jar:5.0.3.Final]
+    at org.hibernate.validator.internal.engine.ValidatorImpl.validateConstraint(ValidatorImpl.java:475) ~[hibernate-validator-5.0.3.Final.jar:5.0.3.Final]
+    at org.hibernate.validator.internal.engine.ValidatorImpl.validateConstraintsForDefaultGroup(ValidatorImpl.java:424) ~[hibernate-validator-5.0.3.Final.jar:5.0.3.Final]
+    at org.hibernate.validator.internal.engine.ValidatorImpl.validateConstraintsForCurrentGroup(ValidatorImpl.java:388) ~[hibernate-validator-5.0.3.Final.jar:5.0.3.Final]
+    at org.hibernate.validator.internal.engine.ValidatorImpl.validateInContext(ValidatorImpl.java:340) ~[hibernate-validator-5.0.3.Final.jar:5.0.3.Final]
+    at org.hibernate.validator.internal.engine.ValidatorImpl.validate(ValidatorImpl.java:158) ~[hibernate-validator-5.0.3.Final.jar:5.0.3.Final]
+    at org.springframework.validation.beanvalidation.SpringValidatorAdapter.validate(SpringValidatorAdapter.java:92) ~[spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.validation.DataBinder.validate(DataBinder.java:746) ~[spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+    at org.springframework.boot.bind.PropertiesConfigurationFactory.validate(PropertiesConfigurationFactory.java:283) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
+    at org.springframework.boot.bind.PropertiesConfigurationFactory.doBindPropertiesToTarget(PropertiesConfigurationFactory.java:278) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
+    at org.springframework.boot.bind.PropertiesConfigurationFactory.bindPropertiesToTarget(PropertiesConfigurationFactory.java:225) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
+    at org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor.postProcessBeforeInitialization(ConfigurationPropertiesBindingPostProcessor.java:287) ~[spring-boot-1.1.4.RELEASE.jar:1.1.4.RELEASE]
+    ... 147 common frames omitted
+Caused by: java.lang.ClassCastException: com.ibm.websphere.persistence.PersistenceProviderImpl incompatible with javax.persistence.spi.PersistenceProvider
+    at javax.persistence.Persistence$1.isLoaded(Persistence.java:92) ~[hibernate-jpa-2.0-api-1.0.1.Final.jar:1.0.1.Final]
+    at org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.isReachable(JPATraversableResolver.java:56) ~[hibernate-validator-5.0.3.Final.jar:5.0.3.Final]
+    at org.hibernate.validator.internal.engine.resolver.DefaultTraversableResolver.isReachable(DefaultTraversableResolver.java:130) ~[hibernate-validator-5.0.3.Final.jar:5.0.3.Final]
+    at org.hibernate.validator.internal.engine.resolver.SingleThreadCachedTraversableResolver.isReachable(SingleThreadCachedTraversableResolver.java:46) ~[hibernate-validator-5.0.3.Final.jar:5.0.3.Final]
+    at org.hibernate.validator.internal.engine.ValidatorImpl.isReachable(ValidatorImpl.java:1307) ~[hibernate-validator-5.0.3.Final.jar:5.0.3.Final]
+    ... 159 common frames omitted&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;java.lang.ClassCastException: com.ibm.websphere.persistence.PersistenceProviderImpl 
+&lt;/code&gt;
+The exception is due to the JPA 2.0 jars that are shipped with WAS 8.5.5.2. Unfortunately, I couldn’t find a way to fix the issue by changing out the default java persistence API as shown below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/alternate-persistence-provider-in-WAS.png&quot; alt=&quot;Persistence Provider&quot; /&gt; &lt;/p&gt;
+
+&lt;p&gt;Since Spring Boot 1.1.4 and starter package &lt;code&gt;spring-boot-starter-data-jpa&lt;/code&gt; contains hibernate JPA 2.1 support, it will collide with the JPA 2.0 jars that ship with WAS 8.5.5.2. There is no quick way to make WAS load your jar files through class loader order &lt;code&gt;PARENT_LAST&lt;/code&gt;. &lt;/p&gt;
+
+&lt;p&gt;The only way I could get the Spring Boot with JPA application was to downgrade hibernate jars to version &lt;code&gt;hibernate-release-4.2.15.Final&lt;/code&gt; - especially, &lt;code&gt;hibernate-entitymanager-4.2.15.Final.jar&lt;/code&gt; and &lt;code&gt;hibernate-core-4.2.15.Final&lt;/code&gt;.&lt;/p&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/deploying-spring-boot-application-in-ibm-websphere-application-server-8-dot-5-5-dot-2/&quot;&gt;Deploying Spring Boot Applications in IBM WebSphere Application Server&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://naruraghavan.github.io&quot;&gt;Technology Blog&lt;/a&gt; on July 20, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
   <title type="html"><![CDATA[itHUB - Part 6]]></title>
- <link rel="alternate" type="text/html" href="/ithub-part-6/" />
-  <id>/ithub-part-6</id>
+ <link rel="alternate" type="text/html" href="http://naruraghavan.github.io/ithub-part-6/" />
+  <id>http://naruraghavan.github.io/ithub-part-6</id>
   <updated>2014-02-15 21:39:03 -0500T00:00:00-00:00</updated>
   <published>2014-02-15T00:00:00-05:00</published>
   
   <author>
     <name>Narayanan Raghavan</name>
-    <uri></uri>
+    <uri>http://naruraghavan.github.io</uri>
     <email>naruraghavan@icloud.com</email>
   </author>
-  <content type="html">&lt;h3 id=&quot;c---anticipatory-service-models&quot;&gt;C.   Anticipatory Service Models&lt;/h3&gt;
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;http://naruraghavan.github.io/ithub-part-5&quot;&gt;&lt;strong&gt;Part 5&lt;/strong&gt;&lt;/a&gt;, lets start exploring the configuration and administration aspects of itHUB a little more in this post.&lt;/p&gt;
+
+&lt;h3 id=&quot;c---anticipatory-service-models&quot;&gt;C.   Anticipatory Service Models&lt;/h3&gt;
 &lt;p&gt;By understanding the customer more and more, itHUB can evolve from being an interactive model for providing products and services to anticipatory model for offering products and services. &lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/anticipatory-service-models.png&quot; alt=&quot;Anticipatory Service Models&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/anticipatory-service-models.png&quot; alt=&quot;Anticipatory Service Models&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The Anticipatory Service Manager (ASM) component could be built using a combination of the event-driven architecture model and the prediction API described in the previous section. In the event-driven model, ASM will look for a predetermined set of events such as the New Hire event from PeopleSoft. Upon receiving the event, ASM will create the appropriate requests for the new hire. Some of the requests that can be submitted for a new hire include desktop/laptop, smart phone, any business unit specific applications etc. &lt;/p&gt;
 
@@ -37,23 +309,23 @@
 &lt;p&gt;This article, distributed across 6 posts, discussed several techniques with which IT departments could transform from being a reactive informational IT shop to a more dynamic anticipatory service model where the IT department proactively caters to the IT needs of an organization. The first transformation from the more traditional informational model is to setup an online storefront – the itHUB.  itHUB is an implementation of the interactive model where customers interact with the system to submit, track, and approve/reject requests and service providers offer products and services through the system by administering request types.   To create and sustain the network effect, this article suggested the inclusion of wiki/blog, reviews &amp;amp; ratings, and Q&amp;amp;A features. The article also suggested some ways for implementing recommendation of products and services and sentiment analysis to improve the understanding of the IT customer. Finally, the ASM model was introduced to facilitate the need for making IT departments more agile and proactive.&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;/ithub-part-6/&quot;&gt;itHUB - Part 6&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on February 15, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/ithub-part-6/&quot;&gt;itHUB - Part 6&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://naruraghavan.github.io&quot;&gt;Technology Blog&lt;/a&gt; on February 15, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[itHUB - Part 5]]></title>
- <link rel="alternate" type="text/html" href="/ithub-part-5/" />
-  <id>/ithub-part-5</id>
+ <link rel="alternate" type="text/html" href="http://naruraghavan.github.io/ithub-part-5/" />
+  <id>http://naruraghavan.github.io/ithub-part-5</id>
   <updated>2014-01-10 21:27:28 -0500T00:00:00-00:00</updated>
   <published>2014-01-10T00:00:00-05:00</published>
   
   <author>
     <name>Narayanan Raghavan</name>
-    <uri></uri>
+    <uri>http://naruraghavan.github.io</uri>
     <email>naruraghavan@icloud.com</email>
   </author>
-  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;/ithub-part-4&quot;&gt;&lt;strong&gt;Part 4&lt;/strong&gt;&lt;/a&gt;, lets start exploring the configuration and administration aspects of itHUB a little more in this post.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;http://naruraghavan.github.io/ithub-part-4&quot;&gt;&lt;strong&gt;Part 4&lt;/strong&gt;&lt;/a&gt;, lets start exploring the configuration and administration aspects of itHUB a little more in this post.&lt;/p&gt;
 
 &lt;h3 id=&quot;g---request-management&quot;&gt;G.   Request Management&lt;/h3&gt;
 &lt;p&gt;This component is about the configuration of request types and the processing of requests that are internal as well as destined for external service providers. &lt;/p&gt;
@@ -61,20 +333,20 @@
 &lt;h4 id=&quot;configuration-of-request-types&quot;&gt;1)  Configuration of Request Types&lt;/h4&gt;
 &lt;p&gt;Oftentimes, the cookie cutter request processing systems contain many unnecessary data fields (in the data collection forms) that are not pertinent to a request being made. Since those systems evolved over a period of time or COTS (Commercial Off-the-shelf) application with generic set of fields for all requests, they tend to offer poor user experience when it comes to request management. A Request Type in itHUB, on the other hand, represents a set of questions to be answered or data to be collected about a request prior to processing it. For example, before processing a request for a desktop, the IT support team must understand the requirement about the desktop request such as amount of RAM needed or number of CPUs needed etc. Therefore, a request type for desktops could be configured to just ask those questions that are pertinent for desktop requests.&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/request-type-mgmt.jpg&quot; alt=&quot;E-R Diagram for Request Type Management&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/request-type-mgmt.jpg&quot; alt=&quot;E-R Diagram for Request Type Management&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;As shown in the above diagram, the request types can be categorized to support hardware requests, software requests, and application requests etc. A desktop request would be part of the hardware requests. By the same token, an external service provider’s offerings can also captured using this model. One of the ideas for presenting the various categories of request types are shown below:&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/categories-of-request-types.png&quot; alt=&quot;Categories of Request Types&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/categories-of-request-types.png&quot; alt=&quot;Categories of Request Types&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The request configuration enables the idea of grouping multiple request fields as shown below:&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/desktop-request-with-two-field-groups.png&quot; alt=&quot;Desktop Request with two Field Groups&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/desktop-request-with-two-field-groups.png&quot; alt=&quot;Desktop Request with two Field Groups&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;submission-of-requests&quot;&gt;2)  Submission of Requests&lt;/h4&gt;
 &lt;p&gt;Once the request types are defined, a customer could select a particular request for submission. The following E-R diagram shows one of way of implementing the decoupling of request configuration from the actual request itself.&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/request-mgmt.jpg&quot; alt=&quot;Request Management&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/request-mgmt.jpg&quot; alt=&quot;Request Management&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;h---approval-workflow&quot;&gt;H.   Approval Workflow&lt;/h3&gt;
 &lt;p&gt;Each request type (e.g. Desktop Request) is configured with a set of approvers. One of the major constructs in the approval workflow component is the Approver Chain and is described in the following section.&lt;/p&gt;
@@ -82,15 +354,15 @@
 &lt;h4 id=&quot;approver-chain&quot;&gt;1)  Approver Chain&lt;/h4&gt;
 &lt;p&gt;Each Request Configuration (aka. Request Type) has a set of roles configured as an approver chain. For example, the desktop request has to be approved by the following roles: department manager and general manager.&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/approval-workflow.jpg&quot; alt=&quot;Approval Workflow&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/approval-workflow.jpg&quot; alt=&quot;Approval Workflow&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;request-approval-status&quot;&gt;2)  Request Approval Status&lt;/h4&gt;
 &lt;p class=&quot;pull-right&quot;&gt;The approval decision by each approver in the approver chain, approved or rejected, is captured in the Request Approval Status. The approver chain is configured as follows:
-&lt;img src=&quot;/images/approver-chain-configuration.png&quot; alt=&quot;Approver Chain Configuration&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://naruraghavan.github.io/images/approver-chain-configuration.png&quot; alt=&quot;Approver Chain Configuration&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;In the above scenario, the request will be sent to the department manager and then the general manager for approval. Depending upon the requestor of the request, the actual approvers are mapped to the roles and the workflow is initiated as follows:&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/approval-routing.png&quot; alt=&quot;Approval Routing&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/approval-routing.png&quot; alt=&quot;Approval Routing&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;business-process-management-bpm&quot;&gt;3)  Business Process Management (BPM)&lt;/h4&gt;
 &lt;p&gt;As we introduce more products and services with varying degrees of workflow steps, it makes sense to start thinking about using a robust business process management engines such as JBoss Drools. By externalizing the business rules away from code, we can give a separate life cycle for rules to evolve more independently of the code. Another advantage to using a rules engine is to provide an opportunity for non-technical users to maintain the business rules without needing to contact a developer or the development team.&lt;/p&gt;
@@ -101,45 +373,45 @@
 &lt;h5 id=&quot;a-submit-track-approve-and-administer-requests&quot;&gt;a) Submit, Track, Approve, and Administer Requests&lt;/h5&gt;
 &lt;p&gt;This is the crux of itHUB. This is one of the main reasons as to why customers come to itHUB in the fist place - an easy to use web interface where customers and service providers (aka. service administrators) come together to make the request management possible. &lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/itHUB-request-management-usecases.png&quot; alt=&quot;Request management Use-cases&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/itHUB-request-management-usecases.png&quot; alt=&quot;Request management Use-cases&quot; /&gt;&lt;/p&gt;
 
 &lt;h6 id=&quot;submit-use-case&quot;&gt;(1)   Submit Use-Case&lt;/h6&gt;
 &lt;p&gt;itHUB customers choose from a set of request types, provide details for the request, and submit the request as shown below:&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/customer-chooses-a-request-for-submission.png&quot; alt=&quot;Request Submission&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/customer-chooses-a-request-for-submission.png&quot; alt=&quot;Request Submission&quot; /&gt;&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/customer-submits-the-request-after-providing-details.png&quot; alt=&quot;Request with Customized Details&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/customer-submits-the-request-after-providing-details.png&quot; alt=&quot;Request with Customized Details&quot; /&gt;&lt;/p&gt;
 
 &lt;h6 id=&quot;track-use-case&quot;&gt;(2)   Track Use-Case&lt;/h6&gt;
 &lt;p&gt;itHUB customer wishes to know the status of his/her request. The status of the request can be submitted, in-review, approved, or rejected as shown below:&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/track-view.png&quot; alt=&quot;Track View&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/track-view.png&quot; alt=&quot;Track View&quot; /&gt;&lt;/p&gt;
 
 &lt;h6 id=&quot;manage-use-case&quot;&gt;(3)   Manage Use-Case&lt;/h6&gt;
 &lt;p&gt;itHUB approvers wish to perform approvals for a list of requests. Approval is a process by which the approver either approves or rejects a request based on the need – requester’s need in terms of the department’s overall need. The following screen capture shows the Manage view of one of the department managers.&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/manage-view.png&quot; alt=&quot;Manage View&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/manage-view.png&quot; alt=&quot;Manage View&quot; /&gt;&lt;/p&gt;
 
 &lt;h6 id=&quot;administer-use-case&quot;&gt;(4)   Administer Use-Case&lt;/h6&gt;
 &lt;p&gt;Service providers and service administrators create a portfolio products and services for the itHUB customers to choose and request from. As described in the previous sections, each request type has the following data structure: request hub, request category, request, request field group, and request field configurations. A request hub holds on to multiple categories such as ITHUB to hold onto IT products and services. A request category holds onto multiple request configurations. Each request configuration holds onto multiple field groups and a field group holds to multiple request fields. As shown in the following screen capture, a service provider/administrator has appropriate rights to create hid/her portfolio of products and services.&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/request-type-administration.png&quot; alt=&quot;Request Type Administration&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/request-type-administration.png&quot; alt=&quot;Request Type Administration&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;An example view of the request configurations is shown below:&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/request-configuration-administration-view.png&quot; alt=&quot;Request Configuration Administration View&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/request-configuration-administration-view.png&quot; alt=&quot;Request Configuration Administration View&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;By the same token, other request type components could be administered using the appropriate administration views.&lt;/p&gt;
 
 &lt;h5 id=&quot;b-q--a&quot;&gt;b) Q &amp;amp; A&lt;/h5&gt;
 &lt;p&gt;One of the major components of the web layer is the question and answers (Q&amp;amp;A) web component. By integrating the Q&amp;amp;A web component, itHUB will be able to create the network effect as described in the previous sections. Instead of building a homegrown solution for the Q&amp;amp;A web component, IT departments could consider COTS applications such as Open Source Q&amp;amp;A (OSQA) or its commercial equivalent AnswerHub. AnswerHub is a cloud-based knowledge management system built on a Q&amp;amp;A foundation [12].  &lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/question-and-answer.png&quot; alt=&quot;Q&amp;amp;A&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/question-and-answer.png&quot; alt=&quot;Q&amp;amp;A&quot; /&gt;&lt;/p&gt;
 
 &lt;h5 id=&quot;c-wikiblogs&quot;&gt;c) Wiki/Blogs&lt;/h5&gt;
 &lt;p&gt;Adding wiki/blog support to itHUB is relatively easy. It makes sense to pursue a COTS application for wikis/blogs as opposed to building a homegrown solution. There are several wiki/blog software are available either standalone or on the cloud – Atlassian Confluence, WordPress are only a few. Picking one and integrating it into itHUB shouldn’t be difficult. The idea behind wiki/blog is to promote product/service awareness from both service-provider’s and customer’s POVs. An example blog is shown below from the Atlassian Blog website [13].&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/idea-for-blog-implementation.png&quot; alt=&quot;Idea for Blog Implementation&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/idea-for-blog-implementation.png&quot; alt=&quot;Idea for Blog Implementation&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;iv---understanding-the-customer&quot;&gt;IV.   UNDERSTANDING THE CUSTOMER&lt;/h2&gt;
 &lt;p&gt;As IT departments add more products and services, there must be a way to show products and services that are absolutely required by the business unit and its people. The other need for IT departments is to understand how the customers feel about the products and services. The following sections will attempt to illustrate some ideas for providing relevant product and service recommendations and understanding customers using sentiment analysis.&lt;/p&gt;
@@ -170,23 +442,23 @@
 &lt;p&gt;[14]    Google. (2012). Creating a Sentiment Analysis Model - Google Prediction API — Google Developers. Available: https://developers.google.com/prediction/docs/sentiment_analysis&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;/ithub-part-5/&quot;&gt;itHUB - Part 5&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on January 10, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/ithub-part-5/&quot;&gt;itHUB - Part 5&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://naruraghavan.github.io&quot;&gt;Technology Blog&lt;/a&gt; on January 10, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[itHUB - Part 4]]></title>
- <link rel="alternate" type="text/html" href="/ithub-part-4/" />
-  <id>/ithub-part-4</id>
+ <link rel="alternate" type="text/html" href="http://naruraghavan.github.io/ithub-part-4/" />
+  <id>http://naruraghavan.github.io/ithub-part-4</id>
   <updated>2014-01-01 14:12:20 -0500T00:00:00-00:00</updated>
   <published>2014-01-01T00:00:00-05:00</published>
   
   <author>
     <name>Narayanan Raghavan</name>
-    <uri></uri>
+    <uri>http://naruraghavan.github.io</uri>
     <email>naruraghavan@icloud.com</email>
   </author>
-  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;/ithub-part-3&quot;&gt;&lt;strong&gt;Part 3&lt;/strong&gt;&lt;/a&gt;, lets start exploring the application integration aspects of itHUB a little more in this post.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;http://naruraghavan.github.io/ithub-part-3&quot;&gt;&lt;strong&gt;Part 3&lt;/strong&gt;&lt;/a&gt;, lets start exploring the application integration aspects of itHUB a little more in this post.&lt;/p&gt;
 
 &lt;h3 id=&quot;e---external-service-providers-products-and-services-integration&quot;&gt;E.   External Service Provider’s Products and Services Integration&lt;/h3&gt;
 &lt;p&gt;This section will discuss the integration of Walmart’s products and services to itHUB using the Walmart Data Feed API [10].  &lt;/p&gt;
@@ -261,7 +533,7 @@
 &lt;h5 id=&quot;a-interface-process&quot;&gt;a) Interface Process&lt;/h5&gt;
 &lt;p&gt;The requestor of the data feed will make a call as follows:&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/walmart-interface-process.png&quot; alt=&quot;Walmart Interface Process&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/walmart-interface-process.png&quot; alt=&quot;Walmart Interface Process&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Request Management component needs a translator service to enable the processing of product data to and from Walmart API services. &lt;/p&gt;
 
@@ -271,7 +543,7 @@
 &lt;h4 id=&quot;application-integration&quot;&gt;3)  Application Integration&lt;/h4&gt;
 &lt;p&gt;To seamlessly integrate with the request management component as described in the previous section, the products and services data from the external service providers such as Walmart and Staples have to be translated to and from the itHUB product and service vocabulary. One of the methods of implementation design is shown below:&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/ithub-application-integration-with-external-service-providers.png&quot; alt=&quot;itHUB Application Integration with External Service Providers&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/ithub-application-integration-with-external-service-providers.png&quot; alt=&quot;itHUB Application Integration with External Service Providers&quot; /&gt;&lt;/p&gt;
 
 &lt;h5 id=&quot;a-walmart-product-mapper&quot;&gt;a) Walmart Product Mapper&lt;/h5&gt;
 &lt;p&gt;The responsibility of the Product Mapper is to extract all the necessary attributes from the “item” response XML/JSON string and create an itHUB-compatible external product item that can be represented using a common web interface. By the same token, for item inquiry or item order details, the mapper will convert the “Request” to Walmart API specific item specification.&lt;/p&gt;
@@ -282,11 +554,11 @@
 &lt;h3 id=&quot;f---user-management&quot;&gt;F.   User Management&lt;/h3&gt;
 &lt;p&gt;As discussed in the previous section, to create a singular view about the customer, itHUB user management component might have to assemble the information from a wide variety of data sources – user directory, ERP systems such as SAP, employee management software systems such as PeopleSoft to name a few. The following entity relationship diagram (ERD) shows a simplistic implementation of some of the attributes needed to properly service customers:&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/user-management.jpg&quot; alt=&quot;User Management&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/user-management.jpg&quot; alt=&quot;User Management&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;To pull customer-related information from multiple data sources, the following design could be implemented.&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/user-management-integration.png&quot; alt=&quot;E-R Diagram for User Management Integration&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/user-management-integration.png&quot; alt=&quot;E-R Diagram for User Management Integration&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;repository&quot;&gt;1)  Repository&lt;/h4&gt;
 &lt;p&gt;The responsibility of the repository is to encapsulate storage, retrieval, and search behavior and to emulate a collection of objects (Evans, 2003).  &lt;/p&gt;
@@ -310,27 +582,27 @@
 &lt;p&gt;[11]    Walmart. (2012). Walmart Open API - Item Response Groups. Available: https://developer.walmartlabs.com/docs/read/Item_Field_Description&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;/ithub-part-4/&quot;&gt;itHUB - Part 4&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on January 01, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/ithub-part-4/&quot;&gt;itHUB - Part 4&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://naruraghavan.github.io&quot;&gt;Technology Blog&lt;/a&gt; on January 01, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[itHUB - Part 3]]></title>
- <link rel="alternate" type="text/html" href="/ithub-part-3/" />
-  <id>/ithub-part-3</id>
+ <link rel="alternate" type="text/html" href="http://naruraghavan.github.io/ithub-part-3/" />
+  <id>http://naruraghavan.github.io/ithub-part-3</id>
   <updated>2013-12-17 04:45:36 -0500T00:00:00-00:00</updated>
   <published>2013-12-17T00:00:00-05:00</published>
   
   <author>
     <name>Narayanan Raghavan</name>
-    <uri></uri>
+    <uri>http://naruraghavan.github.io</uri>
     <email>naruraghavan@icloud.com</email>
   </author>
-  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;/ithub-part-2&quot;&gt;&lt;strong&gt;Part 2&lt;/strong&gt;&lt;/a&gt;, lets start exploring the software architecture of itHUB a little more in this post.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;http://naruraghavan.github.io/ithub-part-2&quot;&gt;&lt;strong&gt;Part 2&lt;/strong&gt;&lt;/a&gt;, lets start exploring the software architecture of itHUB a little more in this post.&lt;/p&gt;
 
 &lt;h3 id=&quot;c---technology-web-20-and-beyond&quot;&gt;C.   Technology: Web 2.0 and Beyond&lt;/h3&gt;
 &lt;p class=&quot;pull-right&quot;&gt;The use of Web 2.0 and beyond [9] is a must for the itHUB platform. The following diagram illustrates the architectural layers and partitions of itHUB platform software components:
-&lt;img src=&quot;/images/layers-and-Partitions-of-itHUB.png&quot; alt=&quot;Layers and Partitions of itHUB&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://naruraghavan.github.io/images/layers-and-Partitions-of-itHUB.png&quot; alt=&quot;Layers and Partitions of itHUB&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;internal-products-and-services&quot;&gt;1)  Internal Products and Services&lt;/h4&gt;
 &lt;p&gt;These products and services are the core competencies of the IT departments. These products and services could range from homegrown applications to hardware and software bundles that the IT departments have direct control over. &lt;/p&gt;
@@ -350,7 +622,7 @@ The products and services from the external service providers will be accessed u
 Plus, the list of approvers is specified for each of the request type. For example, for a desktop request, there may be a need for approvals from the department manager and the general manager (or some suitable roles).&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/request-management.png&quot; alt=&quot;Request Management&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/request-management.png&quot; alt=&quot;Request Management&quot; /&gt;&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Create/Track Requests – After choosing one of the request types, for example, the desktop request, the customer goes on to fill out the necessary data points and submits the request. Once the request is submitted, it is routed for approvals based on the specification of the request type. As described in the previous section, a desktop request will be routed to the department manager and the general manager of the customer who submitted the request. After submitting the request, the customer could check on the status of the request including the approvals.&lt;/li&gt;
@@ -378,7 +650,7 @@ Plus, the list of approvers is specified for each of the request type. For examp
 &lt;h3 id=&quot;d---ithub--the-system-boundary&quot;&gt;D.   itHUB – The System Boundary&lt;/h3&gt;
 &lt;p&gt;The following diagram illustrates the system boundary and the dependencies of itHUB with external systems both managed by the IT department and external service providers.&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/ithub-system-boundary.png&quot; alt=&quot;itHUB System Boundary&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/ithub-system-boundary.png&quot; alt=&quot;itHUB System Boundary&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;As shown in the diagram, the user infrastructure could be a combination of systems such as PeopleSoft, corporate LDAP directory etc. The billing information such as cost center details could be housed in ERP systems such as SAP. Therefore, the user management component has to deal with assembling a unified view of the customer. The request management component has to deal with receiving and processing the external service provider’s product data. 
 The following section will go over the data semantics and formats for enabling the integration of customer data with internal to IT, but external to itHUB and exchanging products and services from external suppliers.&lt;/p&gt;
@@ -389,30 +661,30 @@ The following section will go over the data semantics and formats for enabling t
 &lt;p&gt;[9] T. O’Reilly and J. Battlelle. (2010). Web Squared: Web 2.0 Five Years On - by Tim O’Reilly and John Battelle. Available: http://www.web2summit.com/web2009/public/schedule/detail/10194&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;/ithub-part-3/&quot;&gt;itHUB - Part 3&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on December 17, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/ithub-part-3/&quot;&gt;itHUB - Part 3&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://naruraghavan.github.io&quot;&gt;Technology Blog&lt;/a&gt; on December 17, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[itHUB - Part 2]]></title>
- <link rel="alternate" type="text/html" href="/ithub-part-2/" />
-  <id>/ithub-part-2</id>
+ <link rel="alternate" type="text/html" href="http://naruraghavan.github.io/ithub-part-2/" />
+  <id>http://naruraghavan.github.io/ithub-part-2</id>
   <updated>2013-11-18 17:24:05 -0500T00:00:00-00:00</updated>
   <published>2013-11-18T00:00:00-05:00</published>
   
   <author>
     <name>Narayanan Raghavan</name>
-    <uri></uri>
+    <uri>http://naruraghavan.github.io</uri>
     <email>naruraghavan@icloud.com</email>
   </author>
-  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;/ithub-part-1&quot;&gt;&lt;strong&gt;Part 1&lt;/strong&gt;&lt;/a&gt;, lets start exploring the interactive model and the need for itHUB a little more in this post.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;http://naruraghavan.github.io/ithub-part-1&quot;&gt;&lt;strong&gt;Part 1&lt;/strong&gt;&lt;/a&gt;, lets start exploring the interactive model and the need for itHUB a little more in this post.&lt;/p&gt;
 
 &lt;h2 id=&quot;iii--interactive-model&quot;&gt;III.  INTERACTIVE MODEL&lt;/h2&gt;
 &lt;p&gt;In the interactive model, the IT departments provide an e-business platform with a unified web interface to search, submit, track IT requests for their customers. The platform will also provide facilities for service providers to deliver on the requests in terms of ordering items and updating the details of the requests across multiple systems. In addition to the above requirements, the platform should also provide ways in which an IT customer can pose questions and get answers either from the other IT customers or from an IT service provider. The remainder of the article will refer to such an e-business platform as itHUB. &lt;/p&gt;
 
 &lt;h3 id=&quot;a---ithub--the-platform&quot;&gt;A.   itHUB – The Platform&lt;/h3&gt;
 &lt;p class=&quot;pull-right&quot;&gt;A two-sided platform [3] is a good starting point for itHUB. There are consumers that will request for services, check for statuses, post questions and/or answers, write blog articles, and rate the quality of services offered. There are service providers – IT departments – that fulfill requests. There are approvers – typically, managers of requestors – to approve requests made by their department users, so that the service providers can fulfill them.&lt;br /&gt;
-&lt;img src=&quot;/images/two-sided-ithub-platform.png&quot; alt=&quot;2-sided itHUB Platform&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://naruraghavan.github.io/images/two-sided-ithub-platform.png&quot; alt=&quot;2-sided itHUB Platform&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;In addition to IT departments, service providers can also be external vendors such as Walmart, Staples etc. Both platform provider and the sponsor could be the IT organization in question. &lt;/p&gt;
 
@@ -425,7 +697,7 @@ The following section will go over the data semantics and formats for enabling t
 &lt;h5 id=&quot;a-same-side-network-effect&quot;&gt;a) Same-side Network Effect&lt;/h5&gt;
 &lt;p&gt;&lt;em&gt;Customer-to-Customer Network effect&lt;/em&gt; is positive since more customers make IT products and services better. This is possible because of the interactions among the customers through social questions and answers and wikis/blogs. The more customers pose questions/answers and write blog articles about the IT products and services for clarification and usage scenarios. &lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/network-effect.png&quot; alt=&quot;The Network Effect&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/network-effect.png&quot; alt=&quot;The Network Effect&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Service Provider-to-Service Provider Network&lt;/em&gt; Effect is negative as increased competition makes itHUB less attractive to external service providers such as Walmart, Staples, and PC Connection etc. The same-side network effect among internal IT service providers is positive as the internal IT departments work with each other to deliver on the IT requests.&lt;/p&gt;
 
@@ -445,7 +717,7 @@ By creating an integrated e-business platform where not only IT requests are eas
 &lt;p&gt;IT could employ the Click-and-Mortar (C&amp;amp;M) business model [7] where it maintains a web storefront in addition to its physical office space. IT must exercise the Infomediary model [7] to facilitate transactions between the consumers and the external service providers such as Walmart, Staples, PC Connection etc. To facilitate the social interactions among its customers and the service providers, IT could employ the Community model [7]. 
 Each business model – C&amp;amp;M, Infomediary, and Community – can be implemented in terms of content, customer experience, and the platform [8] and built into itHUB as follows:&lt;/p&gt;
 
-&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;/images/components-of-the-digital-business-model.png&quot; alt=&quot;The Components of the Digital Business Model&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;pull-right&quot;&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/components-of-the-digital-business-model.png&quot; alt=&quot;The Components of the Digital Business Model&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;content&quot;&gt;1) Content&lt;/h4&gt;
 
@@ -604,20 +876,20 @@ Each business model – C&amp;amp;M, Infomediary, and Community – can be imple
 &lt;p&gt;[8] P. Weill and S. Woerner. (2013). Optimizing Your Digital Business Model - MIT Sloan Management Review. Available: http://sloanreview.mit.edu/article/optimizing-your-digital-business-model&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;/ithub-part-2/&quot;&gt;itHUB - Part 2&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on November 18, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/ithub-part-2/&quot;&gt;itHUB - Part 2&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://naruraghavan.github.io&quot;&gt;Technology Blog&lt;/a&gt; on November 18, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[itHUB - Part 1]]></title>
- <link rel="alternate" type="text/html" href="/ithub-part-1/" />
-  <id>/ithub-part-1</id>
+ <link rel="alternate" type="text/html" href="http://naruraghavan.github.io/ithub-part-1/" />
+  <id>http://naruraghavan.github.io/ithub-part-1</id>
   <updated>2013-11-15 20:09:05 -0500T00:00:00-00:00</updated>
   <published>2013-11-15T00:00:00-05:00</published>
   
   <author>
     <name>Narayanan Raghavan</name>
-    <uri></uri>
+    <uri>http://naruraghavan.github.io</uri>
     <email>naruraghavan@icloud.com</email>
   </author>
   <content type="html">&lt;p&gt;Information Technology (IT) departments spend so much time and effort in providing products and services to their organizations. Oftentimes, by being caught up in the support mode, IT departments do not spend the time to supplement their support services using a well-defined online storefront. &lt;/p&gt;
@@ -626,7 +898,7 @@ Each business model – C&amp;amp;M, Infomediary, and Community – can be imple
 
 &lt;h2 id=&quot;i---introduction&quot;&gt;I.   INTRODUCTION&lt;/h2&gt;
 &lt;p class=&quot;pull-right&quot;&gt;IT must evolve from providing an informational outlet for its services into providing interactive and anticipatory models of service management. 
-&lt;img src=&quot;/images/it-service-mgmt-evolution.png&quot; alt=&quot;IT Service Management Evolution&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://naruraghavan.github.io/images/it-service-mgmt-evolution.png&quot; alt=&quot;IT Service Management Evolution&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;The following sections will illustrate the need for such an evolution by describing the problems/issues found in each of the models and some of the ways in which they can be improved/eradicated. &lt;/p&gt;
 
 &lt;h2 id=&quot;ii--informational-model&quot;&gt;II.  INFORMATIONAL MODEL&lt;/h2&gt;
@@ -634,7 +906,7 @@ Each business model – C&amp;amp;M, Infomediary, and Community – can be imple
 
 &lt;h3 id=&quot;a---request-processing&quot;&gt;A.   Request Processing&lt;/h3&gt;
 &lt;p class=&quot;pull-right&quot;&gt;The following diagram illustrates the various steps involved in processing IT requests in the informational model-based IT departments:
-&lt;img src=&quot;/images/typical-IT-request-processing.png&quot; alt=&quot;Typical IT Request processing&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://naruraghavan.github.io/images/typical-IT-request-processing.png&quot; alt=&quot;Typical IT Request processing&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;submit-request&quot;&gt;1)  Submit Request&lt;/h4&gt;
 &lt;p&gt;The IT customer performs this step. It could be as easy as filling out a web form, printing and filling out a MS Word/PDF document or as difficult as making several phone calls or writing several emails to find out as to which web form to use or which MS Word/PDF document to fill out for the request. In some cases, a proper form of request submission might not even exist.&lt;/p&gt;
@@ -685,23 +957,23 @@ Finding and submitting requests with relevant details mandated by those request 
 
 &lt;p&gt;[2] Wikipedia. (2013). Transaction cost. Available: http://en.wikipedia.org/w/index.php?title=Transaction_cost&amp;amp;oldid=572207418&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;/ithub-part-1/&quot;&gt;itHUB - Part 1&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on November 15, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/ithub-part-1/&quot;&gt;itHUB - Part 1&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://naruraghavan.github.io&quot;&gt;Technology Blog&lt;/a&gt; on November 15, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Public Cloud for Corporate Web Applications - Part 6]]></title>
- <link rel="alternate" type="text/html" href="/public-cloud-for-corporate-web-applications-part-6/" />
-  <id>/public-cloud-for-corporate-web-applications-part-6</id>
+ <link rel="alternate" type="text/html" href="http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-6/" />
+  <id>http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-6</id>
   <updated>2013-08-10 20:57:29 -0400T00:00:00-00:00</updated>
   <published>2013-08-10T00:00:00-04:00</published>
   
   <author>
     <name>Narayanan Raghavan</name>
-    <uri></uri>
+    <uri>http://naruraghavan.github.io</uri>
     <email>naruraghavan@icloud.com</email>
   </author>
-  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-5&quot;&gt;&lt;strong&gt;Part 5&lt;/strong&gt;&lt;/a&gt;, lets start exploring the Penetration Tests for the Cloud Environment in this post.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-5&quot;&gt;&lt;strong&gt;Part 5&lt;/strong&gt;&lt;/a&gt;, lets start exploring the Penetration Tests for the Cloud Environment in this post.&lt;/p&gt;
 
 &lt;h3 id=&quot;d--penetration-tests-for-the-cloud-environment&quot;&gt;D.  Penetration Tests for the Cloud Environment&lt;/h3&gt;
 &lt;p&gt;Penetration tests (Pen-tests), in this context, mean a set of methods to evaluate the security of the web application by simulating attacks against it before and after deploying the application on the public cloud. By testing the application for vulnerabilities before deploying the application on the cloud, we know how secure the web application is against those attacks. This will help set the baseline. By testing the web application after deploying it on the cloud, we can compare against the baseline to determine whether the cloud environment needs to be tweaked further or not. &lt;/p&gt;
@@ -750,13 +1022,13 @@ Finding and submitting requests with relevant details mandated by those request 
 
 &lt;p&gt;The security team could employ tools such as Kali Linux along with a whole host of security tools that come with it to successfully assess the security posture of the Web application. Kali Linux ships with a wide variety of security pen-test tools as shown in the screenshot below:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/kali-linux.png&quot; alt=&quot;Kali Linux&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/kali-linux.png&quot; alt=&quot;Kali Linux&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Before using any of these toolkits, it is mandatory to seek the written authorization from the CISO and/or the CIO of the organization. These pen-tests have to be run under the direct supervision or guidance of the CISO and/or the CIO. In some cases, the cloud broker or the provider has to clear the tests if performed against the cloud installations. Since the use or misuse of some of these tools would most probably result in property damages including the modification and/or destruction of data. &lt;/p&gt;
 
 &lt;h2 id=&quot;v--conclusion&quot;&gt;V.  CONCLUSION&lt;/h2&gt;
 
-&lt;p&gt;As explored in &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-1&quot;&gt;&lt;strong&gt;Part 1&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-2&quot;&gt;&lt;strong&gt;Part 2&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-3&quot;&gt;&lt;strong&gt;Part 3&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-4&quot;&gt;&lt;strong&gt;Part 4&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-5&quot;&gt;&lt;strong&gt;Part 5&lt;/strong&gt;&lt;/a&gt;, there are several security implications to moving corporate web applications to the public cloud. There are threats like data breaches originating from the use of shared technology environments and multi-tenancy models of the cloud platform. At the same time, the public cloud-computing platform cannot be ignored due to a false sense of security. Therefore, employing a solid risk management framework such as the NIST’s Cloud Risk Management Framework (CRMF) helps in identifying risks and ultimately validating the selection of security components and controls for a given set of risks. &lt;/p&gt;
+&lt;p&gt;As explored in &lt;a href=&quot;http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-1&quot;&gt;&lt;strong&gt;Part 1&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&quot;http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-2&quot;&gt;&lt;strong&gt;Part 2&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&quot;http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-3&quot;&gt;&lt;strong&gt;Part 3&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&quot;http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-4&quot;&gt;&lt;strong&gt;Part 4&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&quot;http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-5&quot;&gt;&lt;strong&gt;Part 5&lt;/strong&gt;&lt;/a&gt;, there are several security implications to moving corporate web applications to the public cloud. There are threats like data breaches originating from the use of shared technology environments and multi-tenancy models of the cloud platform. At the same time, the public cloud-computing platform cannot be ignored due to a false sense of security. Therefore, employing a solid risk management framework such as the NIST’s Cloud Risk Management Framework (CRMF) helps in identifying risks and ultimately validating the selection of security components and controls for a given set of risks. &lt;/p&gt;
 
 &lt;p&gt;The CRMF along with the CSA’s Trusted Cloud Initiative Reference Architecture (TCI-RA) identify the cloud actors that are responsible for those security components/controls. The clear delineation of responsibilities enhances the cloud consumer’s transparency and results in crafting a Service Level Agreement (SLA) that would work for all the cloud agents in question.   One of the biggest responsibilities of a cloud consumer in moving to the public cloud is to inject “security” into the Software Development Life Cycle (SDLC). This secured SDLC (SSDLC) will enable the consumer to thwart security threats that originate at the application layer. &lt;/p&gt;
 
@@ -825,23 +1097,23 @@ CloudComputing/CloudSecurity/NIST_Security_Reference_Architecture_2013.05.15_v1.
 &lt;p&gt;[29]    D. Cornell. (2013). Web application testing: The difference between black, gray and white box testing. Available: http://searchsoftwarequality.techtarget.com/tip/Web-application-testing-The-difference-between-black-gray-and-white-box-testing&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-6/&quot;&gt;Public Cloud for Corporate Web Applications - Part 6&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on August 10, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-6/&quot;&gt;Public Cloud for Corporate Web Applications - Part 6&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://naruraghavan.github.io&quot;&gt;Technology Blog&lt;/a&gt; on August 10, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Public Cloud for Corporate Web Applications - Part 5]]></title>
- <link rel="alternate" type="text/html" href="/public-cloud-for-corporate-web-applications-part-5/" />
-  <id>/public-cloud-for-corporate-web-applications-part-5</id>
+ <link rel="alternate" type="text/html" href="http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-5/" />
+  <id>http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-5</id>
   <updated>2013-08-07 20:33:22 -0400T00:00:00-00:00</updated>
   <published>2013-08-07T00:00:00-04:00</published>
   
   <author>
     <name>Narayanan Raghavan</name>
-    <uri></uri>
+    <uri>http://naruraghavan.github.io</uri>
     <email>naruraghavan@icloud.com</email>
   </author>
-  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-4&quot;&gt;&lt;strong&gt;Part 4&lt;/strong&gt;&lt;/a&gt;, lets start exploring the Secure Development Practices in this post.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-4&quot;&gt;&lt;strong&gt;Part 4&lt;/strong&gt;&lt;/a&gt;, lets start exploring the Secure Development Practices in this post.&lt;/p&gt;
 
 &lt;h3 id=&quot;c--employing-secure-development-practices&quot;&gt;C.  Employing Secure Development Practices&lt;/h3&gt;
 
@@ -884,13 +1156,13 @@ OWASP has published a library of Java methods [27, 28] to successfully encode or
 
 &lt;p&gt;In the above code, by using the right codec for a database such as MySQLCodec, OracleCodec etc., the developer could potentially combat against SQL Injection Attacks. By maintaining a parameter-mapping table as shown below, a developer could apply necessary techniques to properly validate the input data.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/parameter-specs-for-input-validation.png&quot; alt=&quot;Parameter Specs for Input Validation&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/parameter-specs-for-input-validation.png&quot; alt=&quot;Parameter Specs for Input Validation&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;output-validation&quot;&gt;2)  Output Validation&lt;/h4&gt;
 
 &lt;p&gt;Cross-site scripting attacks originate through poorly validated output of a web application. Attackers often use this technique to orchestrate phishing attacks and extract valuable information from unsuspecting end user. Depending upon where the output is going to end up on a web page, developers have to choose the correct encoding technique. For example, if the output is going to end up as a URL, the output has to be encoded with URL special characters such as “?” and “&amp;amp;” etc. These characters have to be properly encoded with “%”. Once again, developers must start with a parameter table as follows:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/parameter-specs-for-output-validation.png&quot; alt=&quot;Parameter Specs for Output Validation&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/parameter-specs-for-output-validation.png&quot; alt=&quot;Parameter Specs for Output Validation&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;By using ESAPI (or a similar framework), encode the output as follows:&lt;/p&gt;
 
@@ -909,7 +1181,7 @@ OWASP has published a library of Java methods [27, 28] to successfully encode or
 &lt;h5 id=&quot;a--why-do-we-need-to-do-input-validation-at-the-server-side&quot;&gt;a)  Why do we need to do input validation at the server side?&lt;/h5&gt;
 &lt;p&gt;Relying on client-side input validation is not recommended. By setting up a proxy such as WebScarab or BurpSuite etc., an attacker can easily bypass client-side validation completely as shown in the screenshot below:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/modification-of-input-using-webscarab.png&quot; alt=&quot;Modification of Input using WebScarab&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/modification-of-input-using-webscarab.png&quot; alt=&quot;Modification of Input using WebScarab&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Using these client-side proxy tools, an attacker will be able modify the HTTP header variables, change the values of query parameters, and add new query parameters if necessary. Therefore, it is not enough to just rely on client-side validations.&lt;/p&gt;
 
@@ -999,23 +1271,23 @@ CloudComputing/CloudSecurity/NIST_Security_Reference_Architecture_2013.05.15_v1.
 &lt;p&gt;[29]    D. Cornell. (2013). Web application testing: The difference between black, gray and white box testing. Available: http://searchsoftwarequality.techtarget.com/tip/Web-application-testing-The-difference-between-black-gray-and-white-box-testing&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-5/&quot;&gt;Public Cloud for Corporate Web Applications - Part 5&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on August 07, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-5/&quot;&gt;Public Cloud for Corporate Web Applications - Part 5&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://naruraghavan.github.io&quot;&gt;Technology Blog&lt;/a&gt; on August 07, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Public Cloud for Corporate Web Applications - Part 4]]></title>
- <link rel="alternate" type="text/html" href="/public-cloud-for-corporate-web-applications-part-4/" />
-  <id>/public-cloud-for-corporate-web-applications-part-4</id>
+ <link rel="alternate" type="text/html" href="http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-4/" />
+  <id>http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-4</id>
   <updated>2013-08-01 20:17:31 -0400T00:00:00-00:00</updated>
   <published>2013-08-01T00:00:00-04:00</published>
   
   <author>
     <name>Narayanan Raghavan</name>
-    <uri></uri>
+    <uri>http://naruraghavan.github.io</uri>
     <email>naruraghavan@icloud.com</email>
   </author>
-  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-3&quot;&gt;&lt;strong&gt;Part 3&lt;/strong&gt;&lt;/a&gt;, lets start exploring the Software Engineering for the PaaS Service Model in this post.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-3&quot;&gt;&lt;strong&gt;Part 3&lt;/strong&gt;&lt;/a&gt;, lets start exploring the Software Engineering for the PaaS Service Model in this post.&lt;/p&gt;
 
 &lt;h3 id=&quot;b--software-engineering-for-the-paas-service-model&quot;&gt;B.  Software Engineering for the PaaS Service Model&lt;/h3&gt;
 
@@ -1023,37 +1295,37 @@ CloudComputing/CloudSecurity/NIST_Security_Reference_Architecture_2013.05.15_v1.
 
 &lt;p&gt;The following diagram illustrates the overall development environment with tasks organized in terms of Development, QA, Automated, and Security:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/software-engineering-for-paas-service-model.png&quot; alt=&quot;Software Engineering for PaaS Service Model&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/software-engineering-for-paas-service-model.png&quot; alt=&quot;Software Engineering for PaaS Service Model&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;development-aka-scrum-team-tasks&quot;&gt;1)  Development aka. Scrum Team Tasks&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/dev-team-1.png&quot; alt=&quot;&quot; /&gt;Product Owner creates user stories and epics in the Agile Requirements Management Server. Developers, Security experts, and the Scrum master break the user stories and epics into multiple tasks and assign appropriate estimates in terms of story points. One convention that the team could follow is to equate one story point to one ideal man-day – A day of development that can be done when there are no external distractions such as meetings, discussions etc. Based on the team’s velocity, appropriate number of stories is selected to be part of the Sprint. The team along with the security expert determines the number of security-focused stories to be included in the Sprint based on the business requirements. Each story will have a “How to Demo” field populated to assist the QA team in properly testing the various functionalities of the software component.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/dev-team-1.png&quot; alt=&quot;&quot; /&gt;Product Owner creates user stories and epics in the Agile Requirements Management Server. Developers, Security experts, and the Scrum master break the user stories and epics into multiple tasks and assign appropriate estimates in terms of story points. One convention that the team could follow is to equate one story point to one ideal man-day – A day of development that can be done when there are no external distractions such as meetings, discussions etc. Based on the team’s velocity, appropriate number of stories is selected to be part of the Sprint. The team along with the security expert determines the number of security-focused stories to be included in the Sprint based on the business requirements. Each story will have a “How to Demo” field populated to assist the QA team in properly testing the various functionalities of the software component.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/dev-team-2.png&quot; alt=&quot;&quot; /&gt;The development team is responsible for periodically checking in/syncing/rebasing their code into the enterprise version control system. The developer as well as the code reviewer must look for the successful completion of static code analysis. The development team is also responsible for setting up and configuring the various life cycle management servers such as the version control system, continuous integration server, dependency management, agile requirements management server etc. From time to time, the development team will also be responsible for peer code reviews, refactoring of code to improve performance and other non-functional architectural requirements. An automated code crawler that reviews the code for vulnerabilities such as OWASP Code Crawler is highly recommended over manual code reviews. Using the “defense in depth” principles, more than one type of code reviews can be done. The first pass could be the automatic code inspection through code crawlers as stated above and the second pass could be a manual code review by a peer or a security expert.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/dev-team-2.png&quot; alt=&quot;&quot; /&gt;The development team is responsible for periodically checking in/syncing/rebasing their code into the enterprise version control system. The developer as well as the code reviewer must look for the successful completion of static code analysis. The development team is also responsible for setting up and configuring the various life cycle management servers such as the version control system, continuous integration server, dependency management, agile requirements management server etc. From time to time, the development team will also be responsible for peer code reviews, refactoring of code to improve performance and other non-functional architectural requirements. An automated code crawler that reviews the code for vulnerabilities such as OWASP Code Crawler is highly recommended over manual code reviews. Using the “defense in depth” principles, more than one type of code reviews can be done. The first pass could be the automatic code inspection through code crawlers as stated above and the second pass could be a manual code review by a peer or a security expert.&lt;/p&gt;
 
 &lt;h4 id=&quot;qa-team-tasks&quot;&gt;2)  QA Team Tasks&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/qa-team-1.png&quot; alt=&quot;&quot; /&gt;The QA team is responsible for performing the acceptance testing and reporting of the results to the development team. The acceptance testing will include both functionality and security-focused testing according to SAFECode stories. The acceptance testing is typically carried out in the Test Server as shown in the above diagram. The QA team is also responsible for configuring and writing test plans for the automated test server such as Selenium. &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/qa-team-1.png&quot; alt=&quot;&quot; /&gt;The QA team is responsible for performing the acceptance testing and reporting of the results to the development team. The acceptance testing will include both functionality and security-focused testing according to SAFECode stories. The acceptance testing is typically carried out in the Test Server as shown in the above diagram. The QA team is also responsible for configuring and writing test plans for the automated test server such as Selenium. &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/qa-team-2.png&quot; alt=&quot;&quot; /&gt;The QA team is also responsible for performing tests against the QA and production environments on the public cloud as shown in the above diagram.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/qa-team-2.png&quot; alt=&quot;&quot; /&gt;The QA team is also responsible for performing tests against the QA and production environments on the public cloud as shown in the above diagram.&lt;/p&gt;
 
 &lt;h4 id=&quot;security-team-tasks&quot;&gt;3)  Security Team Tasks&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/security-team-1.png&quot; alt=&quot;&quot; /&gt;One of the major tasks of the security team is to train the scrum team on security practices that will successfully implement the stipulated security controls. The security team is also responsible for installing and configuring the necessary static code analysis tools, malware scanners, and code vulnerability scanners that can be automatically run upon on a build. The Continuous Integration Server will not deploy if the successful build failed one of the security tests such as static code analysis etc.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/security-team-1.png&quot; alt=&quot;&quot; /&gt;One of the major tasks of the security team is to train the scrum team on security practices that will successfully implement the stipulated security controls. The security team is also responsible for installing and configuring the necessary static code analysis tools, malware scanners, and code vulnerability scanners that can be automatically run upon on a build. The Continuous Integration Server will not deploy if the successful build failed one of the security tests such as static code analysis etc.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/security-team-2.png&quot; alt=&quot;&quot; /&gt;The security team is also responsible for securing the code deployment to the public cloud in terms of network equipment such as Firewalls, Intrusion Detection Systems etc. There is a need to set up firewall rules in terms of connectivity guidelines from the PaaS service provider such as protocol (HTTPS), ports, time of day restrictions etc.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/security-team-2.png&quot; alt=&quot;&quot; /&gt;The security team is also responsible for securing the code deployment to the public cloud in terms of network equipment such as Firewalls, Intrusion Detection Systems etc. There is a need to set up firewall rules in terms of connectivity guidelines from the PaaS service provider such as protocol (HTTPS), ports, time of day restrictions etc.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/security-team-3.png&quot; alt=&quot;&quot; /&gt;The security team has to work with the PaaS broker or provider to set up the necessary SLA and incorporate provisions for security controls as described in the risk management framework section. It is this team’s responsibility to ensure that the “continuous monitoring” strategy is established and followed upon at a time interval stipulated in the SLA.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/security-team-3.png&quot; alt=&quot;&quot; /&gt;The security team has to work with the PaaS broker or provider to set up the necessary SLA and incorporate provisions for security controls as described in the risk management framework section. It is this team’s responsibility to ensure that the “continuous monitoring” strategy is established and followed upon at a time interval stipulated in the SLA.&lt;/p&gt;
 
 &lt;h4 id=&quot;automated-tasks&quot;&gt;4)  Automated Tasks&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/auto-task-1.png&quot; alt=&quot;&quot; /&gt;Establishing a Continuous Integration (CI) Server is well worth the time and money. It makes a lot of sense for the development team to carve some time out to establish a version control system such as Atlassian Stash along with a CI Server (if there are none) with deployment plans such as Test, QA, and Production with appropriate build plans. As can be seen in Figure 16, the CI Server, according to the build/deployment plans setup, checks out the necessary source code from the version control system and executes those plans. Based on the deployment plan, it deploys the software component on Test, QA, or Production server as prescribed.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/auto-task-1.png&quot; alt=&quot;&quot; /&gt;Establishing a Continuous Integration (CI) Server is well worth the time and money. It makes a lot of sense for the development team to carve some time out to establish a version control system such as Atlassian Stash along with a CI Server (if there are none) with deployment plans such as Test, QA, and Production with appropriate build plans. As can be seen in Figure 16, the CI Server, according to the build/deployment plans setup, checks out the necessary source code from the version control system and executes those plans. Based on the deployment plan, it deploys the software component on Test, QA, or Production server as prescribed.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/auto-task-2.png&quot; alt=&quot;&quot; /&gt;The integration server, such as Atlassian Bamboo, deploys the software component on the Test server. It then notifies the QA team to start the acceptance testing for the software component.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/auto-task-2.png&quot; alt=&quot;&quot; /&gt;The integration server, such as Atlassian Bamboo, deploys the software component on the Test server. It then notifies the QA team to start the acceptance testing for the software component.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/auto-task-3.png&quot; alt=&quot;&quot; /&gt;The CI Server deploys the software component to the automated test server such as Selenium. The automated tests will also include security-focus tests such as code vulnerability testing, static code analysis, and running of malware scanners. These tools upon successfully completing their tests would notify the QA, security, and development teams with results.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/auto-task-3.png&quot; alt=&quot;&quot; /&gt;The CI Server deploys the software component to the automated test server such as Selenium. The automated tests will also include security-focus tests such as code vulnerability testing, static code analysis, and running of malware scanners. These tools upon successfully completing their tests would notify the QA, security, and development teams with results.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/auto-task-4.png&quot; alt=&quot;&quot; /&gt;The CI Server deploys the software component in the PaaS environment on the public cloud. The deployment could be targeted for either the QA or the production environment. The server notifies the QA team to initiate testing on the QA or production stage.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/auto-task-4.png&quot; alt=&quot;&quot; /&gt;The CI Server deploys the software component in the PaaS environment on the public cloud. The deployment could be targeted for either the QA or the production environment. The server notifies the QA team to initiate testing on the QA or production stage.&lt;/p&gt;
 
 &lt;p&gt;I’ll contiunue my discussion in the next post.&lt;/p&gt;
 
@@ -1061,26 +1333,26 @@ CloudComputing/CloudSecurity/NIST_Security_Reference_Architecture_2013.05.15_v1.
 &lt;p&gt;[25]   M. Hüttermann, Agile ALM : lightweight tools and Agile strategies. Shelter Island, N.Y.: Manning, 2012.&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-4/&quot;&gt;Public Cloud for Corporate Web Applications - Part 4&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on August 01, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-4/&quot;&gt;Public Cloud for Corporate Web Applications - Part 4&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://naruraghavan.github.io&quot;&gt;Technology Blog&lt;/a&gt; on August 01, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Public Cloud for Corporate Web Applications - Part 3]]></title>
- <link rel="alternate" type="text/html" href="/public-cloud-for-corporate-web-applications-part-3/" />
-  <id>/public-cloud-for-corporate-web-applications-part-3</id>
+ <link rel="alternate" type="text/html" href="http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-3/" />
+  <id>http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-3</id>
   <updated>2013-07-21 19:38:52 -0400T00:00:00-00:00</updated>
   <published>2013-07-21T00:00:00-04:00</published>
   
   <author>
     <name>Narayanan Raghavan</name>
-    <uri></uri>
+    <uri>http://naruraghavan.github.io</uri>
     <email>naruraghavan@icloud.com</email>
   </author>
-  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-2&quot;&gt;&lt;strong&gt;Part 2&lt;/strong&gt;&lt;/a&gt;, lets start exploring the usage of the PaaS model in this post.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-2&quot;&gt;&lt;strong&gt;Part 2&lt;/strong&gt;&lt;/a&gt;, lets start exploring the usage of the PaaS model in this post.&lt;/p&gt;
 
 &lt;h2 id=&quot;iv-using-the-paas-service-model&quot;&gt;IV. USING THE PAAS SERVICE MODEL&lt;/h2&gt;
-&lt;p&gt;As illustrated in &lt;em&gt;Who Manages What?&lt;/em&gt; in &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-2&quot;&gt;&lt;strong&gt;Part 2&lt;/strong&gt;&lt;/a&gt;, the cloud consumer is responsible for the application and data that are deployed on the platform provided by the cloud agent – namely, the broker or the provider. Therefore, the cloud consumer is responsible for implementing the security controls to secure the application and data. A large number of attacks originate in the application layer especially for web applications. The CSA organizes application security into the following areas of focus [4]:&lt;/p&gt;
+&lt;p&gt;As illustrated in &lt;em&gt;Who Manages What?&lt;/em&gt; in &lt;a href=&quot;http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-2&quot;&gt;&lt;strong&gt;Part 2&lt;/strong&gt;&lt;/a&gt;, the cloud consumer is responsible for the application and data that are deployed on the platform provided by the cloud agent – namely, the broker or the provider. Therefore, the cloud consumer is responsible for implementing the security controls to secure the application and data. A large number of attacks originate in the application layer especially for web applications. The CSA organizes application security into the following areas of focus [4]:&lt;/p&gt;
 
 &lt;p&gt;A.  Secure Software Development Life Cycle (SSDLC)&lt;br /&gt;
 B.  Authentication, Authorization, Compliance&lt;br /&gt;
@@ -1106,7 +1378,7 @@ G.  Avoiding malicious software&lt;/p&gt;
 
 &lt;p&gt;One of the strengths of this process framework is its ability to provide an “early feedback system” thereby an organization building the software can correct its course without spending too much time and money. Since the team developing the software constructs only a portion of the software at a time (a few features at a time), tests them, and deploys them. By deploying in chunks, the organization is able to get a set of early feedback from the marketplace and is able to correct its course.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/scrum-process-flow.png&quot; alt=&quot;Scrum Process Flow&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/scrum-process-flow.png&quot; alt=&quot;Scrum Process Flow&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The following section introduces the various elements of the Scrum process from a 1000-foot view:&lt;/p&gt;
 
@@ -1214,7 +1486,7 @@ G.  Avoiding malicious software&lt;/p&gt;
 
 &lt;p&gt;As explained in the previous section, the development team constructs a set of user stories at a time (sprint backlog within 2-4 week sprints). To have a constant security awareness, user story after user story and Sprint after Sprint, it makes a lot of sense to have a permanent security-focused member on the team as shown in the following diagram – adapted from [24]:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/scrum-team-organization.png&quot; alt=&quot;Scrum Team Organization&quot; /&gt;&lt;br /&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/scrum-team-organization.png&quot; alt=&quot;Scrum Team Organization&quot; /&gt;&lt;br /&gt;
 &lt;sub&gt;* T – member with testing skills; S – member with Security skills&lt;/sub&gt;&lt;/p&gt;
 
 &lt;p&gt;Along with regular functionality testing, the QA team can also test for security issues and send the release back to the development team for fixes as shown in the diagram below – adapted from [24]:&lt;/p&gt;
@@ -1228,7 +1500,7 @@ G.  Avoiding malicious software&lt;/p&gt;
   &lt;li&gt;A portion of bug-fixes address security vulnerabilities found during QA testing&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/sprint-release-engineering-with-acceptance-testing.png&quot; alt=&quot;Sprint Release Engineering with Acceptance Testing&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/sprint-release-engineering-with-acceptance-testing.png&quot; alt=&quot;Sprint Release Engineering with Acceptance Testing&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The responsibility of the team member will entail the following:&lt;/p&gt;
 
@@ -1258,17 +1530,17 @@ G.  Avoiding malicious software&lt;/p&gt;
 
 &lt;p&gt;SAFECode has defined a set of 36 security-focused stories with a breakdown of technical tasks that go along with each story. These stories are meant for the development and QA teams. One of the stories from the SAFECode guidelines is shown below:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/safecode-security-focused-story.png&quot; alt=&quot;SAFECode Security-focused Story&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/safecode-security-focused-story.png&quot; alt=&quot;SAFECode Security-focused Story&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;safecode-guidelines-for-the-scrum-team-as-software-maintenance-tasks&quot;&gt;5)  SAFECode guidelines for the Scrum team as software maintenance tasks&lt;/h4&gt;
 
 &lt;p&gt;The idea here is to periodically run static code analysis tools, vulnerability scanners, and automated malware scanners during build/release cycles and fix the reported high-priority issues reported by those tools. Some of the guidelines provided by SAFECode are shown below:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/safecode-guidelines-for-software-maintenace.png&quot; alt=&quot;SAFECode Guidelines for Software Maintenance&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/safecode-guidelines-for-software-maintenace.png&quot; alt=&quot;SAFECode Guidelines for Software Maintenance&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;It is also important to allocate time to do “code reviews” of riskier codes. SAFECode provides the definition of riskier code as follows:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/safecode-categorization-of-riskier-code.png&quot; alt=&quot;SAFECode Guidelines for Security Experts&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/safecode-categorization-of-riskier-code.png&quot; alt=&quot;SAFECode Guidelines for Security Experts&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;As shown in the previous sections, the Agile Scrum process could be made secure. The PO has to have visibility into these security tasks, as performing some of these security-focused tasks would impact the team’s velocity. In order for the SDLC to be secure and to ensure that the product that is put out Sprint after Sprint is secure, the team needs support from all the stakeholders especially from the line of business managers, IT functional managers, Chief Information Officer (CIO), Chief Information Security Officer (CISO), and in some cases the support of the Chief Executive Officer (CEO). &lt;/p&gt;
 
@@ -1315,30 +1587,30 @@ NIST_Security_Reference_Architecture_2013.05.15_v1.0.pdf&lt;/p&gt;
 &lt;p&gt;[29]    D. Cornell. (2013). Web application testing: The difference between black, gray and white box testing. Available: http://searchsoftwarequality.techtarget.com/tip/Web-application-testing-The-difference-between-black-gray-and-white-box-testing&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-3/&quot;&gt;Public Cloud for Corporate Web Applications - Part 3&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on July 21, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-3/&quot;&gt;Public Cloud for Corporate Web Applications - Part 3&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://naruraghavan.github.io&quot;&gt;Technology Blog&lt;/a&gt; on July 21, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Public Cloud for Corporate Web Applications - Part 2]]></title>
- <link rel="alternate" type="text/html" href="/public-cloud-for-corporate-web-applications-part-2/" />
-  <id>/public-cloud-for-corporate-web-applications-part-2</id>
+ <link rel="alternate" type="text/html" href="http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-2/" />
+  <id>http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-2</id>
   <updated>2014-07-14 13:21:05 -0400T00:00:00-00:00</updated>
   <published>2013-07-14T00:00:00-04:00</published>
   
   <author>
     <name>Narayanan Raghavan</name>
-    <uri></uri>
+    <uri>http://naruraghavan.github.io</uri>
     <email>naruraghavan@icloud.com</email>
   </author>
-  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-1&quot;&gt;&lt;strong&gt;Part 1&lt;/strong&gt;&lt;/a&gt;, lets start exploring the risk management framework for  a little more in this post.&lt;/p&gt;
+  <content type="html">&lt;p&gt;Continuing from where we left off in &lt;a href=&quot;http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-1&quot;&gt;&lt;strong&gt;Part 1&lt;/strong&gt;&lt;/a&gt;, lets start exploring the risk management framework for  a little more in this post.&lt;/p&gt;
 
 &lt;h2 id=&quot;iii----risk-management-framework&quot;&gt;III.    RISK MANAGEMENT FRAMEWORK&lt;/h2&gt;
 &lt;p&gt;Since the actors, outlined in &lt;strong&gt;Part 1 - Roles and Responsibilities&lt;/strong&gt;, have varying degrees of ownership and influence in the cloud space, establishing security controls becomes a shared or split responsibility among the actors. From the cloud consumer’s angle, security should not be an impediment to embracing public cloud solutions. With that idea in mind, the risk management framework provides a step-by-step approach to identifying and documenting risks in general and validating as to what are acceptable risks to a consumer in relation to the compliance model, so that the cloud consumer can place a level of confidence in moving all the acceptable web applications/systems to the public cloud. &lt;/p&gt;
 
 &lt;p&gt;The following diagram shows the NIST’s cloud-adapted risk management framework (CRMF)[13]:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/cloud-adapted-risk-management-framework.png&quot; alt=&quot;Cloud-adapted Risk Management Framework&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/cloud-adapted-risk-management-framework.png&quot; alt=&quot;Cloud-adapted Risk Management Framework&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;categorize-information-systems&quot;&gt;1)  Categorize Information Systems&lt;/h4&gt;
 &lt;p&gt;This step enables organizations to consistently map the security impact levels to the types of information and information systems. The type of information includes private, confidential, sensitive etc. The type of information systems includes mission critical, mission support etc. An information system processes one or more information types as input, output, and/or for internal needs.&lt;/p&gt;
@@ -1375,7 +1647,7 @@ NIST_Security_Reference_Architecture_2013.05.15_v1.0.pdf&lt;/p&gt;
 
 &lt;p&gt;Once the information types and information systems are identified, the next step is to assign potential impact of compromises to confidentiality, integrity, and availability as outlined in the following table:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/categorization-table.png&quot; alt=&quot;Table 1: Categorization&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/categorization-table.png&quot; alt=&quot;Table 1: Categorization&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;For example, the information type of an organization’s corporate website for public consumption does not have any confidentiality requirement because everything on the website is for public consumption. Therefore, the security category could be defined in terms of the C/I/A triad as follows:&lt;/p&gt;
 
@@ -1452,11 +1724,11 @@ Security Category_{web contracts system}= \\
 
 &lt;p&gt;The good news is that an organization does not have to spend the time and money to create the combination of security components and how they map to responsibilities of various cloud actors from scratch. The CSA provides a comprehensive cloud control matrix based on the Trusted Cloud Initiative Reference Architecture (TCI-RA) as shown below:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/csa-cloud-control-matrix-1-4.png&quot; alt=&quot;Table 2: The CSA Cloud Control Matrix v1.4&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/csa-cloud-control-matrix-1-4.png&quot; alt=&quot;Table 2: The CSA Cloud Control Matrix v1.4&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;This excel sheet can be downloaded from [14]. What is good about this excel sheet is that it spells out the responsibility for establishing security controls among the various cloud actors. The NIST Security Reference Architecture (SRA) has adopted the TCI-RA and has created 346 security components under three different domains such as Business Operation Support Service (BOSS), Information Technology Operation Support (ITOS), and Security and Risk Management (S&amp;amp;RM) and four different service layers such as infrastructure services, information services, application services, and presentation services. Therefore, this is a streamlined, transparent risk management process where the responsibilities are clearly delineated as shown in the table below:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/nist-sra-actor-based-responsibility-chart.png&quot; alt=&quot;Table 3: The NIST SRA Actor-based Responsibility Chart&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/nist-sra-actor-based-responsibility-chart.png&quot; alt=&quot;Table 3: The NIST SRA Actor-based Responsibility Chart&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;In the above chart, “X” indicates that the respective security component has to be implemented by the actor; “A” indicates that the security component has to be implemented internally; “B” indicates that this is for “business broker only” and there is no direct association with the consumer; blank cell indicates that the security component is not needed for securing the cloud platform. &lt;/p&gt;
 
@@ -1468,11 +1740,11 @@ Security Category_{web contracts system}= \\
 
 &lt;p&gt;The question now becomes as to what security components are absolutely needed by the consumer to have a secure move to the public cloud. This is where the combination of the last step – categorize information systems – and the security index system (SIS) comes in.  SIS defines five index values from zero to four as follows [13]:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/sis.png&quot; alt=&quot;Table 4: The Security Index System (SIS)&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/sis.png&quot; alt=&quot;Table 4: The Security Index System (SIS)&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Based on security category obtained from applying step one, the cloud consumer could go on to applying security index values to all the security components as shown below:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/nist-sis-draft.png&quot; alt=&quot;Table 5: NIST SIS (Draft)&quot; /&gt;&lt;br /&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/nist-sis-draft.png&quot; alt=&quot;Table 5: NIST SIS (Draft)&quot; /&gt;&lt;br /&gt;
 &lt;sub&gt;* Ag = Aggregate score&lt;/sub&gt;&lt;/p&gt;
 
 &lt;p&gt;By following these steps, all the cloud actors know exactly what security components are needed for the migration and who is responsible for implementing them. This will also give an idea about choosing the right service model (PaaS or SaaS) for the web application in question.&lt;/p&gt;
@@ -1483,7 +1755,7 @@ Security Category_{web contracts system}= \\
 
 &lt;p&gt;If the organization wants to migrate its application to the public cloud, all the relevant cloud agents – cloud consumer, provider, broker, carrier, and/or auditor – are expected to have all the necessary security components along with the controls in place to support the PCI DSS standard. To conform to PCI DSS standards, the cloud actors have to ensure that the following security components are implemented as follows:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/csa-recommendation-for-pci-dss-on-public-cloud.png&quot; alt=&quot;Table 5: NIST SIS (Draft)&quot; /&gt;&lt;br /&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/csa-recommendation-for-pci-dss-on-public-cloud.png&quot; alt=&quot;Table 5: NIST SIS (Draft)&quot; /&gt;&lt;br /&gt;
 &lt;sub&gt;* Merchant = Cloud Consumer; PAN = Personal Access Number&lt;/sub&gt;&lt;/p&gt;
 
 &lt;p&gt;By the same token, similar security requirements can be gathered for HIPAA, GLBA, and SOX.&lt;/p&gt;
@@ -1494,7 +1766,7 @@ Security Category_{web contracts system}= \\
 
 &lt;p&gt;Based on the business requirements and the security requirements outlined in the previous section, a cloud consumer could make a decision to either go with a single cloud provider or a set of cloud providers with the help of a broker as shown in the diagram below:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/broker-based-cloud-ecosystem-architecture.png&quot; alt=&quot;Broker-based Cloud Ecosystem Architecture&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/broker-based-cloud-ecosystem-architecture.png&quot; alt=&quot;Broker-based Cloud Ecosystem Architecture&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Imagine a scenario where a consumer is in need of a web content management solution, a video encoding service so the consumer could post videos across a wide variety of social websites such as Facebook, Twitter etc. and a Web development platform based on the “Spring” framework. In order to avail all of the above services, the cloud consumer might need to seek the help of three different cloud providers as follows:&lt;/p&gt;
 
@@ -1510,7 +1782,7 @@ Security Category_{web contracts system}= \\
 
 &lt;p&gt;Based on the set of security controls selected in step two and the ecosystem architecture selected in step three, the cloud consumer is well on the way to defining the service level agreement (SLA) with the intended cloud agent(s) – broker or provider(s). The SLA details the levels and types of services that are to be provided, including but not limited to the delivery time and performance parameters. A mind map of an SLA is shown below [13]:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/mindmap-of-SLA.png&quot; alt=&quot;The mind map of SLA&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/mindmap-of-SLA.png&quot; alt=&quot;The mind map of SLA&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;It is the responsibility of the cloud consumer to ensure that default contracts are not accepted when setting up the master service agreements. From a provider’s perspective it may be easy, but the agreement might not capture all of the assurance needs of the consumer.  &lt;/p&gt;
 
@@ -1590,20 +1862,20 @@ NIST_Security_Reference_Architecture_2013.05.15_v1.0.pdf&lt;/p&gt;
 &lt;p&gt;[29]    D. Cornell. (2013). Web application testing: The difference between black, gray and white box testing. Available: http://searchsoftwarequality.techtarget.com/tip/Web-application-testing-The-difference-between-black-gray-and-white-box-testing&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-2/&quot;&gt;Public Cloud for Corporate Web Applications - Part 2&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on July 14, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-2/&quot;&gt;Public Cloud for Corporate Web Applications - Part 2&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://naruraghavan.github.io&quot;&gt;Technology Blog&lt;/a&gt; on July 14, 2013.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Public Cloud for Corporate Web Applications - Part 1]]></title>
- <link rel="alternate" type="text/html" href="/public-cloud-for-corporate-web-applications-part-1/" />
-  <id>/public-cloud-for-corporate-web-applications-part-1</id>
+ <link rel="alternate" type="text/html" href="http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-1/" />
+  <id>http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-1</id>
   <updated>2013-07-07 12:35:57 -0400T00:00:00-00:00</updated>
   <published>2013-07-07T00:00:00-04:00</published>
   
   <author>
     <name>Narayanan Raghavan</name>
-    <uri></uri>
+    <uri>http://naruraghavan.github.io</uri>
     <email>naruraghavan@icloud.com</email>
   </author>
   <content type="html">&lt;p&gt;What does “going to the public cloud” mean to organizations?  Other than the benefits such as reduced time to market, less upfront cost, rapid elasticity in terms of hardware and software resources, there are several security implications associated with such a move. &lt;/p&gt;
@@ -1612,7 +1884,7 @@ NIST_Security_Reference_Architecture_2013.05.15_v1.0.pdf&lt;/p&gt;
 
 &lt;h2 id=&quot;iintroduction&quot;&gt;I.	INTRODUCTION&lt;/h2&gt;
 &lt;p class=&quot;pull-right&quot;&gt;&lt;strong&gt;&lt;em&gt;Cloud&lt;/em&gt;&lt;/strong&gt; is a model for enabling convenient, on-demand network access to a shared pool of configurable computing resources (For example, networks, servers, storage, applications, and services) that can be rapidly provisioned and released with minimal management effort or service provider interaction [1].&lt;br /&gt;
-&lt;img src=&quot;/images/nist-definition-of-the-cloud.png&quot; alt=&quot;NIST Definition of the Cloud&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://naruraghavan.github.io/images/nist-definition-of-the-cloud.png&quot; alt=&quot;NIST Definition of the Cloud&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Infrastructure as a Service (IaaS)&lt;/em&gt; – In this cloud service model, the provider offers raw computing power, storage, and network infrastructure so that the consumer can load his/her own software components such as operating systems, applications, etc. in this infrastructure.&lt;/p&gt;
 
@@ -1621,13 +1893,13 @@ NIST_Security_Reference_Architecture_2013.05.15_v1.0.pdf&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Software as a Service (SaaS)&lt;/em&gt; - SaaS builds on top of PaaS and adds fully developed applications such as billing, collaboration, digital asset management, web content management, customer relationship management, point of sale applications to name a few. &lt;/p&gt;
 
 &lt;p class=&quot;pull-right&quot;&gt;To keep the scope manageable, this paper will only discuss SaaS and PaaS service models that are deployed using the public deployment model as highlighted in Figure 1. In the SaaS service model, an organization does not manage or control either the underlying infrastructure or the application that is deployed in the infrastructure. In the PaaS service model, the organization does not control or manage the underlying infrastructure, but does have control over the applications and data that are deployed in the infrastructure [2] as shown below:
-&lt;img src=&quot;/images/who-manages-what.png&quot; alt=&quot;Who Manages What?&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://naruraghavan.github.io/images/who-manages-what.png&quot; alt=&quot;Who Manages What?&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Public Cloud means that both the underlying platform (PaaS) and the applications (SaaS) that are hosted on the infrastructure are available to the general public and is owned and/or operated by an organization selling those cloud services. &lt;/p&gt;
 
 &lt;h3 id=&quot;aroles-and-responsibilities-in-the-cloud&quot;&gt;A.	Roles and responsibilities in the Cloud&lt;/h3&gt;
 &lt;p class=&quot;pull-right&quot;&gt;In order to study the security implications of using the public cloud for the intended service models, we have to understand the roles and responsibilities of the major actors in the cloud-computing domain [3] as shown below:
-&lt;img src=&quot;/images/roles-and-responsibilities.png&quot; alt=&quot;Roles and Responsibilities&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://naruraghavan.github.io/images/roles-and-responsibilities.png&quot; alt=&quot;Roles and Responsibilities&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;cloud-consumer&quot;&gt;1)	Cloud Consumer&lt;/h4&gt;
 &lt;p&gt;A cloud consumer is an organization that makes use of the services provided by the cloud providers and brokers.&lt;/p&gt;
@@ -1637,7 +1909,7 @@ NIST_Security_Reference_Architecture_2013.05.15_v1.0.pdf&lt;/p&gt;
 
 &lt;h4 id=&quot;cloud-broker&quot;&gt;3)	Cloud Broker&lt;/h4&gt;
 &lt;p class=&quot;pull-right&quot;&gt;As the application needs increase, the service models could get extremely complex. At this juncture, the cloud consumer could seek the help of a broker instead of going directly to the cloud provider. The cloud broker’s prime responsibility is to aggregate, enhance, or augment the services provided by one or more cloud service providers as shown in the diagram [3] below:
-&lt;img src=&quot;/images/cloud-broker-model.png&quot; alt=&quot;Cloud Broker Model&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://naruraghavan.github.io/images/cloud-broker-model.png&quot; alt=&quot;Cloud Broker Model&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;In the above scenario, the cloud consumer does not need to know about the underlying cloud providers since the service level agreement (SLA) will be created between the consumer and the broker. The cloud broker in turn will have SLAs with the cloud providers to satisfy the service levels that were committed to the consumer.&lt;/p&gt;
 
 &lt;h4 id=&quot;cloud-auditor&quot;&gt;4)	Cloud Auditor&lt;/h4&gt;
@@ -1645,7 +1917,7 @@ NIST_Security_Reference_Architecture_2013.05.15_v1.0.pdf&lt;/p&gt;
 
 &lt;h4 id=&quot;cloud-carrier&quot;&gt;5)	Cloud Carrier&lt;/h4&gt;
 &lt;p class=&quot;pull-right&quot;&gt;A cloud carrier is an intermediary that provides connectivity and transport of cloud services from the cloud provider to the consumer.
-&lt;img src=&quot;/images/cloud-carrier-model.png&quot; alt=&quot;Cloud Carrier Model&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://naruraghavan.github.io/images/cloud-carrier-model.png&quot; alt=&quot;Cloud Carrier Model&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;In the above scenario [3], a cloud provider could seek the help of a cloud carrier to provide dedicated and/or encrypted connections between the provider’s services and the consumer.&lt;/p&gt;
 
 &lt;h2 id=&quot;iisecurity-implications&quot;&gt;II.	SECURITY IMPLICATIONS&lt;/h2&gt;
@@ -1653,9 +1925,9 @@ NIST_Security_Reference_Architecture_2013.05.15_v1.0.pdf&lt;/p&gt;
 
 &lt;h3 id=&quot;amulti-tenancy&quot;&gt;A.	Multi-tenancy&lt;/h3&gt;
 &lt;p class=&quot;pull-right&quot;&gt;One of the major characteristics of cloud computing is this idea of multi-tenancy. Multi-tenancy implies the use of same applications and resources by multiple cloud consumers that may belong to multiple organizations. Multi-tenancy allows cloud providers to provide economies of scale, availability, segmentation, isolation, and operational efficiency to their consumers [4].  Since PaaS builds on the infrastructure provided by IaaS and SaaS builds on PaaS, there is quite a bit of technology components that work together to enable multi-tenancy as shown in the following diagram:
-&lt;img src=&quot;/images/multi-tenancy-1.png&quot; alt=&quot;Multi-tenancy Model 1&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://naruraghavan.github.io/images/multi-tenancy-1.png&quot; alt=&quot;Multi-tenancy Model 1&quot; /&gt;&lt;/p&gt;
 &lt;p class=&quot;pull-right&quot;&gt;In the case of IaaS, the same hardware resources are shared across multiple consumers using virtualization technologies as shown in the diagram below:
-&lt;img src=&quot;/images/multi-tenancy-2.png&quot; alt=&quot;Multi-tenancy Model 2&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://naruraghavan.github.io/images/multi-tenancy-2.png&quot; alt=&quot;Multi-tenancy Model 2&quot; /&gt;&lt;/p&gt;
 
 &lt;h5 id=&quot;avirtual-machine-manager-vmm-also-known-as-hypervisor&quot;&gt;a)	Virtual Machine Manager (VMM) also known as Hypervisor&lt;/h5&gt;
 &lt;p&gt;VMM is the virtualization layer that runs on top of a server platform and manages CPU, memory, hard disk, network, and other hardware resources of the server host [5]. &lt;/p&gt;
@@ -1701,7 +1973,7 @@ NIST_Security_Reference_Architecture_2013.05.15_v1.0.pdf&lt;/p&gt;
 &lt;p&gt;[10]	OWASP. (2013). Category:OWASP WebGoat Project - OWASP. Available: https://http://www.owasp.org/index.php/Category:OWASP_WebGoat_Project&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;/public-cloud-for-corporate-web-applications-part-1/&quot;&gt;Public Cloud for Corporate Web Applications - Part 1&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;&quot;&gt;Technology Blog&lt;/a&gt; on July 07, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/public-cloud-for-corporate-web-applications-part-1/&quot;&gt;Public Cloud for Corporate Web Applications - Part 1&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://naruraghavan.github.io&quot;&gt;Technology Blog&lt;/a&gt; on July 07, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>

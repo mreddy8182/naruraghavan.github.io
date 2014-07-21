@@ -4,6 +4,7 @@ disqus_shortname: naruraghavangithubio
 reading_time:     true
 words_per_minute: 120
 url:              http://naruraghavan.github.io
+#url:               localhost
 
 # Owner/author information
 owner:
