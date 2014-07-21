@@ -4,7 +4,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://naruraghavan.github.io/feed.xml" />
 <link rel="alternate" type="text/html" href="http://naruraghavan.github.io" />
-<updated>2014-07-21T15:30:26-04:00</updated>
+<updated>2014-07-21T15:50:42-04:00</updated>
 <id>http://naruraghavan.github.io/</id>
 <author>
   <name>Narayanan Raghavan</name>
@@ -25,80 +25,7 @@
     <uri>http://naruraghavan.github.io</uri>
     <email>naruraghavan@icloud.com</email>
   </author>
-  <content type="html">&lt;p&gt;Though the Spring Projects make our lives easier on a daily basis, as a development lead, I do face technical difficulties in bridging the gap between development and operations. One such difficulty was to get one of my applications developed using a wide variety of Spring technnologies - Spring Data JPA, Spring Data Rest, Spring Hateoas, and Spring Data Redis - to deploy on WebSphere Application Server. I was excited to use Spring Boot 1.1.4 and Spring IO Platform 1.0.1 to manage my development and version management.   &lt;/p&gt;
-
-&lt;p&gt;I enjoyed my dev time every day until it was time to deploy the application on IBM WebSphere Application Server (WAS). Expecting the Operations team to troubleshoot the deployment problems may not even be possible given the human resource availability/constraints on that team. Therefore, it becomes an additional development story within a Sprint (in Agile Scrum parlance) for the core dev team to execute.  &lt;/p&gt;
-
-&lt;h2 id=&quot;deploying-on-websphere-liberty-profile-wlp&quot;&gt;Deploying on WebSphere Liberty Profile (WLP)&lt;/h2&gt;
-&lt;p&gt;My initial idea was to get the application up and running within WLP. You can download the runtime &lt;a href=&quot;https://developer.ibm.com/wasdev/downloads/liberty-profile-using-non-eclipse-environments/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;After a little bit of struggle, I got WLP working within my IntelliJ IDE as shown below:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/WLP-in-IntelliJ.png&quot; alt=&quot;WLP in IntelliJ&quot; /&gt; &lt;/p&gt;
-
-&lt;p&gt;and the &lt;code&gt;server.xml&lt;/code&gt; should look somewhat like the following:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
-&amp;lt;server description=&amp;quot;new server&amp;quot;&amp;gt;
-  &amp;lt;!-- Enable features --&amp;gt;
-  &amp;lt;featureManager&amp;gt;
-    &amp;lt;feature&amp;gt;localConnector-1.0&amp;lt;/feature&amp;gt;
-    &amp;lt;feature&amp;gt;jsp-2.2&amp;lt;/feature&amp;gt;
-  &amp;lt;/featureManager&amp;gt;
-  &amp;lt;!-- To access this server from a remote client add a host attribute to the following element, e.g. host=&amp;quot;*&amp;quot; --&amp;gt;
-  &amp;lt;httpEndpoint httpPort=&amp;quot;9080&amp;quot; httpsPort=&amp;quot;9443&amp;quot; id=&amp;quot;defaultHttpEndpoint&amp;quot; /&amp;gt;
-  &amp;lt;applicationMonitor updateTrigger=&amp;quot;mbean&amp;quot; /&amp;gt;
-  &amp;lt;jspEngine jdkSourceLevel=&amp;quot;16&amp;quot; /&amp;gt;
-  &amp;lt;application id=&amp;quot;Gradle___NetStarContentRestServices___ncrs_war__exploded_&amp;quot; location=&amp;quot;/Users/Naru/IdeaProjects/NetStarContentRestServices/out/artifacts/NetStarContentRestServices/exploded/ncrs.war&amp;quot; name=&amp;quot;Gradle___NetStarContentRestServices___ncrs_war__exploded_&amp;quot; type=&amp;quot;war&amp;quot; /&amp;gt;
-&amp;lt;/server&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Since Spring Boot starter package for web &lt;code&gt;spring-boot-starter-web&lt;/code&gt; uses embedded tomcat by default, I ended up specifying the following in my &lt;code&gt;build.gradle&lt;/code&gt; file as follows:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-gradle&quot; data-lang=&quot;gradle&quot;&gt;providedRuntime(&amp;quot;org.springframework.boot:spring-boot-starter-tomcat&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;The &lt;code&gt;providedRuntime&lt;/code&gt; directive makes sure that the war plugin moves the embeeded tomcat jar files to &lt;code&gt;/WEB-INF/lib-provided&lt;/code&gt; from &lt;code&gt;/WEB-INF/lib&lt;/code&gt; directory. &lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;blockquote&gt;
-      &lt;p&gt;The premise of Spring Boot is to develop and run Spring applications as standalones - extremely good for development teams. &lt;/p&gt;
-    &lt;/blockquote&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;If you build the war file Without the above directive, the embedded tomcat jars will also be placed along with the other jar dependencies in the &lt;code&gt;/WEB-INF/lib&lt;/code&gt; directory. &lt;a href=&quot;https://github.com/spring-projects/spring-boot/issues/1194&quot;&gt;Here&lt;/a&gt; is the question I posed to the Spring Boot team to get my application war file to work in a regular Tomcat or WLP environment.&lt;/p&gt;
-
-&lt;p&gt;Once the above situation with the application war file was fixed, my application deployed and ran fine within the WLP environment. After successfully getting the application to work in WLP environment, I moved onto deploying it in my test WAS 8.5.5.2 environment. To my surpise, the application did not even deploy properly. I had to perform a bunch of steps to get my REST application to work.&lt;/p&gt;
-
-&lt;h2 id=&quot;deploying-on-websphere-application-server-was&quot;&gt;Deploying on WebSphere Application Server (WAS)&lt;/h2&gt;
-&lt;p&gt;The key to a successful deployment of Spring Boot applications in WAS is to setup a shared library as shown below:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/WAS-shared-library-setup.png&quot; alt=&quot;Shared Library Setup in WAS&quot; /&gt; &lt;/p&gt;
-
-&lt;p&gt;I removed all the jar files under &lt;code&gt;/WEB-INF/lib&lt;/code&gt;  from my war file and placed them into the shared library. After setting up the shared library, I changed the class loader order as follows:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/class-loader-order.png&quot; alt=&quot;Class Loader Order&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Though the application started, I got hit with JPA persistence issues as follows:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;Caused by: java.lang.ClassCastException: com.ibm.websphere.persistence.PersistenceProviderImpl incompatible with javax.persistence.spi.PersistenceProvider
-    at javax.persistence.Persistence$1.isLoaded(Persistence.java:92) ~[hibernate-jpa-2.0-api-1.0.1.Final.jar:1.0.1.Final]
-    at org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.isReachable(JPATraversableResolver.java:56) ~[hibernate-validator-5.0.3.Final.jar:5.0.3.Final]
-    at org.hibernate.validator.internal.engine.resolver.DefaultTraversableResolver.isReachable(DefaultTraversableResolver.java:130) ~[hibernate-validator-5.0.3.Final.jar:5.0.3.Final]
-    at org.hibernate.validator.internal.engine.resolver.SingleThreadCachedTraversableResolver.isReachable(SingleThreadCachedTraversableResolver.java:46) ~[hibernate-validator-5.0.3.Final.jar:5.0.3.Final]
-    at org.hibernate.validator.internal.engine.ValidatorImpl.isReachable(ValidatorImpl.java:1307) ~[hibernate-validator-5.0.3.Final.jar:5.0.3.Final]
-    ... 159 common frames omitted&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code&gt;java.lang.ClassCastException: com.ibm.websphere.persistence.PersistenceProviderImpl 
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;The exception is due to the JPA 2.0 jars that are shipped with WAS 8.5.5.2. Unfortunately, I couldn’t find a way to fix the issue by changing out the default java persistence API as shown below:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://naruraghavan.github.io/images/alternate-persistence-provider-in-WAS.png&quot; alt=&quot;Persistence Provider&quot; /&gt; &lt;/p&gt;
-
-&lt;p&gt;Since Spring Boot 1.1.4 and starter package &lt;code&gt;spring-boot-starter-data-jpa&lt;/code&gt; contains hibernate JPA 2.1 support, it will collide with the JPA 2.0 jars that ship with WAS 8.5.5.2. There is no quick way to make WAS load your jar files through class loader order &lt;code&gt;PARENT_LAST&lt;/code&gt;. &lt;/p&gt;
-
-&lt;p&gt;I could get the Spring Boot with JPA application to work was to downgrade hibernate jars to version &lt;code&gt;hibernate-release-4.2.15.Final&lt;/code&gt;.&lt;/p&gt;
+  <content type="html">
 
   &lt;p&gt;&lt;a href=&quot;http://naruraghavan.github.io/deploying-spring-boot-applications-in-ibm-websphere-application-server/&quot;&gt;Deploying Spring Boot Applications in IBM WebSphere Application Server&lt;/a&gt; was originally published by Narayanan Raghavan at &lt;a href=&quot;http://naruraghavan.github.io&quot;&gt;Technology Blog&lt;/a&gt; on July 21, 2014.&lt;/p&gt;</content>
 </entry>
