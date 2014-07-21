@@ -83,4 +83,4 @@ The exception is due to the JPA 2.0 jars that are shipped with WAS 8.5.5.2. Unfo
 
 Since Spring Boot 1.1.4 and starter package ```spring-boot-starter-data-jpa``` contains hibernate JPA 2.1 support, it will collide with the JPA 2.0 jars that ship with WAS 8.5.5.2. There is no quick way to make WAS load your jar files through class loader order ```PARENT_LAST```. 
 
-The only way I could get the Spring Boot with JPA application to work was to downgrade hibernate jars to version ```hibernate-release-4.2.15.Final```.
+I could get the Spring Boot with JPA application to work was to downgrade hibernate jars to version ```hibernate-release-4.2.15.Final```.
