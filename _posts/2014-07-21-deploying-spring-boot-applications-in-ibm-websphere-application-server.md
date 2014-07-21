@@ -41,9 +41,9 @@ and the ```server.xml``` should look somewhat like the following:
 
 Since Spring Boot starter package for web ```spring-boot-starter-web``` uses embedded tomcat by default, I ended up specifying the following in my ```build.gradle``` file as follows:
 
-{% highlight gradle %}
+```
 providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
-{% endhighlight %}
+```
 
 The ```providedRuntime``` directive makes sure that the war plugin moves the embeeded tomcat jar files to ```/WEB-INF/lib-provided``` from ```/WEB-INF/lib``` directory. 
 
