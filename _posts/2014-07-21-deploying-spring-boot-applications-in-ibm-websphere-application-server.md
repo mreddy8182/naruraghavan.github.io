@@ -35,7 +35,7 @@ and the ```server.xml``` should look somewhat like the following:
   <httpEndpoint httpPort="9080" httpsPort="9443" id="defaultHttpEndpoint" />
   <applicationMonitor updateTrigger="mbean" />
   <jspEngine jdkSourceLevel="16" />
-  <application id="Gradle___NetStarContentRestServices___ncrs_war__exploded_" location="/Users/Naru/IdeaProjects/NetStarContentRestServices/out/artifacts/NetStarContentRestServices/exploded/ncrs.war" name="Gradle___NetStarContentRestServices___ncrs_war__exploded_" type="war" />
+  <application id="Gradle___ContentRestServices___ncrs_war__exploded_" location="/Users/Naru/IdeaProjects/ContentRestServices/out/artifacts/ContentRestServices/exploded/ncrs.war" name="Gradle___ContentRestServices___ncrs_war__exploded_" type="war" />
 </server>
 {% endhighlight %}
 
