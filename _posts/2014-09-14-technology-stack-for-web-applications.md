@@ -1,8 +1,8 @@
 ---
 layout: post
-title: ""Technology Stack for Web Applications""
+title: "Technology Stack for Web Applications"
 modified: 2014-09-14 11:22:59 -0400
-tags: ["Information Technology & Management, Spring.io, Continuous Delivery, Continuous Integration, Code Quality Management"]
+tags: [Information Technology & Management, Spring.io, Continuous Delivery, Continuous Integration, Code Quality Management]
 image:
   feature: abstract-6.jpg
   credit: dargadgetz
