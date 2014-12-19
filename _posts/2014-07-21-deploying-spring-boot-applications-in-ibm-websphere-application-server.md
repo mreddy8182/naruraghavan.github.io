@@ -110,10 +110,10 @@ public class WebSphereDevJPADatabaseConfiguration {
 
     private static final String JNDI_NAME = "jdbc/mm_delstag1";
 
-  @Bean
-  public static PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurer() {
-    return new PropertySourcesPlaceholderConfigurer();
-  }
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurer() {
+      return new PropertySourcesPlaceholderConfigurer();
+    }
 
     @Bean
     @Primary
@@ -126,10 +126,10 @@ public class WebSphereDevJPADatabaseConfiguration {
 
     }
 
-  @Bean
-  public JdbcTemplate jdbcTemplate() {
-    return new JdbcTemplate(dataSource());
-  }
+    @Bean
+    public JdbcTemplate jdbcTemplate() {
+      return new JdbcTemplate(dataSource());
+    }
 
 }
 {% endhighlight %}
