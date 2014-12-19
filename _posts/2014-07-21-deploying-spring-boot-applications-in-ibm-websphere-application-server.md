@@ -85,3 +85,51 @@ Since Spring Boot 1.1.4 and starter package ```spring-boot-starter-data-jpa``` c
 
 I could get the Spring Boot with JPA application to work was to downgrade hibernate jars to version ```hibernate-release-4.2.15.Final```.
 
+## Using JNDI Datasource
+Use the following code snippet to get going:
+
+{% highlight java %}
+package ...
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.*;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
+
+import javax.annotation.Resource;
+import javax.sql.DataSource;
+
+/**
+ * @author Narayanan Raghavan
+ * @since 1.0
+ */
+@Configuration
+@Profile ("webspheredev")
+public class WebSphereDevJPADatabaseConfiguration {
+
+    private static final String JNDI_NAME = "jdbc/mm_delstag1";
+
+  @Bean
+  public static PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurer() {
+    return new PropertySourcesPlaceholderConfigurer();
+  }
+
+    @Bean
+    @Primary
+    @Resource(name = JNDI_NAME)
+    public DataSource dataSource() {
+
+        JndiDataSourceLookup jndiDataSourceLookup = new JndiDataSourceLookup();
+        jndiDataSourceLookup.setResourceRef(true);
+        return jndiDataSourceLookup.getDataSource(JNDI_NAME);
+
+    }
+
+  @Bean
+  public JdbcTemplate jdbcTemplate() {
+    return new JdbcTemplate(dataSource());
+  }
+
+}
+{% endhighlight %}
